@@ -1,38 +1,45 @@
-.App {
-  text-align: center;
+@font-face {
+    font-family: Montserrats;
+    src: url("fonts/Montserrat-Regular.otf") ;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+    font-family: Montserrats;
+    src: url("fonts/Montserrat-Bold.otf") ;
+    font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Montserrats;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+section {
+    display: contents;
+}
+  
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Track */
+::-webkit-scrollbar-track {
+/* box-shadow: inset 0 0 5px grey; */
+    border-radius: 10px;
+    margin: 1.5vw;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(203, 203, 203);
+    border-radius: 10px;
+}
+
+/* Corner */
+::-webkit-scrollbar-corner {
+    display: none;
 }
