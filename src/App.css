@@ -5,9 +5,15 @@
 
 @font-face {
     font-family: Montserrats;
-    src: url("fonts/Montserrat-Bold.otf") ;
+    src: url("fonts/Montserrat-SemiBold.otf") ;
     font-weight: bold;
 }
+
+/* @font-face {
+    font-family: Montserrats;
+    src: url("fonts/Montserrat-Bold.otf") ;
+    font-weight: bold;
+} */
 
 * {
     margin: 0;
@@ -15,6 +21,14 @@
     box-sizing: border-box;
     font-family: Montserrats;
 }
+
+/* html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+} */
 
 section {
     display: contents;
