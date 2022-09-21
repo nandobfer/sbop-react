@@ -45,14 +45,16 @@ const Home = () => {
                             mask={() => false}
                             id='input_login'
                             placeholder='Nome de usuário, e-mail ou CPF'
-                        />
+                            className='default-input'
+                            />
                         <label htmlFor="input_senha">Senha</label>
                         <Input 
                             mask={() => false}
                             id='input_senha'
                             placeholder='Senha'
+                            className='default-input'
                         />
-                        <button type="submit">Entrar</button>
+                        <button className='default-button' type="submit">Entrar</button>
                     </Form>
                 </div>
             </div>
