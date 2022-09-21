@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import React from "react";
 
-export const Form = ({children, initialValues, onSubmit}) => {
+const Form = ({children, initialValues, onSubmit}) => {
     console.log(children)
     return (
         <Formik
@@ -30,3 +30,5 @@ export const Form = ({children, initialValues, onSubmit}) => {
         </Formik>
     )
 }
+
+export default Form

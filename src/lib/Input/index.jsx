@@ -2,7 +2,7 @@ import { Field } from 'formik';
 import MaskedInput from 'react-text-mask';
 import './style.scss';
 
-export const Input = (props) => {
+const Input = (props) => {
     // const props = {
     //     mask: mask,
     //     disabled: disabled,
@@ -29,3 +29,5 @@ export const Input = (props) => {
         </Field>
     )
 }
+
+export default Input
