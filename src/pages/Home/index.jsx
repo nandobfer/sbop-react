@@ -44,7 +44,7 @@ const Home = () => {
                         <Input 
                             mask={() => false}
                             id='input_login'
-                            placeholder='Nome de usuário, e-mail ou CPF'
+                            placeholder='Usuário, e-mail ou CPF'
                             className='default-input'
                             />
                         <label htmlFor="input_senha">Senha</label>
@@ -56,6 +56,7 @@ const Home = () => {
                         />
                         <button className='default-button' type="submit">Entrar</button>
                     </Form>
+                    <p>Esqueci minha senha</p>
                 </div>
             </div>
         </section>
