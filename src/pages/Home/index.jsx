@@ -1,6 +1,6 @@
-import { Input } from '../../components/Input';
+import { Input } from 'react-burgos';
+import { Form } from 'react-burgos';
 import './style.scss';
-import { Form } from '../../components/Form';
 
 const Home = () => {
 
@@ -40,11 +40,13 @@ const Home = () => {
                     </div>
                     <p>Bem vindo! Por favor preencha os campos de nome de usuário e senhas para acessar sua conta.</p>
                     <Form initialValues={inputs} onSubmit={values => onFormSubmit(values)}>
+                        <label htmlFor="input_login">Usuário</label>
                         <Input 
                             mask={() => false}
                             id='input_login'
                             placeholder='Nome de usuário, e-mail ou CPF'
                         />
+                        <label htmlFor="input_senha">Senha</label>
                         <Input 
                             mask={() => false}
                             id='input_senha'

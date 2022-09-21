@@ -1,7 +1,20 @@
 {
-  "name": "sbop-react",
-  "version": "0.1.0",
-  "private": true,
+  "name": "react-burgos",
+  "version": "0.1.3",
+  "description": "Custom smooth components",
+  "author": "Fernando Burgos",
+  "private": false,
+  "keywords": [
+    "react",
+    "components",
+    "ui"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@testing-library/jest-dom": "^5.16.5",
