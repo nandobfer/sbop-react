@@ -9,9 +9,9 @@ function App() {
   return (
     <BrowserRouter>
         <Routes>
-            <Route index element={<Home />} />
-            <Route path='/perfil' element={<Perfil />} />
-            {/* <Route path='/cadastrar/' element={<Cadastro />} /> */}
+                <Route index element={<Home />} />
+                <Route path='/perfil' element={<Perfil />} />
+                {/* <Route path='/cadastrar/' element={<Cadastro />} /> */}
         </Routes>
     </BrowserRouter>
   );

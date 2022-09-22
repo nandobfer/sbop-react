@@ -5,6 +5,7 @@ import { LoadingScreen } from '../../components/LoadingScreen';
 import { api } from '../../api'
 import './style.scss';
 import { useNavigate } from 'react-router-dom';
+// import { Membro } from '../../contexts/Membro';
 
 const Home = () => {
 
