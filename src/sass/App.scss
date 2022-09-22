@@ -9,6 +9,8 @@
     font-weight: bold;
 }
 
+@import './colors';
+
 /* @font-face {
     font-family: Montserrats;
     src: url("fonts/Montserrat-Bold.otf") ;
@@ -32,6 +34,11 @@ body {
 
 section {
     display: contents;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: darken($background-color, 20);
+    opacity: 1; /* Firefox */
 }
   
 /* width */
