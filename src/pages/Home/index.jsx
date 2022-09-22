@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { Input } from 'react-burgos';
 import { Form } from 'react-burgos';
+import { LoadingScreen } from '../../components/LoadingScreen';
 import './style.scss';
 
 const Home = () => {
@@ -28,8 +30,11 @@ const Home = () => {
         input_senha: '',
     }
 
+    const [loading, setLoading] = useState(true)
+
     return (
         <section className="home-page">
+            <LoadingScreen loading={loading}/>
             <div className="background-container">
                 <img src="/images/logo.webp" alt="Logo" />
                 <div className="main-container">
