@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { Input } from 'react-burgos';
 import { Form } from 'react-burgos';
 import { LoadingScreen } from '../../components/LoadingScreen';
+import { api } from '../../api'
 import './style.scss';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
 
@@ -20,9 +22,28 @@ const Home = () => {
     //     return array
     // }
 
+    const navigate = useNavigate();
+    // const [loginfeedback, setLoginfeedback] = useState('');
     const onFormSubmit = (values) => {
-        console.log(values);
-        alert(JSON.stringify(values, null, 2));
+        const data = {
+            login: values.input_login,
+            password: values.input_senha,
+        }
+        console.log(data);
+        setLoading(true);
+        api.post('/login', data)
+        .then((response) => {
+            console.log(response.data);
+            if (!!response.data[0]) {
+                navigate('/perfil', response.data[0]);
+            }
+        })
+        .catch((error) => {
+            console.error(error)
+        })
+        .finally(() => {
+            setLoading(false);
+        });
     }
 
     const inputs = {
@@ -30,7 +51,7 @@ const Home = () => {
         input_senha: '',
     }
 
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     return (
         <section className="home-page">
