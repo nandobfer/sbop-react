@@ -31,7 +31,7 @@ const Home = () => {
     return (
         <section className="home-page">
             <div className="background-container">
-                <img src="/images/logo.png" alt="Logo" />
+                <img src="/images/logo.webp" alt="Logo" />
                 <div className="main-container">
                     <div className="titles">
                         <h1>Login</h1>
