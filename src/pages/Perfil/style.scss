@@ -8,6 +8,7 @@
     height: 100vh;
 
     .main-container {
+        position: relative;
         flex-direction: column;
         background-color: white;
         box-shadow: 0 3px 20px rgba($color: #000000, $alpha: 0.15);
