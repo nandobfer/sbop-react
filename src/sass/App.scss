@@ -59,6 +59,10 @@ div {
     display: flex;
 }
 
+img {
+    object-fit: contain;
+}
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: darken($background-color, 20);
     opacity: 1; /* Firefox */

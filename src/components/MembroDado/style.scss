@@ -1,0 +1,18 @@
+@import '/src/sass/colors';
+
+.dado-container-component {
+    flex-direction: column;
+    line-height: 1.75vw;
+
+    > div {
+        align-items: center;
+        > h1 {
+            font-size: 1vw;
+        }
+    }
+
+    > p {
+        font-size: 0.9vw;
+    }
+    
+}
