@@ -1,0 +1,52 @@
+@import '/src/sass/colors';
+
+.toolbar-container {
+    align-items: center;
+    background-color: $toolbar-color;
+    height: 7vw;
+    border-top-left-radius: 1.5vw;
+    border-top-right-radius: 1.5vw;
+
+    > div {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        flex: 0.2;
+        line-height: 1.5vw;
+        transition: 0.3s;
+
+        > h1 {
+            font-size: 1vw;
+            color: $title-color;
+        }
+        > p {
+            font-size: 0.8vw;
+            color: $primary-text-color;
+        }
+    }
+
+    >div:hover {
+        transform: translateY(0.7vw);
+    }
+
+    > div:first-of-type {
+        border-top-left-radius: 1.5vw;
+    }
+
+    > div:last-of-type {
+        border-top-right-radius: 1.5vw;
+    }
+
+    > hr {
+        height: 35%;
+    }
+
+    .active-tool {
+        background-color: white;
+        pointer-events: none;
+    }
+}

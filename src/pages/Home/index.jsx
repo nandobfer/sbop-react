@@ -36,7 +36,7 @@ const Home = () => {
         .then((response) => {
             console.log(response.data);
             if (!!response.data[0]) {
-                navigate('/perfil', response.data[0]);
+                navigate('/perfil', {state: response.data[0]});
             }
         })
         .catch((error) => {

@@ -36,6 +36,10 @@ section {
     display: contents;
 }
 
+div {
+    display: flex;
+}
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: darken($background-color, 20);
     opacity: 1; /* Firefox */

@@ -1,2 +1,18 @@
 @import '/src/sass/colors';
 
+.profile-page {
+    background-color: $background-color;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+
+    .main-container {
+        flex-direction: column;
+        background-color: white;
+        box-shadow: 0 3px 20px rgba($color: #000000, $alpha: 0.15);
+        border-radius: 1.5vw;
+        width: 90vw;
+        height: 45vw;
+    }
+}

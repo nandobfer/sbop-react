@@ -1,8 +1,21 @@
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Toolbar } from '../../components/Toolbar';
 import './style.scss';
 
 export const Perfil = () => {
+    const membro = useLocation().state;
+    const [page, setPage] = useState('dados')
+
+    useEffect(() => {
+        console.log(membro);
+    }, [membro])
     
     return (
-         <h1>teste</h1>
+        <div className="profile-page">
+            <div className="main-container">
+                <Toolbar page={page} setPage={setPage} />
+            </div>
+        </div>
     )
 }
