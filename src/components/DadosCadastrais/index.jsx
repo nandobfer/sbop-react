@@ -4,7 +4,7 @@ export const DadosCadastrais = ({page}) => {
     
     return (
         <div className={`dados-container ${page === 'dados' ? 'fadeIn' : 'fadeOut'}`}>
-            <h1>Dados</h1>
+            <h1 className='title'>Dados</h1>
         </div>
     )
 }

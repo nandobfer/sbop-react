@@ -4,16 +4,21 @@ import './sass/App.scss';
 import './sass/_input.scss';
 import './sass/_button.scss';
 import { Perfil } from './pages/Perfil';
+import { Membro } from './contexts/Membro';
+import { useState } from 'react';
 
 function App() {
+    const [membro, setMembro] = useState({})
   return (
-    <BrowserRouter>
-        <Routes>
-                <Route index element={<Home />} />
-                <Route path='/perfil' element={<Perfil />} />
-                {/* <Route path='/cadastrar/' element={<Cadastro />} /> */}
-        </Routes>
-    </BrowserRouter>
+    <Membro.Provider value={[membro, setMembro]}>
+        <BrowserRouter>
+            <Routes>
+                    <Route index element={<Home />} />
+                    <Route path='/perfil' element={<Perfil />} />
+                    {/* <Route path='/cadastrar/' element={<Cadastro />} /> */}
+            </Routes>
+        </BrowserRouter>
+    </Membro.Provider>
   );
 }
 

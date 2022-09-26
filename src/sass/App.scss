@@ -24,7 +24,15 @@
     font-family: Montserrats;
 }
 
-.fadeOut{
+.title {
+    color: $title-color;
+}
+
+p {
+    color: $primary-text-color;
+}
+
+.fadeOut {
     opacity:0;
     width:0;
     height:0;
@@ -33,7 +41,7 @@
     transition-duration: 0.3s;
 
 }
-.fadeIn{
+.fadeIn {
     opacity:1;
     width:auto;
     height:auto;
