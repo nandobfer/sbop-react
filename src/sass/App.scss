@@ -24,13 +24,20 @@
     font-family: Montserrats;
 }
 
-/* html {
-    height: 100%;
-}
+.fadeOut{
+    opacity:0;
+    width:0;
+    height:0;
+    transition: width 0.3s 0.3s, height 0.3s 0.3s, opacity 0.3s;
 
-body {
-    height: 100%;
-} */
+}
+.fadeIn{
+    opacity:1;
+    // width:100%;
+    // height:100%;
+    transition: width 0.3s, height 0.3s, opacity 0.3s 0.3s;
+
+}
 
 section {
     display: contents;
