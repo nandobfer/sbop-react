@@ -4,6 +4,7 @@ import { AcessoRestrito } from '../../components/AcessoRestrito';
 import { DadosCadastrais } from '../../components/DadosCadastrais';
 import { Planos } from '../../components/Planos';
 import { Seguranca } from '../../components/Seguranca';
+import { Solicitacoes } from '../../components/Solicitacoes';
 import { Toolbar } from '../../components/Toolbar';
 import './style.scss';
 
@@ -23,6 +24,7 @@ export const Perfil = () => {
                 <Seguranca page={page} />
                 <Planos page={page} />
                 <AcessoRestrito page={page} />
+                <Solicitacoes page={page} />
             </div>
         </div>
     )
