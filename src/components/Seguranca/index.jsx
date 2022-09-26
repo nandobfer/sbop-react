@@ -1,9 +1,9 @@
 import './style.scss';
 
-export const Seguranca = ({current}) => {
+export const Seguranca = ({page}) => {
     
     return (
-        <div className={`seguranca-container ${current ? 'fadeIn' : 'fadeOut'}`}>
+        <div className={`seguranca-container ${page === 'seguranca' ? 'fadeIn' : 'fadeOut'}`}>
             <h1>Segurança</h1>
         </div>
     )
