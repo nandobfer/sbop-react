@@ -13,11 +13,12 @@ $camera_width: 4vw;
     outline: 2px red solid;
 
     .info-container {
-        align-items: center;
+        // align-items: center;
         justify-content: space-around;
         
         .foto-container {
             position: relative;
+            align-self: center;
 
             > img {
                 height: 15vw;
@@ -33,10 +34,16 @@ $camera_width: 4vw;
                 width: $camera_width;
                 height: $camera_width;
                 right: 0;
+                cursor: pointer;
+                transition: 0.3s;
 
                 img {
                     height: $camera_width/2;
                 }
+            }
+
+            .camera-icon-container:hover {
+                transform: scale(1.1);
             }
         }
 

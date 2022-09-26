@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { Membro } from '../../contexts/Membro';
-import { Etiquetinha } from '../Etiquetinha';
 import { MembroDado } from '../MembroDado';
 import './style.scss';
 
