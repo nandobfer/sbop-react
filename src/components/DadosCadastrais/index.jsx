@@ -5,7 +5,7 @@ import './style.scss';
 
 export const DadosCadastrais = ({page}) => {
 
-    const [membro, setMembro] = useContext(Membro)
+    const [membro] = useContext(Membro)
     
     return (
         <div className={`dados-container ${page === 'dados' ? 'fadeIn' : 'fadeOut'}`}>

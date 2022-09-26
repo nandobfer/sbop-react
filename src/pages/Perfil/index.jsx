@@ -17,7 +17,7 @@ export const Perfil = () => {
     useEffect(() => {
         setMembro(location)
         console.log(membro);
-    }, [membro])
+    }, [membro, setMembro, location])
     
     return (
         <div className="profile-page">
