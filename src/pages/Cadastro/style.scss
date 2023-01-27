@@ -1,0 +1,45 @@
+@import '/src/sass/colors';
+
+.Cadastro-Page {
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background-color: $background-color;
+    align-items: center;
+    justify-content: center;
+
+    .form-container {
+        flex-direction: column;
+        background-color: white;
+        width: 70vw;
+        outline: solid 0.5vw $primary-color;
+        border-radius: 2vw;
+        padding: 3vw;
+        color: $primary-text-color;
+        gap: 1vw;
+
+        label {
+            margin-bottom: -0.65vw;
+        }
+
+        .input-container {
+            flex-direction: column;
+            gap: 1vw;
+        }
+
+        .crm-uf-container {
+            gap: 1vw;
+        }
+
+        .button-container {
+            flex-direction: column;
+            align-items: center;
+            margin-top: 1vw;
+            gap: 1vw;
+
+            .default-button {
+                width: 100%;
+            }
+        }
+    }
+}

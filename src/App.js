@@ -6,6 +6,7 @@ import './sass/_button.scss';
 import { Perfil } from './pages/Perfil';
 import { Membro } from './contexts/Membro';
 import { useState } from 'react';
+import { Cadastro } from './pages/Cadastro';
 
 function App() {
     const [membro, setMembro] = useState({})
@@ -13,7 +14,7 @@ function App() {
     <Membro.Provider value={[membro, setMembro]}>
         <BrowserRouter>
             <Routes>
-                    <Route index element={<Home />} />
+                    <Route index element={<Cadastro />} />
                     <Route path='/perfil' element={<Perfil />} />
                     {/* <Route path='/cadastrar/' element={<Cadastro />} /> */}
             </Routes>
