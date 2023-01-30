@@ -2,11 +2,14 @@ import { useState } from 'react';
 import { Form, Input } from 'react-burgos';
 import { api } from '../../api';
 import { DropdownUFS } from '../../components/DropdownUFS';
+import { Modal } from '../../components/Modal';
 import './style.scss';
 
 export const Cadastro = () => {
 
     const [feedback, setFeedback] = useState('')
+    const [cpf, setCpf] = useState('')
+    const [showModal, setShowModal] = useState(false)
     
     const inputs = {
         name: '',
@@ -21,23 +24,31 @@ export const Cadastro = () => {
     const onFormSubmit = (values) => {
         const data = values
         data.cpf = values.cpf.replaceAll('.', '').replaceAll('-', '')
-        setFeedback('')
+        setFeedback('Verificando')
+        setShowModal(true)
 
         api.post('/signup', data)
         .then(response => {
-            console.log(response.data)
-
             if (response.data.error) {
                 setFeedback(response.data.error)
 
             } else {
-                setFeedback(response.data.message ? 'Usuário já existe, informações atualizadas' : 'Novo usuário registrado')
+                setFeedback(response.data.message ? 'Usuário já existe, informações atualizadas' : `Novo usuário registrado com sucesso.`)
             }
+
+            setCpf(data.cpf)
         })
     }
 
     return (
         <div className='Cadastro-Page' >
+            <Modal show={showModal} setShow={setShowModal} >
+                <p className='feedback'>{feedback}</p>
+                {cpf ? (<div style={{display: 'flex', flexDirection: 'column', gap: '1vw', alignItems: 'center'}}>
+                    <p>Para acesso use: Login: {cpf}</p><p>Senha temporária: {cpf}</p>
+                </div>) : null}
+                <button style={{width: '5vw'}} className='default-button' onClick={() => {setShowModal(false); setCpf('')}}>OK</button>
+            </Modal>
             <Form initialValues={inputs} onSubmit={values => onFormSubmit(values)} >
                 <div className="form-container">
                     <label htmlFor="name">Nome Completo</label>
@@ -60,7 +71,6 @@ export const Cadastro = () => {
 
                     <div className="button-container">
                         <button type="submit" className='default-button'>Enviar</button>
-                        <p className='feedback'>{feedback}</p>
                     </div>
                 </div>
             </Form>

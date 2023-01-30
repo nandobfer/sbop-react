@@ -13,6 +13,7 @@
     "react-imask": "^6.4.3",
     "react-input-mask": "^2.0.4",
     "react-loading": "^2.0.3",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.4.0",
     "react-scripts": "5.0.1",
     "react-text-mask": "^5.4.3",
