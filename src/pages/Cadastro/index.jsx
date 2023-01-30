@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { Form, Input } from 'react-burgos';
 import { api } from '../../api';
@@ -39,6 +40,10 @@ export const Cadastro = () => {
             setCpf(data.cpf)
         })
     }
+
+    useEffect(() => {
+        document.title = 'Formulário de Intenção'
+    }, [])
 
     return (
         <div className='Cadastro-Page' >
