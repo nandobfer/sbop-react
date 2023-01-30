@@ -42,7 +42,8 @@ export const Cadastro = () => {
     }
 
     useEffect(() => {
-        document.title = 'Formulário de Intenção'
+        document.title = 'Sbop - Formulário de Intenção'
+        
     }, [])
 
     return (
