@@ -49,9 +49,12 @@ export const Cadastro = () => {
         <div className='Cadastro-Page' >
             <Modal show={showModal} setShow={setShowModal} >
                 <p className='feedback'>{feedback}</p>
-                {cpf ? (<div style={{display: 'flex', flexDirection: 'column', gap: '1vw', alignItems: 'center'}}>
-                    <p>Para acesso use: Login: {cpf}</p><p>Senha temporária: {cpf}</p>
-                </div>) : null}
+                {cpf ? (
+                <div style={{display: 'flex', flexDirection: 'column', gap: '1vw', alignItems: 'center'}}>
+                    <p>Para acesso use: Login: {cpf}</p>
+                    <p>Senha temporária: {cpf}</p>
+                </div>
+                ) : null}
                 <button style={{width: '5vw'}} className='default-button' onClick={() => {setShowModal(false); setCpf('')}}>OK</button>
             </Modal>
             <Form initialValues={inputs} onSubmit={values => onFormSubmit(values)} >
