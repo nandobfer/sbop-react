@@ -25,11 +25,13 @@ export const Cadastro = () => {
 
         api.post('/signup', data)
         .then(response => {
+            console.log(response.data)
+
             if (response.data.error) {
                 setFeedback(response.data.error)
 
             } else {
-                setFeedback('Sucesso')
+                setFeedback(response.data.message ? 'Usuário já existe, informações atualizadas' : 'Novo usuário registrado')
             }
         })
     }
