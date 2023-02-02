@@ -43,3 +43,44 @@
         }
     }
 }
+
+@media only screen and (max-width: 600px) {
+    
+    .Cadastro-Page {
+
+        .form-container {
+            height: 90vh;
+            width: 80vw;
+            padding: 6vw 3vw;
+            gap: 0;
+            
+            label {
+                margin-bottom: 1vw;
+            }
+
+            .crm-uf-container {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .input-container {
+                gap: 0;
+            }
+
+            .default-input {
+                height: fit-content;
+                padding: 1.5vw 2vw;
+                margin-bottom: 3vw;
+            }
+
+            .button-container {
+                margin-top: 4vw;
+                
+                .default-button {
+                    height: fit-content;
+                    padding: 1.5vw 2vw;
+                }
+            }
+        }
+    }
+}
