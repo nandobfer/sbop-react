@@ -60,8 +60,10 @@ export const Cadastro = () => {
             </Modal>
             <Form initialValues={inputs} onSubmit={values => onFormSubmit(values)} >
                 <div className="form-container">
-                    <label htmlFor="name">Nome Completo</label>
-                    <Input type="text" id='name' className='default-input' placeholder='Nome Completo' required />
+                    <div className="input-container">
+                        <label htmlFor="name">Nome Completo</label>
+                        <Input type="text" id='name' className='default-input' placeholder='Nome Completo' required />
+                    </div>
 
                     <div className="crm-uf-container">
                         <div className="input-container">
@@ -72,11 +74,15 @@ export const Cadastro = () => {
                         <DropdownUFS />
                     </div>
 
-                    <label htmlFor="cpf">CPF</label>
-                    <Input type="text" mask={cpf_mask} id='cpf' className='default-input' placeholder='CPF' required />
+                    <div className="input-container">
+                        <label htmlFor="cpf">CPF</label>
+                        <Input type="text" mask={cpf_mask} id='cpf' className='default-input' placeholder='CPF' required />
+                    </div>
 
-                    <label htmlFor="email">E-mail</label>
-                    <Input type="text" id='email' className='default-input' placeholder='E-mail' required />
+                    <div className="input-container">
+                        <label htmlFor="email">E-mail</label>
+                        <Input type="text" id='email' className='default-input' placeholder='E-mail' required />
+                    </div>
 
                     <div className="button-container">
                         <button type="submit" className='default-button'>Enviar</button>
