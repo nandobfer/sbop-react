@@ -60,9 +60,12 @@ export const Cadastro = () => {
             </Modal>
             <Form initialValues={inputs} onSubmit={values => onFormSubmit(values)} >
                 <div className="form-container">
-                    <div className="input-container">
-                        <label htmlFor="name">Nome Completo</label>
-                        <Input type="text" id='name' className='default-input' placeholder='Nome Completo' required />
+                    <div className="top-container">
+                        <div className="input-container name-container">
+                            <label htmlFor="name">Nome Completo</label>
+                            <Input type="text" id='name' className='default-input' placeholder='Nome Completo' required />
+                        </div>
+                        <img className="logo-blue" src="images/logo_blue.webp" alt="" />
                     </div>
 
                     <div className="crm-uf-container">

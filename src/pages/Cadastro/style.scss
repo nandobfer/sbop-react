@@ -22,6 +22,15 @@
             margin-bottom: -0.65vw;
         }
 
+        .name-container {
+            width: 80%;
+        }
+
+        .logo-blue {
+            width: 10vw;
+            margin-left: auto;
+        }
+        
         .input-container {
             flex-direction: column;
             gap: 1vw;
@@ -54,10 +63,28 @@
             padding: 6vw 3vw;
             gap: 0;
             justify-content: space-evenly;
-
+            
             .crm-uf-container {
                 flex-direction: column;
                 gap: 0;
+            }
+
+            .name-container {
+                width: 100%;
+            }
+            
+            .top-container {
+                margin-top: 15vw;
+                position: relative;
+            }
+
+            .logo-blue {
+                position: absolute;
+                top: -20vw;
+                left: 0;
+                right: 0;
+                margin-right: auto;
+                width: 25vw;
             }
             
             .input-container {
