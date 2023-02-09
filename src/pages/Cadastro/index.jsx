@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Form, Input } from 'react-burgos';
+import { useMediaQuery } from 'react-responsive';
 import { api } from '../../api';
 import { DropdownUFS } from '../../components/DropdownUFS';
 import { Modal } from '../../components/Modal';
@@ -11,6 +12,8 @@ export const Cadastro = () => {
     const [feedback, setFeedback] = useState('')
     const [cpf, setCpf] = useState('')
     const [showModal, setShowModal] = useState(false)
+
+    const isMobile = useMediaQuery({maxWidth:600})
     
     const inputs = {
         name: '',
@@ -18,6 +21,21 @@ export const Cadastro = () => {
         uf: 'AC',
         cpf: '',
         email: ''
+    }
+
+    const data_style = {
+        alignItems: isMobile ? 'flex-start' : 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: isMobile ? '4vw' : '1.25vw'
+    }
+
+    const button_style = {
+        height: 'fit-content',
+        width: isMobile ? '60vw' : '15vw', 
+        fontSize: isMobile ? '5vw' : '1.25vw',
+        marginTop: isMobile ? '3vw' : '0.5vw',
+        padding: isMobile ? '2vw' : '0.5vw'
     }
 
     const cpf_mask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/]
@@ -41,6 +59,12 @@ export const Cadastro = () => {
         })
     }
 
+    const login = () => {
+        setShowModal(false); 
+        setCpf('');
+        window.location.href = `http://sistema.sbop.com.br:5001/home?cpf=${cpf}`
+    }
+
     useEffect(() => {
         document.title = 'Sbop - Formulário de Intenção'
         
@@ -48,15 +72,16 @@ export const Cadastro = () => {
 
     return (
         <div className='Cadastro-Page' >
-            <Modal show={showModal} setShow={setShowModal} >
-                <p className='feedback'>{feedback}</p>
-                {cpf ? (
-                <div style={{display: 'flex', flexDirection: 'column', gap: '1vw', alignItems: 'center'}}>
-                    <p>Para acesso use: Login: {cpf}</p>
-                    <p>Senha temporária: {cpf}</p>
-                </div>
-                ) : null}
-                <button style={{width: '5vw'}} className='default-button' onClick={() => {setShowModal(false); setCpf('')}}>OK</button>
+            <Modal show={showModal} setShow={setShowModal} isMobile={isMobile} >
+                    <p className='feedback'>{feedback}</p>
+                    {cpf ? (
+                    <div style={data_style}>
+                        <p>Para acesso, use:</p>
+                        <p><b style={{color: 'black'}}>Login: </b>{isMobile ? <br/> : null}{cpf}</p>
+                        <p><b style={{color: 'black'}}>Senha temporária: </b>{isMobile ? <br/> : null}{cpf}</p>
+                    </div>
+                    ) : null}
+                    <button style={button_style} className='default-button' onClick={login}>Faça login agora</button>
             </Modal>
             <Form initialValues={inputs} onSubmit={values => onFormSubmit(values)} >
                 <div className="form-container">
