@@ -7,6 +7,8 @@ import { Perfil } from './pages/Perfil';
 import { Membro } from './contexts/Membro';
 import { useState } from 'react';
 import { Cadastro } from './pages/Cadastro';
+import { Blank } from './pages/Blank';
+import { Mapa } from './pages/Mapa';
 
 function App() {
     const [membro, setMembro] = useState({})
@@ -14,8 +16,9 @@ function App() {
     <Membro.Provider value={[membro, setMembro]}>
         <BrowserRouter>
             <Routes>
-                    <Route index element={<Cadastro />} />
+                    <Route index element={<Blank />} />
                     <Route path='/perfil' element={<Perfil />} />
+                    <Route path='/mapa' element={<Mapa />} />
                     {/* <Route path='/cadastrar/' element={<Cadastro />} /> */}
             </Routes>
         </BrowserRouter>
