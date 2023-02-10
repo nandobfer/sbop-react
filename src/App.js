@@ -19,7 +19,7 @@ function App() {
                     <Route index element={<Blank />} />
                     <Route path='/perfil' element={<Perfil />} />
                     <Route path='/mapa' element={<Mapa />} />
-                    {/* <Route path='/cadastrar/' element={<Cadastro />} /> */}
+                    <Route path='/cadastrar/' element={<Cadastro />} />
             </Routes>
         </BrowserRouter>
     </Membro.Provider>
