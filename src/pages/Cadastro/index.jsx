@@ -109,7 +109,7 @@ export const Cadastro = () => {
 
                     <div className="input-container">
                         <label htmlFor="email">E-mail</label>
-                        <Input type="text" id='email' className='default-input' placeholder='E-mail' required />
+                        <Input type="email" id='email' className='default-input' placeholder='E-mail' required />
                     </div>
 
                     <div className="button-container">
