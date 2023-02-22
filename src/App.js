@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { Cadastro } from './pages/Cadastro';
 import { Blank } from './pages/Blank';
 import { Mapa } from './pages/Mapa';
+import { Pagseguro } from './pages/Pagseguro';
 
 function App() {
     const [membro, setMembro] = useState({})
@@ -20,6 +21,7 @@ function App() {
                     <Route path='/perfil' element={<Perfil />} />
                     <Route path='/mapa' element={<Mapa />} />
                     <Route path='/cadastrar/' element={<Cadastro />} />
+                    <Route path='/pagseguro/:id' element={<Pagseguro />} />
             </Routes>
         </BrowserRouter>
     </Membro.Provider>
