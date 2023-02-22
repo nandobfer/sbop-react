@@ -1,5 +1,43 @@
 @import '/src/sass/colors';
 
 .Pagseguro-Page {
+    display: flex;
+    justify-content: space-between;
+
+    h2 {
+        color: $secondary-text-color;
+        font-size: 4vw;
+    }
+
+    button {
+        background-color: $primary-color;
+        border-radius: 1.5vw;
+        border: none;
+        color: white;
+        font-weight: bold;
+        font-size: 1vw;
+        margin-bottom: 0;
+        cursor: pointer;
+        transition: 0.3s;
+        user-select: none;
+        width: fit-content;
+        padding: 1vw;
+    }
     
+    button:hover {
+        background-color: #094a6f;
+    }
+
+    .texts-column {
+        display: flex;
+        flex-direction: column;
+        gap: 2vw;
+    }
+
+    .receipt-notice {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.5vw;
+    }
+
 }

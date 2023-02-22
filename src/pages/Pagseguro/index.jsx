@@ -23,7 +23,20 @@ export const Pagseguro = () => {
     
     return (
         <div className='Pagseguro-Page' >
-            <p>{member?.nome}</p>
+            {/* <p>{member?.nome}</p> */}
+            <div class="payment-body">
+                <div className="texts-column">
+                    <h2>Pagamento via Pix</h2>
+                    <button id="clipboard-button">Clique aqui para copiar a chave Pix</button>
+                    <div class="receipt-notice">
+                        <p>Envie o comprovante para:</p>
+                        <p><b>sbopmail@gmail.com</b></p>
+                    </div>
+                </div>
+                <div className="qr-column">
+                    <img class="qrc" src="/images/qrcodesbop.png" alt="" />
+                </div>
+            </div>
         </div>
     )
 }
