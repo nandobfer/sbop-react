@@ -92,7 +92,7 @@ export const Pagseguro = () => {
                 <p>{qrCode?.id}</p>
                 <p>{qrCode?.text}</p> */}
                 <div className="qr-column">
-                    {qrCode?.text ? <QRCode value={qrCode.text} size={300} /> : null}
+                    {qrCode?.text ? <QRCode value={qrCode.text} size={400} /> : null}
                 </div>
             </div>
         </div>
