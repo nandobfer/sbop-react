@@ -32,6 +32,7 @@ export const PagseguroHomologation = () => {
 
     return (
         <div className='PagseguroHomologation-Component' style={{flexDirection: 'column', gap: '1vw', padding: '1vw'}} >
+            <p style={{fontWeight: 'bold', marginBottom: '2vw'}}>Esse é um cliente teste para efetuar o pagamento do plano desejado, o sistema consiste em 3 planos: aspirante, associado e titular. Sendo que só associados podem mudar para titular depois que enviarem a documentação para nossa equipe, e não tem diferença de valor. Essa página não reflete o sistema e é apenas para testar e demonstrar o funcionamento do uso da api no sandbox </p>
             <p>nome: {member?.nome}</p>
             <p>cpf: {member?.cpf}</p>
             <p>crm: {member?.crm}</p>
@@ -54,7 +55,7 @@ export const PagseguroHomologation = () => {
                 <input type="radio" name="assinatura" id="aspirante" onChange={() => setPlano('aspirante')} />
                 <label htmlFor="aspirante">Aspirante - R$ 200,00</label>
             </div>
-            <button onClick={() => pagar()}>PAGAR</button>
+            <button style={{width: '20vw'}} onClick={() => pagar()}>PAGAR</button>
         </div>
     )
 }
