@@ -3,6 +3,7 @@
 .Pagseguro-Page {
     display: flex;
     justify-content: space-between;
+    padding: 2vw;
 
     h2 {
         color: $secondary-text-color;
@@ -38,6 +39,11 @@
         display: flex;
         flex-direction: column;
         font-size: 1.5vw;
+    }
+
+    .qr-column {
+        height: 20vw;
+        object-fit: contain;
     }
 
 }

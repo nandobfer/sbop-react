@@ -88,11 +88,11 @@ export const Pagseguro = () => {
                         <p><b>sbopmail@gmail.com</b></p>
                     </div>
                 </div>
-                <p>{member?.nome}</p>
+                {/* <p>{member?.nome}</p>
                 <p>{qrCode?.id}</p>
-                <p>{qrCode?.text}</p>
+                <p>{qrCode?.text}</p> */}
                 <div className="qr-column">
-                    {qrCode?.text ? <QRCode value={qrCode.text} size={512} /> : null}
+                    {qrCode?.text ? <QRCode value={qrCode.text} size={256} /> : null}
                 </div>
             </div>
         </div>
