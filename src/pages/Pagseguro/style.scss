@@ -3,7 +3,8 @@
 .Pagseguro-Page {
     display: flex;
     justify-content: space-between;
-    padding: 2vw;
+    padding: 2vw 0;
+    width: 100%;
 
     h2 {
         color: $secondary-text-color;
@@ -27,6 +28,11 @@
     
     button:hover {
         background-color: #094a6f;
+    }
+
+    .payment-body {
+        width: 100%;
+        justify-content: space-between;
     }
 
     .texts-column {
