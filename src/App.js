@@ -21,7 +21,7 @@ function App() {
                     <Route path='/perfil' element={<Perfil />} />
                     <Route path='/mapa' element={<Mapa />} />
                     <Route path='/cadastrar/' element={<Cadastro />} />
-                    <Route path='/pagseguro/:id' element={<Pagseguro />} />
+                    <Route path='/pagseguro/:id/:plan' element={<Pagseguro />} />
             </Routes>
         </BrowserRouter>
     </Membro.Provider>
