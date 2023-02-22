@@ -10,6 +10,7 @@ import { Cadastro } from './pages/Cadastro';
 import { Blank } from './pages/Blank';
 import { Mapa } from './pages/Mapa';
 import { Pagseguro } from './pages/Pagseguro';
+import { PagseguroHomologation } from './pages/PagseguroHomologation';
 
 function App() {
     const [membro, setMembro] = useState({})
@@ -22,6 +23,7 @@ function App() {
                     <Route path='/mapa' element={<Mapa />} />
                     <Route path='/cadastrar/' element={<Cadastro />} />
                     <Route path='/pagseguro/:id/:plan' element={<Pagseguro />} />
+                    <Route path='/pagseguro_homologacao' element={<PagseguroHomologation />} />
             </Routes>
         </BrowserRouter>
     </Membro.Provider>
