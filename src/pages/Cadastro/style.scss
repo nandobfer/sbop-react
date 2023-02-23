@@ -61,12 +61,12 @@
             height: 90vh;
             width: 80vw;
             padding: 6vw 3vw;
-            gap: 0;
+            gap: 4vw;
             justify-content: space-evenly;
             
             .crm-uf-container {
                 flex-direction: column;
-                gap: 0;
+                gap: 4vw;
             }
 
             .name-container {
@@ -74,7 +74,7 @@
             }
             
             .top-container {
-                margin-top: 15vw;
+                margin-top: 20vw;
                 position: relative;
             }
 
