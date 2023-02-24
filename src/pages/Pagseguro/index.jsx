@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { QRCode } from 'react-qrcode-logo';
 import { useParams } from 'react-router-dom';
 import { api } from '../../api';
-import useWebSocket from 'react-use-websocket';
+import useWebSocket, { ReadyState } from 'react-use-websocket';
 import './style.scss';
 
 export const Pagseguro = () => {
@@ -12,13 +12,20 @@ export const Pagseguro = () => {
 
     const [member, setMember] = useState({})
     const [qrCode, setQrCode] = useState({})
+    const [socketUrl, setSocketUrl] = useState('ws://127.0.0.1:4001')
 
-    useWebSocket("ws://127.0.0.1:4001", {
-        onOpen: () => {
-          console.log('WebSocket connection established.');
-        }
-    });
-    
+    const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl, {
+        onMessage: (message) => console.log(message)
+      })
+
+    const connectionStatus = {
+        [ReadyState.CONNECTING]: 'Connecting',
+        [ReadyState.OPEN]: 'Open',
+        [ReadyState.CLOSING]: 'Closing',
+        [ReadyState.CLOSED]: 'Closed',
+        [ReadyState.UNINSTANTIATED]: 'Uninstantiated',
+      }[readyState];
+
     useEffect(() => {
         if (member.nome) {
             console.log(member)
@@ -71,7 +78,7 @@ export const Pagseguro = () => {
             .then(response => {
                 console.log(response.data)
                 setQrCode(response.data.qr_codes[0])
-                
+                sendMessage('Hello')
             })
         }
     }, [member])
@@ -90,6 +97,8 @@ export const Pagseguro = () => {
     
     return (
         <div className='Pagseguro-Page' >
+            <span>The WebSocket is currently {connectionStatus}</span>
+            <p>{ lastMessage }</p>
             {/* <p>{member?.nome}</p> */}
             <div class="payment-body">
                 <div className="texts-column">
