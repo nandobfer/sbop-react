@@ -58,15 +58,15 @@
     .Cadastro-Page {
 
         .form-container {
-            height: 90vh;
+            height: 80vh;
             width: 80vw;
-            padding: 6vw 3vw;
-            gap: 0;
-            justify-content: space-evenly;
+            padding: 8vw 3vw 3vw;
+            gap: 3vw;
+            justify-content: center;
             
             .crm-uf-container {
                 flex-direction: column;
-                gap: 0;
+                gap: 3vw;
             }
 
             .name-container {
