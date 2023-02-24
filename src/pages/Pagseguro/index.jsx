@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { QRCode } from 'react-qrcode-logo';
 import { useParams } from 'react-router-dom';
 import { api } from '../../api';
+import useWebSocket from 'react-use-websocket';
 import './style.scss';
 
 export const Pagseguro = () => {
@@ -12,6 +13,12 @@ export const Pagseguro = () => {
     const [member, setMember] = useState({})
     const [qrCode, setQrCode] = useState({})
 
+    useWebSocket("ws://127.0.0.1:4001", {
+        onOpen: () => {
+          console.log('WebSocket connection established.');
+        }
+    });
+    
     useEffect(() => {
         if (member.nome) {
             console.log(member)
@@ -64,6 +71,7 @@ export const Pagseguro = () => {
             .then(response => {
                 console.log(response.data)
                 setQrCode(response.data.qr_codes[0])
+                
             })
         }
     }, [member])
