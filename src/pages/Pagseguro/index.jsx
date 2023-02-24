@@ -53,6 +53,10 @@ export const Pagseguro = () => {
                         }
                     }
                 ],
+
+                notification_urls: [
+                    "https://app.agenciaboz.com.br:4000/api/v1/sbop/pagseguro/webhook"
+                ]
     
             }
 
