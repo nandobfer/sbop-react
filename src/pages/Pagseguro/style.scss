@@ -3,7 +3,6 @@
 .Pagseguro-Page {
     display: flex;
     justify-content: space-between;
-    padding: 2vw 0;
     width: 100%;
 
     h2 {
@@ -51,5 +50,37 @@
         height: 20vw;
         object-fit: contain;
     }
+    
+}
 
+@media only screen and (max-width: 600px) {
+    .Pagseguro-Page {
+
+        h2 {
+            font-size: 7vw;
+            align-self: center;
+        }
+
+        button {
+            align-self: center;
+            font-size: 5vw;
+            padding: 3vw;
+            border-radius: 9vw;
+            margin: 4vw 8vw;
+        }
+
+        .receipt-notice {
+            font-size: 5vw;
+            align-items: center;
+        }
+    
+        .payment-body {
+            flex-direction: column;
+        }
+
+        .qr-column {
+            margin-top: 4vw;
+            align-self: center;
+        }
+    }
 }
