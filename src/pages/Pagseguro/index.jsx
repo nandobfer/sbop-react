@@ -100,7 +100,7 @@ export const Pagseguro = () => {
             <span>The WebSocket is currently {connectionStatus}</span>
             <p>{ lastMessage }</p>
             {/* <p>{member?.nome}</p> */}
-            <div class="payment-body">
+            <div className="payment-body">
                 <div className="texts-column">
                     <h2>Pagamento via Pix</h2>
                     <button id="clipboard-button">Clique aqui para copiar a chave Pix</button>
