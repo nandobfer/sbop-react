@@ -12,12 +12,13 @@ export const Pagseguro = () => {
 
     const [member, setMember] = useState({})
     const [qrCode, setQrCode] = useState({})
-    const [socketUrl, setSocketUrl] = useState('ws://127.0.0.1:4001')
+    const [socketUrl, setSocketUrl] = useState('wss://app.agenciaboz.com.br:4000')
 
     const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl, {
         onMessage: (message) => {
             if (message.data == 'PAID') {
-                window.top.location.reload()
+                // window.top.location.reload()
+                window.top.postMessage('refresh', '*')
             }
         }
       })
