@@ -32,6 +32,10 @@ export const Pagseguro = () => {
         }
       })
 
+    const copyToClipbloard = () => {
+        navigator.clipboard.writeText(fixed_qrcode ? fixed_values[params.plan] : qrCode.text)
+    }
+
     const connectionStatus = {
         [ReadyState.CONNECTING]: 'Connecting',
         [ReadyState.OPEN]: 'Open',
@@ -39,6 +43,7 @@ export const Pagseguro = () => {
         [ReadyState.CLOSED]: 'Closed',
         [ReadyState.UNINSTANTIATED]: 'Uninstantiated',
       }[readyState];
+      
 
     useEffect(() => {
         if (member.nome) {
@@ -122,7 +127,7 @@ export const Pagseguro = () => {
                         <div className="texts-column">
                             <h2>Pagamento via Pix</h2>
                             <p>Valor: R${params.plan == 'aspirante' ? '200' : '400'},00</p>
-                            <button id="clipboard-button">Clique aqui para copiar a chave Pix</button>
+                            <button id="clipboard-button" onClick={() => copyToClipbloard()}>Clique aqui para copiar a chave Pix</button>
                             <div className="receipt-notice">
                                 <p>Envie o comprovante para:</p>
                                 <p><b>sbopmail@gmail.com</b></p>
