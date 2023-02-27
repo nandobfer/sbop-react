@@ -10,7 +10,8 @@ export const Pagseguro = () => {
     const fixed_qrcode = true
     const fixed_values = {
         'aspirante': '00020126920014BR.GOV.BCB.PIX0114650851360001970252Pagamento referente a anuidade como membro aspirante5204000053039865406200.005802BR5904SBOP6009SAO PAULO622605226efbqxL6fjSRPouvW6fhzT6304D7C9',
-        'associado': '00020126990014BR.GOV.BCB.PIX0114650851360001970259Valor referente a anuidade como membro associado e/ou titul5204000053039865406400.005802BR5904SBOP6009SAO PAULO622505218gOyl59TrT3LUh1fuyTln63047347'
+        'associado': '00020126990014BR.GOV.BCB.PIX0114650851360001970259Valor referente a anuidade como membro associado e/ou titul5204000053039865406400.005802BR5904SBOP6009SAO PAULO622505218gOyl59TrT3LUh1fuyTln63047347',
+        'titular': '00020126990014BR.GOV.BCB.PIX0114650851360001970259Valor referente a anuidade como membro associado e/ou titul5204000053039865406400.005802BR5904SBOP6009SAO PAULO622505218gOyl59TrT3LUh1fuyTln63047347'
     }
     
     const vw = window.innerWidth / 100
@@ -111,7 +112,7 @@ export const Pagseguro = () => {
             <div className="payment-body">
                 <div className="texts-column">
                     <h2>Pagamento via Pix</h2>
-                    <p>Valor: R${params.plan == 'associado' ? '400' : '200'},00</p>
+                    <p>Valor: R${params.plan == 'aspirante' ? '200' : '400'},00</p>
                     <button id="clipboard-button">Clique aqui para copiar a chave Pix</button>
                     <div className="receipt-notice">
                         <p>Envie o comprovante para:</p>
