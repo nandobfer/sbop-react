@@ -104,7 +104,7 @@ export const Pagseguro = () => {
                 <div className="texts-column">
                     <h2>Pagamento via Pix</h2>
                     <button id="clipboard-button">Clique aqui para copiar a chave Pix</button>
-                    <div class="receipt-notice">
+                    <div className="receipt-notice">
                         <p>Envie o comprovante para:</p>
                         <p><b>sbopmail@gmail.com</b></p>
                     </div>
