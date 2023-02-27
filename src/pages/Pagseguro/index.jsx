@@ -15,7 +15,11 @@ export const Pagseguro = () => {
     const [socketUrl, setSocketUrl] = useState('ws://127.0.0.1:4001')
 
     const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl, {
-        onMessage: (message) => console.log(message)
+        onMessage: (message) => {
+            if (message.data == 'PAID') {
+                window.top.location.reload()
+            }
+        }
       })
 
     const connectionStatus = {
@@ -78,7 +82,7 @@ export const Pagseguro = () => {
             .then(response => {
                 console.log(response.data)
                 setQrCode(response.data.qr_codes[0])
-                sendMessage('Hello')
+                sendMessage(member.id)
             })
         }
     }, [member])
@@ -97,8 +101,6 @@ export const Pagseguro = () => {
     
     return (
         <div className='Pagseguro-Page' >
-            <span>The WebSocket is currently {connectionStatus}</span>
-            <p>{ lastMessage }</p>
             {/* <p>{member?.nome}</p> */}
             <div className="payment-body">
                 <div className="texts-column">
