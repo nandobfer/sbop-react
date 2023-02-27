@@ -7,7 +7,7 @@ import useWebSocket, { ReadyState } from 'react-use-websocket';
 import './style.scss';
 
 export const Pagseguro = () => {
-
+    const vw = window.innerWidth / 100
     const params = useParams()
 
     const [member, setMember] = useState({})
@@ -18,7 +18,7 @@ export const Pagseguro = () => {
         onMessage: (message) => {
             if (message.data == 'PAID') {
                 // window.top.location.reload()
-                window.top.postMessage('refresh', '*')
+                window.parent.postMessage('refresh', '*')
             }
         }
       })
@@ -116,7 +116,7 @@ export const Pagseguro = () => {
                 <p>{qrCode?.id}</p>
                 <p>{qrCode?.text}</p> */}
                 <div className="qr-column">
-                    {qrCode?.text ? <QRCode value={qrCode.text} size={300} /> : null}
+                    {qrCode?.text ? <QRCode value={qrCode.text} size={35 * vw} /> : null}
                 </div>
             </div>
         </div>
