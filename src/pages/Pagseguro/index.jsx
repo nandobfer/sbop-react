@@ -17,8 +17,7 @@ export const Pagseguro = () => {
     const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl, {
         onMessage: (message) => {
             if (message.data == 'PAID') {
-                // window.top.location.reload()
-                window.parent.postMessage('refresh', '*')
+                window.top.location.reload()
             }
         }
       })
