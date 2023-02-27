@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { api } from '../../api';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import './style.scss';
+import { useMediaQuery } from 'react-responsive';
 
 export const Pagseguro = () => {
     const fixed_qrcode = true
@@ -36,6 +37,8 @@ export const Pagseguro = () => {
         [ReadyState.CLOSED]: 'Closed',
         [ReadyState.UNINSTANTIATED]: 'Uninstantiated',
       }[readyState];
+
+    const isMobile = useMediaQuery({maxWidth:600})
 
     useEffect(() => {
         if (member.nome) {
@@ -123,7 +126,7 @@ export const Pagseguro = () => {
                 <p>{qrCode?.id}</p>
                 <p>{qrCode?.text}</p> */}
                 <div className="qr-column">
-                    {qrCode?.text ? <QRCode value={fixed_qrcode ? fixed_values[params.plan] : qrCode.text} size={29 * vw} /> : null}
+                    {qrCode?.text ? <QRCode value={fixed_qrcode ? fixed_values[params.plan] : qrCode.text} size={isMobile? 69*vw : 29*vw} /> : null}
                 </div>
             </div>
         </div>
