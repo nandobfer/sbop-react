@@ -5,6 +5,7 @@ import './style.scss';
 export const Blank = () => {
 
     const params = useParams()
+    const url = params.cpf ? `https://sistema.sbop.com.br:5001/home?cpf=${params.cpf}` : 'https://sistema.sbop.com.br:5001'
 
     useEffect(() => {
         window.addEventListener('message', (event) => {
@@ -16,7 +17,7 @@ export const Blank = () => {
     
     return (
         <div className='Blank-Page' >
-            <iframe title='Sbop-Sistema' src={`https://sistema.sbop.com.br:5001/${params.cpf ? `home?cpf=${params.cpf}` : null}`} width={'100%'} seamless/>
+            <iframe title='Sbop-Sistema' src={url} width={'100%'} seamless/>
         </div>
     )
 }
