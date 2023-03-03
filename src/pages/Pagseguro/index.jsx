@@ -19,6 +19,7 @@ export const Pagseguro = () => {
     
     const vw = window.innerWidth / 100
     const params = useParams()
+    const isMobile = useMediaQuery({maxWidth:600})
 
     const [loading, setLoading] = useState(true)
     const [member, setMember] = useState({})
@@ -28,9 +29,9 @@ export const Pagseguro = () => {
 
     const fontStyle = {
         color: COLORS.primary,
-         fontWeight:'bold',
-         fontSize: '2vw'
-        }
+        fontWeight:'bold',
+        fontSize: '2vw'
+    }
 
     const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl, {
         onMessage: (message) => {
@@ -52,9 +53,6 @@ export const Pagseguro = () => {
         [ReadyState.UNINSTANTIATED]: 'Uninstantiated',
       }[readyState];
       
-
-    const isMobile = useMediaQuery({maxWidth:600})
-
     useEffect(() => {
         if (member.nome) {
             console.log(member)
@@ -142,7 +140,8 @@ export const Pagseguro = () => {
                         <p style={fontStyle}>Parece que ocorreu um erro, por favor:</p>
                         <p style={fontStyle}>1. Verifique se você preencheu todos os campos do cadastro</p>
                         <p style={fontStyle}>2. Verifique se o CPF foi digitado corretamente</p>
-                        <p style={fontStyle}>3. Atualize a página</p>
+                        <p style={fontStyle}>3. Atualize a página para rever o cadastro</p>
+                        <button onClick={() => window.top.location.reload()}>Atualizar</button>
                     </div>
                     
                     :
