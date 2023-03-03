@@ -10,7 +10,7 @@ import { useMediaQuery } from 'react-responsive';
 import COLORS from '../../sass/_colors.scss'
 
 export const Pagseguro = () => {
-    const fixed_qrcode = true
+    const fixed_qrcode = false
     const fixed_values = {
         'aspirante': '00020126920014BR.GOV.BCB.PIX0114650851360001970252Pagamento referente a anuidade como membro aspirante5204000053039865406200.005802BR5904SBOP6009SAO PAULO622605226efbqxL6fjSRPouvW6fhzT6304D7C9',
         'associado': '00020126990014BR.GOV.BCB.PIX0114650851360001970259Valor referente a anuidade como membro associado e/ou titul5204000053039865406400.005802BR5904SBOP6009SAO PAULO622505218gOyl59TrT3LUh1fuyTln63047347',
@@ -85,7 +85,7 @@ export const Pagseguro = () => {
                 qr_codes: [
                     {
                         amount: {
-                            value: params.plan == 'aspirante' ? '200' : '400'
+                            value: params.plan == 'aspirante' ? '20000' : '40000'
                         }
                     }
                 ],
