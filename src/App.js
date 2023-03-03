@@ -19,6 +19,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                     <Route index element={<Blank />} />
+                    <Route path='/*' element={<Blank />} />
                     <Route path='/perfil' element={<Perfil />} />
                     <Route path='/mapa' element={<Mapa />} />
                     <Route path='/cadastrar/' element={<Cadastro />} />
