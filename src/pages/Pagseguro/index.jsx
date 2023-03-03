@@ -24,6 +24,13 @@ export const Pagseguro = () => {
     const [member, setMember] = useState({})
     const [qrCode, setQrCode] = useState({})
     const [socketUrl, setSocketUrl] = useState('wss://app.agenciaboz.com.br:4000')
+    const [error, setError] = useState(false)
+
+    const fontStyle = {
+        color: COLORS.primary,
+         fontWeight:'bold',
+         fontSize: '2vw'
+        }
 
     const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl, {
         onMessage: (message) => {
@@ -98,10 +105,15 @@ export const Pagseguro = () => {
 
             api.post('/pagseguro/new_order', data)
             .then(response => {
-                setLoading(false)
                 console.log(response.data)
                 setQrCode(response.data.qr_codes[0])
                 sendMessage(member.id)
+            })
+            .catch(error => {
+                setError(true)
+            })
+            .finally(() => {
+                setLoading(false)
             })
         }
     }, [member])
@@ -124,7 +136,16 @@ export const Pagseguro = () => {
                         className='loading-animation'
                         type='spinningBubbles'
                         color={COLORS.primary}
-                    /> : 
+                    /> : error ? 
+                    
+                    <div className="error" style={{flexDirection: 'column', width: '100%', height: '100vh', alignItems: 'center', justifyContent: 'center', gap: '1vw'}}>
+                        <p style={fontStyle}>Parece que ocorreu um erro, por favor:</p>
+                        <p style={fontStyle}>1. Verifique se você preencheu todos os campos do cadastro</p>
+                        <p style={fontStyle}>2. Verifique se o CPF foi digitado corretamente</p>
+                        <p style={fontStyle}>3. Atualize a página</p>
+                    </div>
+                    
+                    :
 
                     <div className="payment-body">
                         <div className="texts-column">
