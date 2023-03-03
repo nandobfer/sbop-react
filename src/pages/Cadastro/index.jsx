@@ -62,7 +62,7 @@ export const Cadastro = () => {
     const login = () => {
         setShowModal(false); 
         setCpf('');
-        window.location.href = `https://sistema.sbop.com.br:5001/home?cpf=${cpf}`
+        window.location.href = `https://sistema.sbop.com.br/home?cpf=${cpf}`
     }
 
     useEffect(() => {
