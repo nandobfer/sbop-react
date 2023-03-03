@@ -30,7 +30,9 @@ export const Pagseguro = () => {
     const fontStyle = {
         color: COLORS.primary,
         fontWeight:'bold',
-        fontSize: '2vw'
+        margin: '2vw 6vw',
+        fontSize: isMobile? '6vw' : '2vw',
+        textAlign: 'center'
     }
 
     const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl, {
