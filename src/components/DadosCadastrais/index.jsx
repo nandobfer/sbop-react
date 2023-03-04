@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Membro } from '../../contexts/Membro';
+import { Membro } from '../../contexts/membroContext';
 import { MembroDado } from '../MembroDado';
 import './style.scss';
 

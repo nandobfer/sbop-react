@@ -6,7 +6,7 @@ import { Planos } from '../../components/Planos';
 import { Seguranca } from '../../components/Seguranca';
 import { Solicitacoes } from '../../components/Solicitacoes';
 import { Toolbar } from '../../components/Toolbar';
-import { Membro } from '../../contexts/Membro'
+import { Membro } from '../../contexts/membroContext'
 import './style.scss';
 
 export const Perfil = () => {

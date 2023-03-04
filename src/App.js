@@ -3,31 +3,35 @@ import Home from './pages/Home';
 import './sass/App.scss';
 import './sass/_input.scss';
 import './sass/_button.scss';
-import { Perfil } from './pages/Perfil';
-import { Membro } from './contexts/Membro';
-import { useState } from 'react';
+// import { Perfil } from './pages/Perfil';
 import { Cadastro } from './pages/Cadastro';
 import { Blank } from './pages/Blank';
 import { Mapa } from './pages/Mapa';
 import { Pagseguro } from './pages/Pagseguro';
 import { PagseguroHomologation } from './pages/PagseguroHomologation';
+import { Temporario } from './pages/Temporario';
+import { MembroProvider } from './contexts/membroContext';
 
 function App() {
-    const [membro, setMembro] = useState({})
+
   return (
-    <Membro.Provider value={[membro, setMembro]}>
+    <MembroProvider>
         <BrowserRouter>
             <Routes>
                     <Route index element={<Blank />} />
-                    <Route path='/:cpf' element={<Blank />} />
-                    <Route path='/perfil' element={<Perfil />} />
                     <Route path='/mapa' element={<Mapa />} />
-                    <Route path='/cadastrar/' element={<Cadastro />} />
+                    <Route path='/:cpf' element={<Blank />} />
+
+                    <Route path='/temporario' element={<Temporario />} />
+                    <Route path='/temporario/:id' element={<Temporario />} />
+                    <Route path='/cadastrar' element={<Cadastro />} />
                     <Route path='/pagseguro/:id/:plan' element={<Pagseguro />} />
                     <Route path='/pagseguro_homologacao' element={<PagseguroHomologation />} />
+
+                    {/* <Route path='/perfil' element={<Perfil />} /> */}
             </Routes>
         </BrowserRouter>
-    </Membro.Provider>
+    </MembroProvider>
   );
 }
 
