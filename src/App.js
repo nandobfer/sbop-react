@@ -11,26 +11,31 @@ import { Pagseguro } from './pages/Pagseguro';
 import { PagseguroHomologation } from './pages/PagseguroHomologation';
 import { Temporario } from './pages/Temporario';
 import { MembroProvider } from './contexts/membroContext';
+import { CurrentStageProvider } from './contexts/currentStageContext';
+import { Resignup } from './pages/Temporario/Resignup';
 
 function App() {
 
   return (
     <MembroProvider>
-        <BrowserRouter>
-            <Routes>
-                    <Route index element={<Blank />} />
-                    <Route path='/mapa' element={<Mapa />} />
-                    <Route path='/:cpf' element={<Blank />} />
+        <CurrentStageProvider>
+            <BrowserRouter>
+                <Routes>
+                        <Route index element={<Blank />} />
+                        <Route path='/mapa' element={<Mapa />} />
+                        <Route path='/:cpf' element={<Blank />} />
 
-                    <Route path='/temporario' element={<Temporario />} />
-                    <Route path='/temporario/:id' element={<Temporario />} />
-                    <Route path='/cadastrar' element={<Cadastro />} />
-                    <Route path='/pagseguro/:id/:plan' element={<Pagseguro />} />
-                    <Route path='/pagseguro_homologacao' element={<PagseguroHomologation />} />
+                        <Route path='/temporario' element={<Temporario />} />
+                        <Route path='/temporario/:id' element={<Temporario />} />
+                        <Route path='/recadastro' element={<Resignup />} />
+                        <Route path='/cadastrar' element={<Cadastro />} />
+                        <Route path='/pagseguro/:id/:plan' element={<Pagseguro />} />
+                        <Route path='/pagseguro_homologacao' element={<PagseguroHomologation />} />
 
-                    {/* <Route path='/perfil' element={<Perfil />} /> */}
-            </Routes>
-        </BrowserRouter>
+                        {/* <Route path='/perfil' element={<Perfil />} /> */}
+                </Routes>
+            </BrowserRouter>
+        </CurrentStageProvider>
     </MembroProvider>
   );
 }

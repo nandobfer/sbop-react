@@ -1,6 +1,27 @@
 @import '/src/sass/colors';
 
 .Temporario-Page {
+    outline: 3px solid red;
     width: 100%;
-    border: 3px solid red;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vw;
+
+    .stages {
+        flex: 0.3;
+        flex-direction: column;
+        align-items: center;
+        color: $primary-text-color;
+
+        .number {
+            background-color: $toolbar-color;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            width: 5vw;
+            height: 5vw;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+        }
+    }
+
 }
