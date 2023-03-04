@@ -8,6 +8,7 @@ import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import './style.scss';
 import { useCurrentStage } from '../../hooks/useCurrentStage';
 import { Resignup } from './Resignup';
+import { useSpecializations } from '../../hooks/useSpecializations';
 
 
 export const Temporario = () => {
@@ -31,6 +32,7 @@ export const Temporario = () => {
 
     const params = useParams()
     const [membro, setMembro] = useMembro()
+    const [specializations, setSpecializations] = useSpecializations()
     const stages = useTemporaryStages(membro)
     const navigate = useNavigate()
 
@@ -39,10 +41,20 @@ export const Temporario = () => {
     
 
     useEffect(() => {
-        api.post('/member', {id: params.id})
-        .then(({data}) => {
-            setMembro(data)
-        })
+        if (!membro.nome) {
+            api.post('/member', {id: params.id})
+            .then(({data}) => {
+                setMembro(data)
+            })
+        }
+
+        if (specializations.length == 0) {
+            api.get('/get_specializations')
+            .then(({data}) => {
+                setSpecializations(data)
+            })
+        }
+
     }, [])
     
     return (

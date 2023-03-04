@@ -25,3 +25,20 @@
     }
 
 }
+
+.Resignup-Component {
+    width: 100%;
+
+    .form-container {
+        display: flex;
+        width: 100%;
+
+        .input-containers {
+            flex-direction: column;
+        }
+
+        .temp-skills-select {
+            flex-direction: column;
+        }
+    }
+}
