@@ -1,0 +1,24 @@
+@import '/src/sass/colors';
+
+.Planos-Component {
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-evenly;
+    gap: 5vw;
+
+    .plan-container {
+        flex-direction: column;
+        width: 100%;
+
+        .title-container {
+            width: 100%;
+            justify-content: space-between;
+
+            p {
+                color: $primary-color;
+                font-weight: bold;
+            }
+        }
+    
+    }
+}

@@ -8,13 +8,13 @@ export const useTemporaryStages = (membro) => {
             title: "Cadastrar",
             description: "Complete seu perfil para desbloquear as funcionalidades do sistema.",
             location: `/recadastro`,
-            condition: JSON.parse(window.localStorage.getItem('pre-cadastro')),
+            condition: membro.recadastrado,
         },
         {
             id: 2, 
             title: "Plano",
             description: "Selecione o plano desejado.",
-            location: '/temporario/planos',
+            location: '/planos',
             condition: membro.pago,
         },
         {

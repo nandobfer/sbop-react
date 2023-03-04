@@ -14,6 +14,7 @@ import { MembroProvider } from './contexts/membroContext';
 import { CurrentStageProvider } from './contexts/currentStageContext';
 import { Resignup } from './pages/Temporario/Resignup';
 import { SpecializationsProvider } from './contexts/specializationsContext';
+import { Planos } from './pages/Planos';
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
                             <Route path='/temporario' element={<Temporario />} />
                             <Route path='/temporario/:id' element={<Temporario />} />
                             <Route path='/recadastro' element={<Resignup />} />
+                            <Route path='/planos' element={<Planos />} />
                             <Route path='/cadastrar' element={<Cadastro />} />
                             <Route path='/pagseguro/:id/:plan' element={<Pagseguro />} />
                             <Route path='/pagseguro_homologacao' element={<PagseguroHomologation />} />
@@ -38,7 +40,7 @@ function App() {
                             {/* <Route path='/perfil' element={<Perfil />} /> */}
                     </Routes>
                 </BrowserRouter>
-                
+
             </SpecializationsProvider>
         </CurrentStageProvider>
     </MembroProvider>

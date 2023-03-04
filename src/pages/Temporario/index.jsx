@@ -23,7 +23,7 @@ export const Temporario = () => {
                     </div>
                     <h1>{stage.title}</h1>
                     <p>{stage.description}</p>
-                    { currentStage == stage.id ? <button onClick={() => navigate(stage.location)} >Prosseguir</button> : stage.condition ? <CheckCircleIcon sx={{color: 'green'}} /> : <RemoveCircleIcon /> }
+                    { stage.condition ? <CheckCircleIcon sx={{color: 'green'}} /> : currentStage == stage.id ? <button onClick={() => navigate(stage.location)} >Prosseguir</button> :  <RemoveCircleIcon /> }
                 </div>
                 { stage.id == 3 ? null : <hr /> }
             </section>
@@ -38,13 +38,15 @@ export const Temporario = () => {
 
     const [currentStage, setCurrentStage] = useCurrentStage()
 
-    
+    useEffect(() => {
+        setCurrentStage(membro.recadastrado ? membro.pago ? 3 : 2 : 1)
+    }, [membro])
 
     useEffect(() => {
         if (!membro.nome) {
             api.post('/member', {id: params.id})
             .then(({data}) => {
-                setMembro(data)
+                setMembro({...data, recadastrado: false})
             })
         }
 
