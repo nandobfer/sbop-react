@@ -23,7 +23,7 @@ export const Temporario = () => {
                     </div>
                     <h1>{stage.title}</h1>
                     <p>{stage.description}</p>
-                    { stage.condition ? <CheckCircleIcon sx={{color: 'green'}} /> : currentStage == stage.id ? <button onClick={() => navigate(stage.location)} >Prosseguir</button> :  <RemoveCircleIcon /> }
+                    { stage.condition ? <CheckCircleIcon sx={{color: 'green'}} /> : currentStage == stage.id ? <button className='default-button' onClick={() => navigate(stage.location)} >Prosseguir</button> :  <RemoveCircleIcon /> }
                 </div>
                 { stage.id == 3 ? null : <hr /> }
             </section>

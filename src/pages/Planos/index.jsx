@@ -45,7 +45,7 @@ export const Planos = () => {
     return (
         <div className='Planos-Component' >
             {plans.map(plan => <Plan key={plan.id} plan={plan} onClick={() => setClickedPlan(plan)} />)}
-            <button onClick={() => clickedPlan.id ? navigate(`/pagseguro/${membro.id}/${clickedPlan.name.toLowerCase()}`) : alert('selecione um plano')}>Pagar</button>
+            <button className='default-button' onClick={() => clickedPlan.id ? navigate(`/pagseguro/${membro.id}/${clickedPlan.name.toLowerCase()}`) : alert('selecione um plano')}>Pagar</button>
         </div>
     )
 }
