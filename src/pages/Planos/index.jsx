@@ -3,9 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { useMembro } from '../../hooks/useMembro';
 import { usePlans } from '../../hooks/usePlans';
 import './style.scss';
-import COLORS from '../../sass/_colors.scss'
+import COLORS from '../../sass/_colors.scss';
+import { useMediaQuery } from 'react-responsive'
 
 export const Planos = () => {
+
+    const isMobile = useMediaQuery({maxWidth:600})
 
     const Plan = ({ plan, onClick }) => {
         const [current, setCurrent] = useState(false)
@@ -27,7 +30,7 @@ export const Planos = () => {
         }, [])
 
         return (
-            <div className="plan-container" onClick={onClick} style={{outline: clicked ? `0.5vw solid ${COLORS['check_green']}` : null}}>
+            <div className="plan-container" onClick={onClick} style={{outline: clicked ? ( isMobile ? `1vw solid ${COLORS['check_green']}` : `0.5vw solid ${COLORS['check_green']}` ) : null}}>
                 <div className="title-container">
                     <h1>Membro {plan.name}</h1>
                     { current ? <p>Plano atual</p> : null }
