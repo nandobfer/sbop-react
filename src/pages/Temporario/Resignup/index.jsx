@@ -7,7 +7,8 @@ import { useMembro } from "../../../hooks/useMembro"
 import { useSpecializations } from "../../../hooks/useSpecializations"
 import { useStripAll } from "../../../hooks/useStripAll"
 import InputMask from 'react-input-mask';
-import { Input } from '@mui/material';
+import { Input, TextField } from '@mui/material';
+import { InputMui } from "../../../components/InputMui"
 
 export const Resignup = () => {
     
@@ -91,19 +92,26 @@ export const Resignup = () => {
                 {({handleChange, values}) => (
                     <Form className="form-container" >
                         <div className="left-container input-containers">
-                            <label htmlFor="name">Nome Completo</label>
-                            <input type="text" name="name" required onChange={handleChange} value={values.name} />
+                            <InputMui id='name' title='Nome Completo' onChange={handleChange} value={values.name} />
 
-                            <label htmlFor="cpf">CPF</label>
-                            <InputMask mask={"999.999.999-99"} alwaysShowMask={false} name="cpf" required onChange={handleChange} value={values.cpf} maskChar={null} />
+                            <InputMask mask={"999.999.999-99"} alwaysShowMask={false} name="cpf" required onChange={handleChange} value={values.cpf} maskChar={null} >
+                                {(inputProps) => <TextField
+                                    {...inputProps}
+                                    autoFocus
+                                    // helperText={passwordError}
+                                    // error={!!passwordError || false}
+                                    margin="dense"
+                                    label="CPF"
+                                    fullWidth
+                                    variant="standard"
+                                />}
+                            </InputMask>
 
-                            <label htmlFor="email">E-mail</label>
-                            <input type="email" name="email" required onChange={handleChange} value={values.email} />
+                            <InputMui id='email' title='E-mail' onChange={handleChange} value={values.email} />
 
                             <div className="crm-uf-input">
                                 <div className="input-column">
-                                    <label htmlFor="crm">CRM</label>
-                                    <InputMask mask={"99.999"} alwaysShowMask={false} name="crm" required onChange={handleChange} value={values.crm.split('-')[0]} maskChar={null} />
+                                    <InputMui mask={"99.999"} id='crm' title='CRM' onChange={handleChange} value={values.crm.split('-')[0]} />
                                 </div>
                                 <div className="input-column">
                                     <label htmlFor="crm_uf" title="Obrigatório">UF</label>
@@ -157,20 +165,13 @@ export const Resignup = () => {
                             <button className="default-button" onClick={(event) => backButton(event)}>Voltar</button>
                         </div>
                         <div className="right-container input-containers">
-                            <label htmlFor="telefone">Telefone</label>
-                            <InputMask mask={"(99) 99999-9999"} alwaysShowMask={false} name="telefone" required onChange={handleChange} value={values.telefone} maskChar={null} />
-                            <label htmlFor="cep">CEP</label>
-                            <InputMask mask={"99.999-999"} alwaysShowMask={false} name="cep" required onChange={handleChange} value={values.cep} maskChar={null} />
-                            <label htmlFor="endereco">Endereço</label>
-                            <input type="text" name="endereco" required onChange={handleChange} value={values.endereco} />
-                            <label htmlFor="numero">Número</label>
-                            <InputMask mask={'99999999'} alwaysShowMask={false} name="numero" required onChange={handleChange} value={values.numero} maskChar={null} />
-                            <label htmlFor="complemento">Complemento</label>
-                            <input type="text" name="complemento" onChange={handleChange} value={values.complemento} />
-                            <label htmlFor="bairro">Bairro</label>
-                            <input type="text" name="bairro" required onChange={handleChange} value={values.bairro} />
-                            <label htmlFor="cidade">Cidade</label>
-                            <input type="text" name="cidade" required onChange={handleChange} value={values.cidade} />
+                            <InputMui mask={"(99) 99999-9999"} id='telefone' title='Telefone' onChange={handleChange} value={values.telefone} />
+                            <InputMui mask={"99.999-999"} id='cep' title='CEP' onChange={handleChange} value={values.cep} />
+                            <InputMui id='endereco' title='Endereço' onChange={handleChange} value={values.endereco} />
+                            <InputMui mask={'99999999'} id='numero' title='Número' onChange={handleChange} value={values.numero} />
+                            <InputMui id='complemento' title='Complemento' onChange={handleChange} value={values.complemento} />
+                            <InputMui id='bairro' title='Bairro' onChange={handleChange} value={values.bairro} />
+                            <InputMui id='cidade' title='Cidade' onChange={handleChange} value={values.cidade} />
                             <label htmlFor="uf">Estado</label>
 
                             <Field as="select" name="uf" id="uf" placeholder="UF" required onChange={handleChange} defaultValue={values.uf} >
