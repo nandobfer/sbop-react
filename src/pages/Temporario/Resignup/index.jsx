@@ -17,6 +17,9 @@ export const Resignup = () => {
     const [specializations, setSpecializations] = useSpecializations()
     const [currentStage, setCurrentStage] = useCurrentStage()
     const [checkedSpecializations, setCheckedSpecializations] = useState([...membro.especialidades])
+    const [cpfError, setCpfError] = useState(false)
+    const [cepError, setCepError] = useState(false)
+    const [phoneError, setPhoneError] = useState(false)
 
     const navigate = useNavigate()
 
@@ -49,6 +52,32 @@ export const Resignup = () => {
         event.preventDefault()
         navigate(-1)
     }
+    const validateValues = (values) => {
+        let valid = true
+
+        if (values.cpf.length < 11) {
+            setCpfError(true)
+            valid = false
+        } else {
+            setCpfError(false)
+        }
+
+        if (values.cep.length < 8) {
+            setCepError(true)
+            valid = false
+        } else {
+            setCepError(false)
+        }
+
+        if (values.telefone.length < 10) {
+            setPhoneError(true)
+            valid = false
+        } else {
+            setPhoneError(false)
+        }
+
+        return valid
+    }
 
     const onFormSubmit = (values) => {
         // REMOVE UNREGISTERED SPECIALIZATIONS ===============
@@ -64,9 +93,16 @@ export const Resignup = () => {
         values.id = membro.id
         values.especialidades = checkedSpecializations
         values.crm = values.crm+'-'+values.crm_uf
+        values.cpf = stripAll(values.cpf)
         values.telefone = stripAll(values.telefone)
         values.cep = stripAll(values.cep)
+        
         console.log({values})
+
+        if (!validateValues(values)) {
+            window.scroll(0, 0)
+            return
+        }
 
         api.post('/signup/full', values)
         .then(({data}) => {
@@ -94,7 +130,7 @@ export const Resignup = () => {
                         <div className="left-container input-containers">
                             <InputMui id='name' title='Nome Completo' handleChange={handleChange} value={values.name} />
 
-                            <InputMui mask={"999.999.999-99"} id='cpf' title='CPF' handleChange={handleChange} value={values.cpf} />
+                            <InputMui mask={"999.999.999-99"} id='cpf' title='CPF' handleChange={handleChange} value={values.cpf} error={cpfError} errorText="CPF inválido" />
 
                             <InputMui id='email' title='E-mail' handleChange={handleChange} value={values.email} />
 
@@ -153,8 +189,8 @@ export const Resignup = () => {
                             <textarea rows={4} cols={4} name="curriculum" required onChange={handleChange} value={values.curriculum} />
                         </div>
                         <div className="right-container input-containers">
-                            <InputMui mask={"(99) 99999-9999"} id='telefone' title='Telefone' handleChange={handleChange} value={values.telefone} />
-                            <InputMui mask={"99.999-999"} id='cep' title='CEP' handleChange={handleChange} value={values.cep} />
+                            <InputMui mask={"(99) 99999-9999"} id='telefone' title='Telefone' handleChange={handleChange} value={values.telefone} error={phoneError} errorText="Telefone inválido" />
+                            <InputMui mask={"99.999-999"} id='cep' title='CEP' handleChange={handleChange} value={values.cep} error={cepError} errorText="CEP inválido" />
                             <InputMui id='endereco' title='Endereço' handleChange={handleChange} value={values.endereco} />
                             <InputMui mask={'99999999'} id='numero' title='Número' handleChange={handleChange} value={values.numero} />
                             <InputMui id='complemento' title='Complemento' handleChange={handleChange} value={values.complemento} />
