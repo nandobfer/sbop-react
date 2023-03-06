@@ -11,7 +11,9 @@
         flex-direction: column;
         align-items: center;
         color: $primary-text-color;
-        gap: 1.5vw;
+        // gap: 1.5vw;
+        justify-content: space-between;
+        height: 20vw;
 
         .number {
             background-color: $toolbar-color;
@@ -53,17 +55,79 @@
 
 .Resignup-Component {
     width: 100%;
-
+    color: $primary-text-color;
+    
     .form-container {
+        justify-content: space-between;
         display: flex;
         width: 100%;
+        padding: 0 4vw;
+
+        label, p {
+            font-size: 2vw;
+        }
 
         .input-containers {
             flex-direction: column;
+            width: 49%;
+        }
+
+        .crm-uf-input {
+            display: flex;
+            align-items: center;
+
+            .input-column {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+            }
         }
 
         .temp-skills-select {
+            align-self: center;
             flex-direction: column;
+            outline: $line-color solid 1px;
+            padding: 2vw;
+            width: 90%;
+            border-radius: 4vw;
+            margin: 1vw;
+
+            .specialization-item {
+                align-items: center;
+
+                label {
+                    font-size: 1.5vw;
+                    color: $secondary-text-color;
+                }
+            }
+        }
+
+        input, select, textarea {
+            font-size: 1.25vw;
+            border: none;
+            outline: none;
+            padding: 1vw;
+            background-color: $background-color;
+            margin: 1vw;
+            border-radius: 2vw;
+        }
+
+        textarea {
+            resize: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        button {
+            height: fit-content;
+            width: fit-content;
+            padding: 1vw 4vw;
+            margin-top: auto;
+        }
+
+        .resignup-submit-button {
+            align-self: flex-end;
         }
     }
+
 }

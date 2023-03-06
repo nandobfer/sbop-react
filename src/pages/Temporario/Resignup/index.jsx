@@ -153,7 +153,7 @@ export const Resignup = () => {
                             </div>
 
                             <label htmlFor="curriculum">Curriculum</label>
-                            <textarea name="curriculum" required onChange={handleChange} value={values.curriculum} />
+                            <textarea rows={4} cols={4} name="curriculum" required onChange={handleChange} value={values.curriculum} />
                             <button className="default-button" onClick={(event) => backButton(event)}>Voltar</button>
                         </div>
                         <div className="right-container input-containers">
@@ -202,7 +202,7 @@ export const Resignup = () => {
                                 <option value="SE">Sergipe</option>
                                 <option value="TO">Tocantins</option>
                             </Field>
-                            <button className="default-button" type="submit">Enviar</button>
+                            <button className="default-button resignup-submit-button" type="submit">Enviar</button>
                         </div>
                     </Form>
                 )}
