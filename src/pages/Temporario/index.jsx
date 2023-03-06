@@ -9,6 +9,7 @@ import './style.scss';
 import { useCurrentStage } from '../../hooks/useCurrentStage';
 import { Resignup } from './Resignup';
 import { useSpecializations } from '../../hooks/useSpecializations';
+import { NewPassword } from './NewPassword';
 
 
 export const Temporario = () => {
@@ -38,6 +39,8 @@ export const Temporario = () => {
 
     const [currentStage, setCurrentStage] = useCurrentStage()
 
+    const [newPassword, setNewPassword] = useState(false)
+
     useEffect(() => {
         setCurrentStage(membro.recadastrado ? membro.pago ? 3 : 2 : 1)
     }, [membro])
@@ -47,6 +50,7 @@ export const Temporario = () => {
             api.post('/member', {id: params.id})
             .then(({data}) => {
                 setMembro({...data, recadastrado: false})
+                setNewPassword(data.primeiro_acesso)
             })
         }
 
@@ -61,6 +65,7 @@ export const Temporario = () => {
     
     return (
         <div className='Temporario-Page' >
+            <NewPassword open={newPassword} setOpen={setNewPassword} />
             {stages.map(stage => <Stage key={stage.id} stage={stage} />)}
         </div>
     )
