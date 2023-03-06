@@ -8,6 +8,7 @@ $secondary-text-color: #6B6B6B;
 $line-color: #707070;
 $etiquetinha-publico: rgba(16, 141, 98, 0.5);
 $etiquetinha-privado: rgba(24, 16, 141, 0.5);
+$check_icon: #7BDCB5;
 
 :export {
     background: $background-color;
@@ -16,4 +17,6 @@ $etiquetinha-privado: rgba(24, 16, 141, 0.5);
     primary-text: $primary-text-color;
     secondary-text: $secondary-text-color;
     line: $line-color;
+    check_icon: $check_icon;
+
 }
