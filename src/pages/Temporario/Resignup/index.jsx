@@ -92,26 +92,15 @@ export const Resignup = () => {
                 {({handleChange, values}) => (
                     <Form className="form-container" >
                         <div className="left-container input-containers">
-                            <InputMui id='name' title='Nome Completo' onChange={handleChange} value={values.name} />
+                            <InputMui id='name' title='Nome Completo' handleChange={handleChange} value={values.name} />
 
-                            <InputMask mask={"999.999.999-99"} alwaysShowMask={false} name="cpf" required onChange={handleChange} value={values.cpf} maskChar={null} >
-                                {(inputProps) => <TextField
-                                    {...inputProps}
-                                    autoFocus
-                                    // helperText={passwordError}
-                                    // error={!!passwordError || false}
-                                    margin="dense"
-                                    label="CPF"
-                                    fullWidth
-                                    variant="standard"
-                                />}
-                            </InputMask>
+                            <InputMui mask={"999.999.999-99"} id='cpf' title='CPF' handleChange={handleChange} value={values.cpf} />
 
-                            <InputMui id='email' title='E-mail' onChange={handleChange} value={values.email} />
+                            <InputMui id='email' title='E-mail' handleChange={handleChange} value={values.email} />
 
                             <div className="crm-uf-input">
                                 <div className="input-column">
-                                    <InputMui mask={"99.999"} id='crm' title='CRM' onChange={handleChange} value={values.crm.split('-')[0]} />
+                                    <InputMui mask={"99.999"} id='crm' title='CRM' handleChange={handleChange} value={values.crm.split('-')[0]} />
                                 </div>
                                 <div className="input-column">
                                     <label htmlFor="crm_uf" title="Obrigatório">UF</label>
@@ -165,13 +154,13 @@ export const Resignup = () => {
                             <button className="default-button" onClick={(event) => backButton(event)}>Voltar</button>
                         </div>
                         <div className="right-container input-containers">
-                            <InputMui mask={"(99) 99999-9999"} id='telefone' title='Telefone' onChange={handleChange} value={values.telefone} />
-                            <InputMui mask={"99.999-999"} id='cep' title='CEP' onChange={handleChange} value={values.cep} />
-                            <InputMui id='endereco' title='Endereço' onChange={handleChange} value={values.endereco} />
-                            <InputMui mask={'99999999'} id='numero' title='Número' onChange={handleChange} value={values.numero} />
-                            <InputMui id='complemento' title='Complemento' onChange={handleChange} value={values.complemento} />
-                            <InputMui id='bairro' title='Bairro' onChange={handleChange} value={values.bairro} />
-                            <InputMui id='cidade' title='Cidade' onChange={handleChange} value={values.cidade} />
+                            <InputMui mask={"(99) 99999-9999"} id='telefone' title='Telefone' handleChange={handleChange} value={values.telefone} />
+                            <InputMui mask={"99.999-999"} id='cep' title='CEP' handleChange={handleChange} value={values.cep} />
+                            <InputMui id='endereco' title='Endereço' handleChange={handleChange} value={values.endereco} />
+                            <InputMui mask={'99999999'} id='numero' title='Número' handleChange={handleChange} value={values.numero} />
+                            <InputMui id='complemento' title='Complemento' handleChange={handleChange} value={values.complemento} />
+                            <InputMui id='bairro' title='Bairro' handleChange={handleChange} value={values.bairro} />
+                            <InputMui id='cidade' title='Cidade' handleChange={handleChange} value={values.cidade} />
                             <label htmlFor="uf">Estado</label>
 
                             <Field as="select" name="uf" id="uf" placeholder="UF" required onChange={handleChange} defaultValue={values.uf} >

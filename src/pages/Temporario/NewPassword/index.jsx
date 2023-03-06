@@ -46,6 +46,7 @@ export const NewPassword = ({ open, setOpen }) => {
         <div className='NewPassword-Component' >
             <Dialog open={open} onClose={handleClose}
                 disableEscapeKeyDown={true}
+                hideBackdrop={true}
                 
             >
                 <DialogTitle>Atualize sua senha</DialogTitle>

@@ -1,29 +1,40 @@
 import { TextField } from '@mui/material';
 import InputMask from 'react-input-mask';
 
-export const InputMui = ({ id, title, handleChange, value, type, mask }) => {
+export const InputMui = ({ id, title, handleChange, value, type, mask, autoFocus }) => {
     
     return (
         <div className='InputMui-Component' style={{flexDirection: 'column'}} >
-            {/* <label htmlFor={id}>{title}</label>
             {mask ? 
-            <InputMask mask={mask} alwaysShowMask={false} name={id} required onChange={handleChange} value={value} maskChar={null} /> 
-            :
-            <input type={type || "text"} name={id} required onChange={handleChange} value={value} />
-            } */}
             <InputMask mask={mask} alwaysShowMask={false} name={id} required onChange={handleChange} value={value} maskChar={null} >
                 {(inputProps) => <TextField
                     {...inputProps}
-                    autoFocus
+                    autoFocus={autoFocus}
                     // helperText={passwordError}
                     // error={!!passwordError || false}
-                    type={type}
+                    type={type || 'text'}
                     margin="dense"
                     label={title}
                     fullWidth
                     variant="standard"
                 />}
             </InputMask>
+            :
+            <TextField
+                autoFocus={autoFocus}
+                // helperText={passwordError}
+                // error={!!passwordError || false}
+                type={type || 'text'}
+                margin="dense"
+                label={title}
+                fullWidth
+                variant="standard"
+                name={id} 
+                onChange={handleChange}
+                value={value}
+                required
+            />
+            }
         </div>
     )
 }
