@@ -5,20 +5,52 @@
     width: 100%;
     justify-content: space-evenly;
     gap: 5vw;
+    padding: 0 4vw;
+
+    .plans-container {
+        flex-direction: row-reverse;
+        width: 100%;
+        justify-content: space-around;
+        gap: 4vw;
+    }
 
     .plan-container {
+        background-color: $toolbar-color;
         flex-direction: column;
         width: 100%;
-
+        text-align: justify;
+        border-radius: 2vw;
+        padding: 2vw;
+        gap: 2vw;
+        margin: 0.5vw;
+        
         .title-container {
             width: 100%;
             justify-content: space-between;
 
-            p {
-                color: $primary-color;
-                font-weight: bold;
+            h1 {
+                color: $secondary-text-color;
+                font-size: 2vw;
+                margin: auto;
             }
         }
+        
+        p {
+            font-size: 1.25vw;
+            color: $primary-text-color;
+            font-weight: bold;
+            opacity: 0.8;
+        }
     
+    }
+
+    .buttons-container {
+        width: 100%;
+        justify-content: space-between;
+
+        button {
+            font-size: 1.5vw;
+            padding: 0.5vw 4vw;
+        }
     }
 }
