@@ -1,7 +1,7 @@
 @import '/src/sass/colors';
 
 .Temporario-Page {
-    outline: 3px solid red;
+    // outline: 3px solid red;
     width: 100%;
     align-items: center;
     justify-content: space-between;
@@ -21,6 +21,18 @@
             width: 5vw;
             height: 5vw;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            margin-bottom: 2vw;
+        }
+
+        .stage-title {
+            font-size: 2vw;
+            color: $secondary-text-color;
+            margin-bottom: 2vw;
+        }
+
+        .stage-description {
+            // font-size: 1.25vw;
+            text-align: center;
         }
     }
 

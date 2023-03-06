@@ -21,9 +21,9 @@ export const Temporario = () => {
                     <div className="number">
                         <h1>{stage.id}</h1>
                     </div>
-                    <h1>{stage.title}</h1>
-                    <p>{stage.description}</p>
-                    { stage.condition ? <CheckCircleIcon sx={{color: 'green'}} /> : currentStage == stage.id ? <button className='default-button' onClick={() => navigate(stage.location)} >Prosseguir</button> :  <RemoveCircleIcon /> }
+                    <h1 className='stage-title'>{stage.title}</h1>
+                    <p className='stage-description'>{stage.description}</p>
+                    { stage.condition ? <CheckCircleIcon sx={{color: '#7BDCB5', width: '3vw'}} /> : currentStage == stage.id ? <button className='default-button' onClick={() => navigate(stage.location)} >Prosseguir</button> :  <RemoveCircleIcon /> }
                 </div>
                 { stage.id == 3 ? null : <hr /> }
             </section>
