@@ -140,7 +140,7 @@ export const Resignup = () => {
 
                             <label htmlFor="curriculum">Curriculum</label>
                             <textarea name="curriculum" required onChange={handleChange} value={values.curriculum} />
-                            <button className="default-button" type="submit">Enviar</button>
+                            <button className="default-button" onClick={() => navigate(-1)}>Voltar</button>
                         </div>
                         <div className="right-container input-containers">
                             <label htmlFor="telefone">Telefone</label>
@@ -188,6 +188,7 @@ export const Resignup = () => {
                                 <option value="SE">Sergipe</option>
                                 <option value="TO">Tocantins</option>
                             </Field>
+                            <button className="default-button" type="submit">Enviar</button>
                         </div>
                     </Form>
                 )}

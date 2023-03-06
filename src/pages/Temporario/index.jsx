@@ -61,7 +61,7 @@ export const Temporario = () => {
     
     return (
         <div className='Temporario-Page' >
-                {stages.map(stage => <Stage key={stage.id} stage={stage} />)}
+            {stages.map(stage => <Stage key={stage.id} stage={stage} />)}
         </div>
     )
 }
