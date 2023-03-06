@@ -40,6 +40,11 @@ export const Resignup = () => {
         }
     }
 
+    const backButton = (event) => {
+        event.preventDefault()
+        navigate(-1)
+    }
+
     const onFormSubmit = (values) => {
         // REMOVE UNREGISTERED SPECIALIZATIONS ===============
         const stringfiedSpecializations = specializations.map(specialization => specialization.nome)
@@ -140,7 +145,7 @@ export const Resignup = () => {
 
                             <label htmlFor="curriculum">Curriculum</label>
                             <textarea name="curriculum" required onChange={handleChange} value={values.curriculum} />
-                            <button className="default-button" onClick={() => navigate(-1)}>Voltar</button>
+                            <button className="default-button" onClick={(event) => backButton(event)}>Voltar</button>
                         </div>
                         <div className="right-container input-containers">
                             <label htmlFor="telefone">Telefone</label>
