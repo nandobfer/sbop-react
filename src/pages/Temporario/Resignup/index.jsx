@@ -5,9 +5,13 @@ import { api } from "../../../api"
 import { useCurrentStage } from "../../../hooks/useCurrentStage"
 import { useMembro } from "../../../hooks/useMembro"
 import { useSpecializations } from "../../../hooks/useSpecializations"
+import { useStripAll } from "../../../hooks/useStripAll"
+import InputMask from 'react-input-mask';
+import { Input } from '@mui/material';
 
 export const Resignup = () => {
-
+    
+    const stripAll = useStripAll()
     const [membro, setMembro] = useMembro()
     const [specializations, setSpecializations] = useSpecializations()
     const [currentStage, setCurrentStage] = useCurrentStage()
@@ -59,6 +63,8 @@ export const Resignup = () => {
         values.id = membro.id
         values.especialidades = checkedSpecializations
         values.crm = values.crm+'-'+values.crm_uf
+        values.telefone = stripAll(values.telefone)
+        values.cep = stripAll(values.cep)
         console.log({values})
 
         api.post('/signup/full', values)
@@ -67,8 +73,11 @@ export const Resignup = () => {
                 setMembro({...membro, ...values, recadastrado: true})
                 setCurrentStage(2)
                 navigate(-1)
+            } else {
+                console.log({data})
             }
         })
+        .catch(error => console.log(error))
 
     }
 
@@ -86,15 +95,15 @@ export const Resignup = () => {
                             <input type="text" name="name" required onChange={handleChange} value={values.name} />
 
                             <label htmlFor="cpf">CPF</label>
-                            <input type="text" name="cpf" required onChange={handleChange} value={values.cpf} />
+                            <InputMask mask={"999.999.999-99"} alwaysShowMask={false} name="cpf" required onChange={handleChange} value={values.cpf} maskChar={null} />
 
                             <label htmlFor="email">E-mail</label>
-                            <input type="text" name="email" required onChange={handleChange} value={values.email} />
+                            <input type="email" name="email" required onChange={handleChange} value={values.email} />
 
                             <div className="crm-uf-input">
                                 <div className="input-column">
                                     <label htmlFor="crm">CRM</label>
-                                    <input type="text" name="crm" required onChange={handleChange} value={values.crm.split('-')[0]} />
+                                    <InputMask mask={"99.999"} alwaysShowMask={false} name="crm" required onChange={handleChange} value={values.crm.split('-')[0]} maskChar={null} />
                                 </div>
                                 <div className="input-column">
                                     <label htmlFor="crm_uf" title="Obrigatório">UF</label>
@@ -149,13 +158,13 @@ export const Resignup = () => {
                         </div>
                         <div className="right-container input-containers">
                             <label htmlFor="telefone">Telefone</label>
-                            <input type="text" name="telefone" required onChange={handleChange} value={values.telefone} />
+                            <InputMask mask={"(99) 99999-9999"} alwaysShowMask={false} name="telefone" required onChange={handleChange} value={values.telefone} maskChar={null} />
                             <label htmlFor="cep">CEP</label>
-                            <input type="text" name="cep" required onChange={handleChange} value={values.cep} />
+                            <InputMask mask={"99.999-999"} alwaysShowMask={false} name="cep" required onChange={handleChange} value={values.cep} maskChar={null} />
                             <label htmlFor="endereco">Endereço</label>
                             <input type="text" name="endereco" required onChange={handleChange} value={values.endereco} />
                             <label htmlFor="numero">Número</label>
-                            <input type="text" name="numero" required onChange={handleChange} value={values.numero} />
+                            <InputMask mask={'99999999'} alwaysShowMask={false} name="numero" required onChange={handleChange} value={values.numero} maskChar={null} />
                             <label htmlFor="complemento">Complemento</label>
                             <input type="text" name="complemento" onChange={handleChange} value={values.complemento} />
                             <label htmlFor="bairro">Bairro</label>
