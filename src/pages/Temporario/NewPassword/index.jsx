@@ -49,7 +49,7 @@ export const NewPassword = ({ open, setOpen }) => {
                 
             >
                 <DialogTitle>Atualize sua senha</DialogTitle>
-                <form action="#">
+                <form onSubmit={event => event.preventDefault()}>
                     <DialogContent sx={{flexDirection: 'column'}}>
                         <DialogContentText>
                             O sistema foi atualizado e sua senha precisa ser redefinida.
