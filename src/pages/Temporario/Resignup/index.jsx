@@ -145,8 +145,8 @@ export const Resignup = () => {
                                 {specializations.map(specialization => {
                                     return (
                                         <div className="specialization-item" key={specialization.id}>
-                                            <label htmlFor={`specialization-${specialization.id}`}>{specialization.nome}</label>
                                             <input type="checkbox" onChange={(event) => onCheckboxChange(event, specialization)} className="checkbox" id={`specialization-${specialization.id}`} name={`specialization-${specialization.id}`} defaultChecked={membro.especialidades.includes(specialization.nome) ? true : false} />
+                                            <label htmlFor={`specialization-${specialization.id}`}>{specialization.nome}</label>
                                         </div>
                                     )
                                 })}
