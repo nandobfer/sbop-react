@@ -1,7 +1,7 @@
 @import '/src/sass/colors';
 
 .Temporario-Page {
-    width: 100%;
+    // width: 100%;
     align-items: center;
     justify-content: space-between;
     padding: 2vw;
@@ -138,4 +138,46 @@
 }
 .MuiDialog-container {
     width: 100vw;
+}
+
+@media only screen and (max-width: 600px) {
+    .Temporario-Page {
+        flex-direction: column;
+        gap: 6vw;
+
+        .stages {
+            height: 100%;
+            gap: 2vw;
+
+            .number {
+                height: 12vw;
+                width: 12vw;
+                object-fit: contain;
+            }
+
+            .stage-title {
+                font-size: 5vw;
+            }
+
+            .stage-description {
+                font-size: 4vw;
+            }
+
+            .temp-forward-button {
+                font-size: 4vw;
+                height: fit-content;
+                padding: 1vw 4vw;
+            }
+
+            svg {
+                width: 10vw;
+                height: auto;
+            }
+    }
+
+        hr {
+            height: 0;
+            width: 60vw;
+        }
+    }
 }
