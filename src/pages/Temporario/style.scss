@@ -1,7 +1,6 @@
 @import '/src/sass/colors';
 
 .Temporario-Page {
-    outline: 3px solid red;
     width: 100%;
     align-items: center;
     justify-content: space-between;
@@ -12,6 +11,7 @@
         flex-direction: column;
         align-items: center;
         color: $primary-text-color;
+        gap: 1.5vw;
 
         .number {
             background-color: $toolbar-color;
@@ -22,6 +22,31 @@
             height: 5vw;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
         }
+
+        .stage-title {
+            font-size: 2vw;
+            color: $secondary-text-color;
+        }
+
+        .stage-description {
+            font-size: 1.25vw;
+            text-align: center;
+        }
+
+        .temp-forward-button {
+            font-size: 1.25vw;
+            padding: 0 2vw;
+        }
+
+        svg {
+            width: 4vw;
+            height: auto;
+        }
+    }
+
+    hr {
+        height: 13vw;
+        opacity: 0.7;
     }
 
 }
