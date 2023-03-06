@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMembro } from '../../hooks/useMembro';
 import { usePlans } from '../../hooks/usePlans';
 import './style.scss';
+import COLORS from '../../sass/_colors.scss'
 
 export const Planos = () => {
 
@@ -26,7 +27,7 @@ export const Planos = () => {
         }, [])
 
         return (
-            <div className="plan-container" onClick={onClick} style={{border: clicked ? '1vw green solid' : null}}>
+            <div className="plan-container" onClick={onClick} style={{outline: clicked ? `0.5vw solid ${COLORS['check_green']}` : null}}>
                 <div className="title-container">
                     <h1>Membro {plan.name}</h1>
                     { current ? <p>Plano atual</p> : null }
@@ -44,7 +45,9 @@ export const Planos = () => {
     
     return (
         <div className='Planos-Component' >
-            {plans.map(plan => <Plan key={plan.id} plan={plan} onClick={() => setClickedPlan(plan)} />)}
+            <div className="plans-container">
+                {plans.map(plan => <Plan key={plan.id} plan={plan} onClick={() => setClickedPlan(plan)} />)}
+            </div>
             <div className="buttons-container">
                 <button className='default-button' onClick={() => navigate(-1)} >Voltar</button>
                 <button className='default-button' onClick={() => clickedPlan.id ? navigate(`/pagseguro/${membro.id}/${clickedPlan.name.toLowerCase()}`) : alert('selecione um plano')}>Pagar</button>
