@@ -10,6 +10,7 @@ import { useCurrentStage } from '../../hooks/useCurrentStage';
 import { Resignup } from './Resignup';
 import { useSpecializations } from '../../hooks/useSpecializations';
 import { NewPassword } from './NewPassword';
+import COLORS from '../../sass/_colors.scss'
 
 
 export const Temporario = () => {
@@ -24,7 +25,7 @@ export const Temporario = () => {
                     </div>
                     <h1 className='stage-title'>{stage.title}</h1>
                     <p className='stage-description'>{stage.description}</p>
-                    { stage.condition ? <CheckCircleIcon sx={{color: '#7BDCB5'}} /> : currentStage == stage.id ? <button className='default-button temp-forward-button' onClick={() => navigate(stage.location)} >Prosseguir</button> : <RemoveCircleIcon /> }
+                    { stage.condition ? <CheckCircleIcon sx={{color: COLORS.check_icon}} /> : currentStage == stage.id ? <button className='default-button temp-forward-button' onClick={() => navigate(stage.location)} >Prosseguir</button> : <RemoveCircleIcon /> }
                 </div>
                 { stage.id == 3 ? null : <hr /> }
             </section>
