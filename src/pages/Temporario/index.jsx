@@ -65,7 +65,7 @@ export const Temporario = () => {
     }, [])
     
     return (
-        <div className='Temporario-Page' >
+        <div className='Temporario-Page' style={{opacity: newPassword ? 0.6 : null}} >
             <NewPassword open={newPassword} setOpen={setNewPassword} />
             {stages.map(stage => <Stage key={stage.id} stage={stage} />)}
         </div>
