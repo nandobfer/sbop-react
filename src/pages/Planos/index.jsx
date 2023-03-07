@@ -72,7 +72,7 @@ export const Planos = () => {
                 </div>
                 <div className="warning-container" style={{backgroundColor: membro.pago ? COLORS.check_green : COLORS.red}}>
                     { membro.pago ?
-                    <p>Vigente até dia31/12/2023</p>
+                    <p>Vigente até dia 31/12/2023</p>
                     :
                     <p>Pagamento do dia 31/12/2022 pendente!</p>
                     }
@@ -83,7 +83,7 @@ export const Planos = () => {
             </div>
             <div className="buttons-container">
                 {params?.id ? null : <button className='default-button' onClick={() => navigate(-1)} >Voltar</button>}
-                <button className='default-button' onClick={() => clickedPlan.id ? navigate(`/pagseguro/${membro.id}/${clickedPlan.name.toLowerCase()}`) : alert('selecione um plano')}>Pagar</button>
+                <button className='default-button plans-pay-button' onClick={() => clickedPlan.id ? navigate(`/pagseguro/${membro.id}/${clickedPlan.name.toLowerCase()}`) : alert('selecione um plano')}>Pagar</button>
             </div>
         </div>
     )
