@@ -30,12 +30,16 @@ export const Planos = () => {
         }, [])
 
         return (
-            <div className="plan-container" onClick={onClick} style={{outline: clicked ? ( isMobile ? `1vw solid ${COLORS['check_green']}` : `0.5vw solid ${COLORS['check_green']}` ) : null}}>
+            <div className="plan-container" onClick={onClick} style={{outline: clicked ? ( isMobile ? `1vw solid ${COLORS['check_green']}` : `0.5vw solid ${COLORS['check_green']}` ) : null, cursor: plan.id == 0 && (membro.assinatura == 'Aspirante' || membro.assinatura == '') ? 'not-allowed' : 'pointer'}}>
                 <div className="title-container">
                     <h1>Membro {plan.name}</h1>
                     { current ? <p>Plano atual</p> : null }
                 </div>
                 <p>{plan.description}</p>
+                <p>R$ {plan.value},00/ano.</p>
+                {plan.id == 0 ?
+                <p style={{color: COLORS.red}}>Necessário envio de documentos</p>
+                : null}
             </div>
         )
     }
@@ -48,6 +52,19 @@ export const Planos = () => {
     
     return (
         <div className='Planos-Component' >
+            <div className="title-wrapper">
+                <div className="title">
+                    <h1>Escolha seu plano de afiliação</h1>
+                    <p>Selecione a opção desejada, clique em continuar, e prossiga com as instruções na próxima página.</p>
+                </div>
+                <div className="warning-container" style={{backgroundColor: membro.pago ? COLORS.check_green : COLORS.red}}>
+                    { membro.pago ?
+                    <p>Vigente até dia31/12/2023</p>
+                    :
+                    <p>Pagamento do dia 31/12/2022 pendente!</p>
+                    }
+                </div>
+            </div>
             <div className="plans-container">
                 {plans.map(plan => <Plan key={plan.id} plan={plan} onClick={() => setClickedPlan(plan)} />)}
             </div>

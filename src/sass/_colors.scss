@@ -9,6 +9,7 @@ $line-color: #707070;
 $etiquetinha-publico: rgba(16, 141, 98, 0.5);
 $etiquetinha-privado: rgba(24, 16, 141, 0.5);
 $check-green: #7BDCB5;
+$red: #E12454;
 
 :export {
     background: $background-color;
@@ -18,5 +19,6 @@ $check-green: #7BDCB5;
     secondary-text: $secondary-text-color;
     line: $line-color;
     check_green: $check-green;
+    red: $red;
 
 }

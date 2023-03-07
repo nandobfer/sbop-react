@@ -3,9 +3,44 @@
 .Planos-Component {
     flex-direction: column;
     width: 100%;
+    height: 100%;
+    overflow-y: scroll;
     justify-content: space-evenly;
-    gap: 5vw;
+    // gap: 5vw;
     padding: 0 4vw;
+
+    .title-wrapper {
+        align-items: center;
+
+        .title {
+            flex-direction: column;
+            gap: 1vw;
+            margin-bottom: 2vw;
+            flex: 0.6;
+    
+            h1 {
+                font-size: 1.3vw;
+            }
+    
+            p {
+                font-size: 1vw;
+                color: lighten($primary-text-color, 20)
+            }
+        }
+    
+        .warning-container {
+            border-radius: 4vw;
+            justify-content: center;
+            align-items: center;
+            flex: 0.4;
+            height: 3vw;
+    
+            p {
+                color: white;
+            }
+        }
+    }
+
 
     .plans-container {
         flex-direction: row-reverse;
@@ -16,27 +51,33 @@
 
     .plan-container {
         background-color: $toolbar-color;
+        cursor: pointer;
         flex-direction: column;
         width: 100%;
         text-align: justify;
         border-radius: 2vw;
-        padding: 2vw;
+        padding-bottom: 2vw;
         gap: 2vw;
         margin: 0.5vw;
         
         .title-container {
+            background-color: $background-color;
+            border-top-right-radius: 2vw;
+            border-top-left-radius: 2vw;
+            padding: 1vw 0;
             width: 100%;
             justify-content: space-between;
 
             h1 {
                 color: $secondary-text-color;
-                font-size: 2vw;
+                font-size: 1.5vw;
                 margin: auto;
             }
         }
         
         p {
-            font-size: 1.25vw;
+            margin: 0 2vw;
+            font-size: 1.1vw;
             color: $primary-text-color;
             font-weight: bold;
             opacity: 0.8;
