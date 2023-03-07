@@ -44,6 +44,16 @@
             width: 4vw;
             height: auto;
         }
+
+        .link {
+            cursor: pointer;
+            text-decoration: underline;
+            color: $primary-color;
+        }
+
+        .link:hover {
+            color: darken($primary-color, 30);
+        }
     }
 
     hr {
