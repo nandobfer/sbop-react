@@ -130,61 +130,62 @@ export const Resignup = () => {
             <Formik initialValues={initialValues} onSubmit={values => onFormSubmit(values)} >
                 {({handleChange, values}) => (
                     <Form className="form-container" >
-                        <div className="left-container input-containers">
-                            <InputMui id='name' title='Nome Completo' handleChange={handleChange} value={values.name} />
-
-                            <InputMui mask={"999.999.999-99"} id='cpf' title='CPF' handleChange={handleChange} value={values.cpf} error={cpfError} errorText="CPF inválido" />
-
-                            <InputMui id='email' title='E-mail' handleChange={handleChange} value={values.email} />
-
-                            <div className="crm-uf-input">
-                                <div className="input-column">
-                                    <InputMui mask={"99.999"} id='crm' title='CRM' handleChange={handleChange} value={values.crm.split('-')[0]} />
+                        <div className="columns-container">
+                            <div className="left-container input-containers">
+                                <InputMui id='name' title='Nome Completo' handleChange={handleChange} value={values.name} />
+                                <InputMui mask={"999.999.999-99"} id='cpf' title='CPF' handleChange={handleChange} value={values.cpf} error={cpfError} errorText="CPF inválido" />
+                                <InputMui id='email' title='E-mail' handleChange={handleChange} value={values.email} />
+                                <div className="crm-uf-input">
+                                    <div className="input-column">
+                                        <InputMui mask={"99.999"} id='crm' title='CRM' handleChange={handleChange} value={values.crm.split('-')[0]} />
+                                    </div>
+                                    <div className="input-column">
+                                    <InputMui select id='crm_uf' title='UF' handleChange={handleChange} value={values.crm_uf} >
+                                        {estados.map(estado => <MenuItem
+                                            key={estado.value}
+                                            value={estado.value}
+                                            style={{width: '100%'}}
+                                        >{estado.label}</MenuItem>)}
+                                    </InputMui>
+                                    </div>
                                 </div>
-                                <div className="input-column">
-                                <InputMui select id='crm_uf' title='UF' handleChange={handleChange} value={values.crm_uf} >
-                                    {estados.map(estado => <MenuItem 
-                                        key={estado.value} 
-                                        value={estado.value} 
-                                        style={{width: '100%'}}
-                                    >{estado.label}</MenuItem>)}
-                                </InputMui>
+                                <p className="temp-skills-p">Especialidades</p>
+                                <div className="temp-skills-select">
+                                    {specializations.map(specialization => {
+                                        return (
+                                            <FormControlLabel control={<Checkbox defaultChecked={membro.especialidades.includes(specialization.nome) ? true : false} onChange={(event) => onCheckboxChange(event, specialization)} />} label={specialization.nome} />
+                                        )
+                                    })}
                                 </div>
                             </div>
-
-                            <p className="temp-skills-p">Especialidades</p>
-
-                            <div className="temp-skills-select">
-                                {specializations.map(specialization => {
-                                    return (
-                                        <FormControlLabel control={<Checkbox defaultChecked={membro.especialidades.includes(specialization.nome) ? true : false} onChange={(event) => onCheckboxChange(event, specialization)} />} label={specialization.nome} />
-                                    )
-                                })}
-                            </div>
-
-                            <InputMui multiline id='curriculum' title='Curriculum' handleChange={handleChange} value={values.curriculum} />
-                        </div>
-                        <div className="right-container input-containers">
-                            <InputMui mask={"(99) 99999-9999"} id='telefone' title='Telefone' handleChange={handleChange} value={values.telefone} error={phoneError} errorText="Telefone inválido" />
-                            <InputMui mask={"99.999-999"} id='cep' title='CEP' handleChange={handleChange} value={values.cep} error={cepError} errorText="CEP inválido" />
-                            <InputMui id='endereco' title='Endereço' handleChange={handleChange} value={values.endereco} />
-                            <InputMui mask={'99999999'} id='numero' title='Número' handleChange={handleChange} value={values.numero} />
-                            <InputMui id='complemento' title='Complemento' handleChange={handleChange} value={values.complemento} />
-                            <InputMui id='bairro' title='Bairro' handleChange={handleChange} value={values.bairro} />
-                            <InputMui id='cidade' title='Cidade' handleChange={handleChange} value={values.cidade} />
-
+                            <div className="right-container input-containers">
+                                <InputMui mask={"(99) 99999-9999"} id='telefone' title='Telefone' handleChange={handleChange} value={values.telefone} error={phoneError} errorText="Telefone inválido" />
+                                <InputMui mask={"99.999-999"} id='cep' title='CEP' handleChange={handleChange} value={values.cep} error={cepError} errorText="CEP inválido" />
+                                <InputMui id='endereco' title='Endereço' handleChange={handleChange} value={values.endereco} />
+                                <InputMui mask={'99999999'} id='numero' title='Número' handleChange={handleChange} value={values.numero} />
+                                <InputMui id='complemento' title='Complemento' handleChange={handleChange} value={values.complemento} />
+                                <InputMui id='bairro' title='Bairro' handleChange={handleChange} value={values.bairro} />
                             
-                            <InputMui select id='uf' title='Estado' handleChange={handleChange} value={values.uf} >
-                                {estados.map(estado => <MenuItem 
-                                    key={estado.value} 
-                                    value={estado.value} 
-                                    style={{width: '100%'}}
-                                >{estado.label}</MenuItem>)}
-                            </InputMui>
-                            <div className="resignup-form-buttons">
-                                <button className="default-button" onClick={(event) => backButton(event)}>Voltar</button>
-                                <button className="default-button resignup-submit-button" type="submit">Enviar</button>
+                                <div className="cidade-estado-input">
+                                    <div className="input-column">
+                                        <InputMui id='cidade' title='Cidade' handleChange={handleChange} value={values.cidade} />
+                                    </div>
+                                    <div className="input-column">
+                                <InputMui select id='uf' title='Estado' handleChange={handleChange} value={values.uf} >
+                                    {estados.map(estado => <MenuItem
+                                        key={estado.value}
+                                        value={estado.value}
+                                        style={{width: '100%'}}
+                                        >{estado.label}</MenuItem>)}
+                                </InputMui>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <InputMui multiline id='curriculum' title='Curriculum' handleChange={handleChange} value={values.curriculum} />
+                        <div className="resignup-form-buttons">
+                            <button className="default-button" onClick={(event) => backButton(event)}>Voltar</button>
+                            <button className="default-button resignup-submit-button" type="submit">Enviar</button>
                         </div>
                     </Form>
                 )}
