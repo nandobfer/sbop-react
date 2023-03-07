@@ -109,15 +109,13 @@ export const Resignup = () => {
 
         api.post('/signup/full', values)
         .then(({data}) => {
-            if (data.changedRows) {
-                setMembro({...membro, ...values, recadastrado: true})
-                setCurrentStage(2)
-                navigate(-1)
-            } else {
-                console.log({data})
-            }
+            setMembro({...membro, ...values, recadastrado: true})
         })
         .catch(error => console.log(error))
+        .finally(() => {
+            navigate(-1)
+            setCurrentStage(2)
+        })
 
     }
 
@@ -153,7 +151,7 @@ export const Resignup = () => {
                                 <div className="temp-skills-select">
                                     {specializations.map(specialization => {
                                         return (
-                                            <FormControlLabel control={<Checkbox defaultChecked={membro.especialidades.includes(specialization.nome) ? true : false} onChange={(event) => onCheckboxChange(event, specialization)} />} label={specialization.nome} />
+                                            <FormControlLabel key={specialization.nome} control={<Checkbox defaultChecked={membro.especialidades.includes(specialization.nome) ? true : false} onChange={(event) => onCheckboxChange(event, specialization)} />} label={specialization.nome} />
                                         )
                                     })}
                                 </div>
