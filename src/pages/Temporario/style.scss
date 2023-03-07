@@ -103,14 +103,14 @@
 
         }
 
-        input, select, textarea {
+        .input-field {
             font-size: 1.25vw;
             border: none;
             outline: none;
-            padding: 1vw;
+            padding: 1.5vw 0;
             // background-color: $background-color;
-            margin: 1vw;
-            border-radius: 2vw;
+            // margin: 1vw;
+            // border-radius: 2vw;
         }
 
         textarea {
@@ -144,6 +144,10 @@
 
 .MuiDialog-container {
     width: 100vw;
+}
+
+ul.MuiList-root {
+    width: 100%;
 }
 
 @media only screen and (max-width: 600px) {
