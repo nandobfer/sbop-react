@@ -20,6 +20,9 @@ export const InputMui = ({ id, title, handleChange, value, type, mask, autoFocus
                     fullWidth
                     variant="outlined"
                     multiline={multiline}
+                    FormHelperTextProps={{style:{fontSize: '1.2vw'}}}
+                    rows={10}
+                    sx={{fontFamily: "Montserrats"}}
                 />}
             </InputMask>
             :
@@ -35,6 +38,9 @@ export const InputMui = ({ id, title, handleChange, value, type, mask, autoFocus
                 fullWidth
                 variant="outlined"
                 multiline={multiline}
+                FormHelperTextProps={{style:{fontSize: '1.2vw'}}}
+                rows={10}
+                sx={{fontFamily: "Montserrats"}}
                 name={id} 
                 onChange={handleChange}
                 value={value}
