@@ -23,6 +23,7 @@ export const InputMui = ({ children, id, title, handleChange, value, type, mask,
                     rows={10}
                     sx={{fontFamily: "Montserrats"}}
                     select={select}
+                    // InputProps={{style: {borderRadius: '4vw'}}}
                 />}
             </InputMask>
             :
@@ -46,6 +47,7 @@ export const InputMui = ({ children, id, title, handleChange, value, type, mask,
                 rows={10}
                 sx={{fontFamily: "Montserrats"}}
                 select={select}
+                // InputProps={{style: {borderRadius: '4vw'}}}
             />
             }
         </div>

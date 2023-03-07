@@ -8,8 +8,9 @@ import { useSpecializations } from "../../../hooks/useSpecializations"
 import { useStripAll } from "../../../hooks/useStripAll"
 import { useEstadosBrasil } from "../../../hooks/useEstadosBrasil"
 import InputMask from 'react-input-mask';
-import { Input, MenuItem, TextField } from '@mui/material';
+import { Checkbox, FormControlLabel, Input, MenuItem, TextField } from '@mui/material';
 import { InputMui } from "../../../components/InputMui"
+import { CheckBox } from "@mui/icons-material"
 
 export const Resignup = () => {
     
@@ -156,10 +157,7 @@ export const Resignup = () => {
                             <div className="temp-skills-select">
                                 {specializations.map(specialization => {
                                     return (
-                                        <div className="specialization-item" key={specialization.id}>
-                                            <input type="checkbox" onChange={(event) => onCheckboxChange(event, specialization)} className="checkbox" id={`specialization-${specialization.id}`} name={`specialization-${specialization.id}`} defaultChecked={membro.especialidades.includes(specialization.nome) ? true : false} />
-                                            <label htmlFor={`specialization-${specialization.id}`}>{specialization.nome}</label>
-                                        </div>
+                                        <FormControlLabel control={<Checkbox defaultChecked={membro.especialidades.includes(specialization.nome) ? true : false} onChange={(event) => onCheckboxChange(event, specialization)} />} label={specialization.nome} />
                                     )
                                 })}
                             </div>
@@ -183,36 +181,6 @@ export const Resignup = () => {
                                     style={{width: '100%'}}
                                 >{estado.label}</MenuItem>)}
                             </InputMui>
-                            {/* <label htmlFor="uf">Estado</label> */}
-                            {/* <Field as="select" name="uf" id="uf" placeholder="UF" required onChange={handleChange} defaultValue={values.uf} >
-                                <option value="AC">Acre</option>
-                                <option value="AL">Alagoas</option>
-                                <option value="AP">Amapá</option>
-                                <option value="AM">Amazonas</option>
-                                <option value="BA">Bahia</option>
-                                <option value="CE">Ceará</option>
-                                <option value="DF">Distrito Federal</option>
-                                <option value="ES">Espírito Santo</option>
-                                <option value="GO">Goiás</option>
-                                <option value="MA">Maranhão</option>
-                                <option value="MT">Mato Grosso</option>
-                                <option value="MS">Mato Grosso do Sul</option>
-                                <option value="MG">Minas Gerais</option>
-                                <option value="PA">Pará</option>
-                                <option value="PB">Paraíba</option>
-                                <option value="PR">Paraná</option>
-                                <option value="PE">Pernambuco</option>
-                                <option value="PI">Piauí</option>
-                                <option value="RJ">Rio de Janeiro</option>
-                                <option value="RN">Rio Grande do Norte</option>
-                                <option value="RS">Rio Grande do Sul</option>
-                                <option value="RO">Rondônia</option>
-                                <option value="RR">Roraima</option>
-                                <option value="SC">Santa Catarina</option>
-                                <option value="SP">São Paulo</option>
-                                <option value="SE">Sergipe</option>
-                                <option value="TO">Tocantins</option>
-                            </Field> */}
                             <div className="resignup-form-buttons">
                                 <button className="default-button" onClick={(event) => backButton(event)}>Voltar</button>
                                 <button className="default-button resignup-submit-button" type="submit">Enviar</button>
