@@ -26,6 +26,7 @@ export const Temporario = () => {
                     <h1 className='stage-title'>{stage.title}</h1>
                     <p className='stage-description'>{stage.description}</p>
                     { stage.condition ? <CheckCircleIcon sx={{color: COLORS['check_green']}} /> : currentStage == stage.id ? <button className='default-button temp-forward-button' onClick={() => navigate(stage.location)} >Prosseguir</button> : <RemoveCircleIcon /> }
+                    { stage.condition ? <p className='link' onClick={() => navigate(stage.location)}>Editar</p> : null }
                 </div>
                 { stage.id == 3 ? null : <hr /> }
             </section>
