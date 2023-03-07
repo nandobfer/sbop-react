@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material';
 import InputMask from 'react-input-mask';
 
-export const InputMui = ({ id, title, handleChange, value, type, mask, autoFocus, error, errorText, multiline }) => {
+export const InputMui = ({ children, id, title, handleChange, value, type, mask, autoFocus, error, errorText, multiline, select }) => {
     
     return (
         <div className='InputMui-Component' style={{flexDirection: 'column'}} >
@@ -10,8 +10,6 @@ export const InputMui = ({ id, title, handleChange, value, type, mask, autoFocus
                 {(inputProps) => <TextField
                     {...inputProps}
                     autoFocus={autoFocus}
-                    // helperText={passwordError}
-                    // error={!!passwordError || false}
                     type={type || 'text'}
                     error={error}
                     helperText={error ? errorText : ''}
@@ -19,17 +17,22 @@ export const InputMui = ({ id, title, handleChange, value, type, mask, autoFocus
                     label={title}
                     fullWidth
                     variant="outlined"
+                    className='input-field'
                     multiline={multiline}
                     FormHelperTextProps={{style:{fontSize: '1.2vw'}}}
                     rows={10}
                     sx={{fontFamily: "Montserrats"}}
+                    select={select}
                 />}
             </InputMask>
             :
             <TextField
+                children={children}
                 autoFocus={autoFocus}
-                // helperText={passwordError}
-                // error={!!passwordError || false}
+                name={id} 
+                onChange={handleChange}
+                value={value}
+                required
                 type={type || 'text'}
                 error={error}
                 helperText={error ? errorText : ''}
@@ -37,14 +40,12 @@ export const InputMui = ({ id, title, handleChange, value, type, mask, autoFocus
                 label={title}
                 fullWidth
                 variant="outlined"
+                className='input-field'
                 multiline={multiline}
                 FormHelperTextProps={{style:{fontSize: '1.2vw'}}}
                 rows={10}
                 sx={{fontFamily: "Montserrats"}}
-                name={id} 
-                onChange={handleChange}
-                value={value}
-                required
+                select={select}
             />
             }
         </div>

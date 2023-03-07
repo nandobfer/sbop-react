@@ -6,8 +6,9 @@ import { useCurrentStage } from "../../../hooks/useCurrentStage"
 import { useMembro } from "../../../hooks/useMembro"
 import { useSpecializations } from "../../../hooks/useSpecializations"
 import { useStripAll } from "../../../hooks/useStripAll"
+import { useEstadosBrasil } from "../../../hooks/useEstadosBrasil"
 import InputMask from 'react-input-mask';
-import { Input, TextField } from '@mui/material';
+import { Input, MenuItem, TextField } from '@mui/material';
 import { InputMui } from "../../../components/InputMui"
 
 export const Resignup = () => {
@@ -15,6 +16,7 @@ export const Resignup = () => {
     const stripAll = useStripAll()
     const [membro, setMembro] = useMembro()
     const [specializations, setSpecializations] = useSpecializations()
+    const estados = useEstadosBrasil()
     const [currentStage, setCurrentStage] = useCurrentStage()
     const [checkedSpecializations, setCheckedSpecializations] = useState([...membro.especialidades])
     const [cpfError, setCpfError] = useState(false)
@@ -139,36 +141,13 @@ export const Resignup = () => {
                                     <InputMui mask={"99.999"} id='crm' title='CRM' handleChange={handleChange} value={values.crm.split('-')[0]} />
                                 </div>
                                 <div className="input-column">
-                                    <label htmlFor="crm_uf" title="Obrigatório">UF</label>
-                                    <Field as="select" name="crm_uf" id="crm_uf" placeholder="UF" required onChange={handleChange} defaultValue={values.crm.split('-')[1]} >
-                                        <option value="AC">Acre</option>
-                                        <option value="AL">Alagoas</option>
-                                        <option value="AP">Amapá</option>
-                                        <option value="AM">Amazonas</option>
-                                        <option value="BA">Bahia</option>
-                                        <option value="CE">Ceará</option>
-                                        <option value="DF">Distrito Federal</option>
-                                        <option value="ES">Espírito Santo</option>
-                                        <option value="GO">Goiás</option>
-                                        <option value="MA">Maranhão</option>
-                                        <option value="MT">Mato Grosso</option>
-                                        <option value="MS">Mato Grosso do Sul</option>
-                                        <option value="MG">Minas Gerais</option>
-                                        <option value="PA">Pará</option>
-                                        <option value="PB">Paraíba</option>
-                                        <option value="PR">Paraná</option>
-                                        <option value="PE">Pernambuco</option>
-                                        <option value="PI">Piauí</option>
-                                        <option value="RJ">Rio de Janeiro</option>
-                                        <option value="RN">Rio Grande do Norte</option>
-                                        <option value="RS">Rio Grande do Sul</option>
-                                        <option value="RO">Rondônia</option>
-                                        <option value="RR">Roraima</option>
-                                        <option value="SC">Santa Catarina</option>
-                                        <option value="SP">São Paulo</option>
-                                        <option value="SE">Sergipe</option>
-                                        <option value="TO">Tocantins</option>
-                                    </Field>
+                                <InputMui select id='crm_uf' title='UF' handleChange={handleChange} value={values.crm_uf} >
+                                    {estados.map(estado => <MenuItem 
+                                        key={estado.value} 
+                                        value={estado.value} 
+                                        style={{width: '100%'}}
+                                    >{estado.label}</MenuItem>)}
+                                </InputMui>
                                 </div>
                             </div>
 
@@ -195,9 +174,17 @@ export const Resignup = () => {
                             <InputMui id='complemento' title='Complemento' handleChange={handleChange} value={values.complemento} />
                             <InputMui id='bairro' title='Bairro' handleChange={handleChange} value={values.bairro} />
                             <InputMui id='cidade' title='Cidade' handleChange={handleChange} value={values.cidade} />
-                            <label htmlFor="uf">Estado</label>
 
-                            <Field as="select" name="uf" id="uf" placeholder="UF" required onChange={handleChange} defaultValue={values.uf} >
+                            
+                            <InputMui select id='uf' title='Estado' handleChange={handleChange} value={values.uf} >
+                                {estados.map(estado => <MenuItem 
+                                    key={estado.value} 
+                                    value={estado.value} 
+                                    style={{width: '100%'}}
+                                >{estado.label}</MenuItem>)}
+                            </InputMui>
+                            {/* <label htmlFor="uf">Estado</label> */}
+                            {/* <Field as="select" name="uf" id="uf" placeholder="UF" required onChange={handleChange} defaultValue={values.uf} >
                                 <option value="AC">Acre</option>
                                 <option value="AL">Alagoas</option>
                                 <option value="AP">Amapá</option>
@@ -225,7 +212,7 @@ export const Resignup = () => {
                                 <option value="SP">São Paulo</option>
                                 <option value="SE">Sergipe</option>
                                 <option value="TO">Tocantins</option>
-                            </Field>
+                            </Field> */}
                             <div className="resignup-form-buttons">
                                 <button className="default-button" onClick={(event) => backButton(event)}>Voltar</button>
                                 <button className="default-button resignup-submit-button" type="submit">Enviar</button>
