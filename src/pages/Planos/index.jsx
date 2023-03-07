@@ -15,7 +15,8 @@ export const Planos = () => {
         const [clicked, setClicked] = useState(false)
 
         useEffect(() => {
-            if (plan.id == 0 && (membro.assinatura == 'Aspirante' || membro.assinatura == '')) {
+            // if (plan.id == 0 && (membro.assinatura == 'Aspirante' || membro.assinatura == '')) {
+            if (plan.id == 0) {
                 
             } else {
                 setClicked(clickedPlan.id == plan.id ? true : false)
@@ -30,7 +31,7 @@ export const Planos = () => {
         }, [])
 
         return (
-            <div className="plan-container" onClick={onClick} style={{outline: clicked ? ( isMobile ? `1vw solid ${COLORS['check_green']}` : `0.5vw solid ${COLORS['check_green']}` ) : null, cursor: plan.id == 0 && (membro.assinatura == 'Aspirante' || membro.assinatura == '') ? 'not-allowed' : 'pointer'}}>
+            <div className="plan-container" onClick={onClick} style={{outline: clicked ? ( isMobile ? `1vw solid ${COLORS['check_green']}` : `0.5vw solid ${COLORS['check_green']}` ) : null, cursor: plan.id == 0 ? 'not-allowed' : 'pointer'}}>
                 <div className="title-container">
                     <h1>Membro {plan.name}</h1>
                     { current ? <p>Plano atual</p> : null }
