@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { QRCode } from 'react-qrcode-logo';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { api } from '../../api';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import ReactLoading from 'react-loading';
@@ -19,6 +19,7 @@ export const Pagseguro = () => {
     
     const vw = window.innerWidth / 100
     const params = useParams()
+    const navigate = useNavigate()
     const isMobile = useMediaQuery({maxWidth:600})
 
     const [loading, setLoading] = useState(true)
@@ -157,6 +158,7 @@ export const Pagseguro = () => {
                                 <p>Envie o comprovante para:</p>
                                 <p><b>sbopmail@gmail.com</b></p>
                             </div>
+                            <button onClick={() => navigate(-1)}>Voltar</button>
                         </div>
                         {/* <p>{member?.nome}</p>
                         <p>{qrCode?.id}</p>
