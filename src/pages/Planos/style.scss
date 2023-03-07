@@ -10,6 +10,7 @@
     padding: 0 4vw;
 
     .title-wrapper {
+        display: flex;
         align-items: center;
 
         .title {
@@ -106,6 +107,28 @@
             flex-direction: column;
             width: 80vw;
             margin: 2vw;
+        }
+
+        .title-wrapper {
+            flex-direction: column;
+            
+            .title {
+                margin-top: auto;
+                gap: 1vw;
+                margin-bottom: 2vw;
+                flex: 0.6;
+        
+                h1 {
+                    font-size: 6vw;
+                    margin: 0 2vw;
+                    text-align: center;
+                }
+        
+                p {
+                    font-size: 5vw;
+                    text-align: center;
+                }
+            }
         }
 
         .plan-container {
