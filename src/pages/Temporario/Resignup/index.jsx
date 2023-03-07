@@ -185,8 +185,7 @@ export const Resignup = () => {
                                 })}
                             </div>
 
-                            <label htmlFor="curriculum">Curriculum</label>
-                            <textarea rows={4} cols={4} name="curriculum" required onChange={handleChange} value={values.curriculum} />
+                            <InputMui multiline id='curriculum' title='Curriculum' handleChange={handleChange} value={values.curriculum} />
                         </div>
                         <div className="right-container input-containers">
                             <InputMui mask={"(99) 99999-9999"} id='telefone' title='Telefone' handleChange={handleChange} value={values.telefone} error={phoneError} errorText="Telefone inválido" />

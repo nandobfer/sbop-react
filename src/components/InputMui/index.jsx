@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material';
 import InputMask from 'react-input-mask';
 
-export const InputMui = ({ id, title, handleChange, value, type, mask, autoFocus, error, errorText }) => {
+export const InputMui = ({ id, title, handleChange, value, type, mask, autoFocus, error, errorText, multiline }) => {
     
     return (
         <div className='InputMui-Component' style={{flexDirection: 'column'}} >
@@ -18,7 +18,8 @@ export const InputMui = ({ id, title, handleChange, value, type, mask, autoFocus
                     margin="dense"
                     label={title}
                     fullWidth
-                    variant="standard"
+                    variant="outlined"
+                    multiline={multiline}
                 />}
             </InputMask>
             :
@@ -32,7 +33,8 @@ export const InputMui = ({ id, title, handleChange, value, type, mask, autoFocus
                 margin="dense"
                 label={title}
                 fullWidth
-                variant="standard"
+                variant="outlined"
+                multiline={multiline}
                 name={id} 
                 onChange={handleChange}
                 value={value}
