@@ -15,35 +15,40 @@ import { CurrentStageProvider } from './contexts/currentStageContext';
 import { Resignup } from './pages/Temporario/Resignup';
 import { SpecializationsProvider } from './contexts/specializationsContext';
 import { Planos } from './pages/Planos';
+import { useMuiTheme } from './hooks/useMuiTheme';
+import { ThemeProvider } from '@mui/material';
 
 function App() {
+    const muiTheme = useMuiTheme()
 
   return (
-    <MembroProvider>
-        <CurrentStageProvider>
-            <SpecializationsProvider>
+    <ThemeProvider theme={muiTheme}>
+        <MembroProvider>
+            <CurrentStageProvider>
+                <SpecializationsProvider>
 
-                <BrowserRouter>
-                    <Routes>
-                            <Route index element={<Blank />} />
-                            <Route path='/mapa' element={<Mapa />} />
-                            <Route path='/:cpf' element={<Blank />} />
+                    <BrowserRouter>
+                        <Routes>
+                                <Route index element={<Blank />} />
+                                <Route path='/mapa' element={<Mapa />} />
+                                <Route path='/:cpf' element={<Blank />} />
 
-                            <Route path='/temporario' element={<Temporario />} />
-                            <Route path='/temporario/:id' element={<Temporario />} />
-                            <Route path='/recadastro' element={<Resignup />} />
-                            <Route path='/planos' element={<Planos />} />
-                            <Route path='/cadastrar' element={<Cadastro />} />
-                            <Route path='/pagseguro/:id/:plan' element={<Pagseguro />} />
-                            <Route path='/pagseguro_homologacao' element={<PagseguroHomologation />} />
+                                <Route path='/temporario' element={<Temporario />} />
+                                <Route path='/temporario/:id' element={<Temporario />} />
+                                <Route path='/recadastro' element={<Resignup />} />
+                                <Route path='/planos' element={<Planos />} />
+                                <Route path='/cadastrar' element={<Cadastro />} />
+                                <Route path='/pagseguro/:id/:plan' element={<Pagseguro />} />
+                                <Route path='/pagseguro_homologacao' element={<PagseguroHomologation />} />
 
-                            {/* <Route path='/perfil' element={<Perfil />} /> */}
-                    </Routes>
-                </BrowserRouter>
+                                {/* <Route path='/perfil' element={<Perfil />} /> */}
+                        </Routes>
+                    </BrowserRouter>
 
-            </SpecializationsProvider>
-        </CurrentStageProvider>
-    </MembroProvider>
+                </SpecializationsProvider>
+            </CurrentStageProvider>
+        </MembroProvider>
+    </ThemeProvider>
   );
 }
 
