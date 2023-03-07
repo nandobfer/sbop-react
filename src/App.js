@@ -37,6 +37,7 @@ function App() {
                                 <Route path='/temporario/:id' element={<Temporario />} />
                                 <Route path='/recadastro' element={<Resignup />} />
                                 <Route path='/planos' element={<Planos />} />
+                                <Route path='/planos/:id' element={<Planos />} />
                                 <Route path='/cadastrar' element={<Cadastro />} />
                                 <Route path='/pagseguro/:id/:plan' element={<Pagseguro />} />
                                 <Route path='/pagseguro_homologacao' element={<PagseguroHomologation />} />

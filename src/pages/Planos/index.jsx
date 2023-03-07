@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useMembro } from '../../hooks/useMembro';
 import { usePlans } from '../../hooks/usePlans';
 import './style.scss';
@@ -48,8 +48,19 @@ export const Planos = () => {
     const [membro, setMembro] = useMembro()
     const plans = usePlans().filter(plan => plan.id <= (membro.assinatura == 'Titular' ? 0 : membro.assinatura == 'Associado' ? 1 : 2))
     const navigate = useNavigate()
+    const params = useParams()
 
     const [clickedPlan, setClickedPlan] = useState({})
+
+    useEffect(() => {
+        if (!membro.nome) {
+            api.post('/member', {id: params.id})
+            .then(({data}) => {
+                setMembro({...data, recadastrado: false})
+            })
+        }
+
+    }, [])
     
     return (
         <div className='Planos-Component' >
