@@ -16,7 +16,7 @@ export const usePlans = () => {
             id: 2,
             name: 'Aspirante',
             value: 200,
-            description: '',
+            description: '10% de desconto no seguro responsabilidade civil; desconto nos congressos e jornadas SBOP;acesso aoconteúdo exclusivo no site da SBOP; atualizações de conteúdos da SBOP por meio de fórum e e-mail. R$ 200,00/ano',
         },
     ]
 
