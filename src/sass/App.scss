@@ -51,6 +51,10 @@ p {
 
 }
 
+html, body, #root {
+    height: 100%;
+}
+
 iframe {
     border: none;
 }
