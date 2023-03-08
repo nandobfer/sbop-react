@@ -21,7 +21,7 @@ export const useTemporaryStages = (membro) => {
             id: 3, 
             title: "Finalizar",
             description: "Clique para finalizar.",
-            // action: window.top.location.reload,
+            location: '/logout',
             condition: !membro.temporario,
         },
     ]
