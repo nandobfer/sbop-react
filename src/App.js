@@ -17,6 +17,7 @@ import { SpecializationsProvider } from './contexts/specializationsContext';
 import { Planos } from './pages/Planos';
 import { useMuiTheme } from './hooks/useMuiTheme';
 import { ThemeProvider } from '@mui/material';
+import { Reload } from './components/Reload';
 
 function App() {
     const muiTheme = useMuiTheme()
@@ -41,6 +42,7 @@ function App() {
                                 <Route path='/cadastrar' element={<Cadastro />} />
                                 <Route path='/pagseguro/:id/:plan' element={<Pagseguro />} />
                                 <Route path='/pagseguro_homologacao' element={<PagseguroHomologation />} />
+                                <Route path='/logout' element={<Reload />} />
 
                                 {/* <Route path='/perfil' element={<Perfil />} /> */}
                         </Routes>
