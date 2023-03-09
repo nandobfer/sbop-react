@@ -17,7 +17,7 @@ export const Blank = () => {
     
     return (
         <div className='Blank-Page' >
-            <iframe title='Sbop-Sistema' src={url} width={'100%'} seamless allow='encrypted-media' allow='clipboard-write'/>
+            <iframe title='Sbop-Sistema' src={url} width={'100%'} seamless allow='encrypted-media clipboard-write *'/>
         </div>
     )
 }
