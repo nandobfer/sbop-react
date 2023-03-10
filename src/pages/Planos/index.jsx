@@ -17,7 +17,7 @@ export const Planos = () => {
 
         useEffect(() => {
             // if (plan.id == 0 && (membro.assinatura == 'Aspirante' || membro.assinatura == '')) {
-            if (plan.id == 0) {
+            if (plan.id == 0 && membro.assinatura != "Titular") {
                 
             } else {
                 setClicked(clickedPlan.id == plan.id ? true : false)
@@ -32,7 +32,7 @@ export const Planos = () => {
         }, [])
 
         return (
-            <div className="plan-container" onClick={onClick} style={{outline: clicked ? ( isMobile ? `1vw solid ${COLORS['check_green']}` : `0.5vw solid ${COLORS['check_green']}` ) : null, cursor: plan.id == 0 ? 'not-allowed' : 'pointer'}}>
+            <div className="plan-container" onClick={onClick} style={{outline: clicked ? ( isMobile ? `1vw solid ${COLORS['check_green']}` : `0.5vw solid ${COLORS['check_green']}` ) : null, cursor: (plan.id == 0 && membro.assinatura != "Titular") ? 'not-allowed' : 'pointer'}}>
                 <div className="title-container">
                     <h1>Membro {plan.name}</h1>
                     { current ? <p>Plano atual</p> : null }
@@ -52,6 +52,15 @@ export const Planos = () => {
     const params = useParams()
 
     const [clickedPlan, setClickedPlan] = useState({})
+
+    const goToPagseguro = () => {
+        if (!clickedPlan.id && membro.assinatura != 'Titular') {
+            alert('selecione um plano')
+        } else {
+            navigate(`/pagseguro/${membro.id}/${clickedPlan.name.toLowerCase()}`)
+        }
+            
+    }
 
     useEffect(() => {
         if (!membro.nome) {
@@ -83,7 +92,7 @@ export const Planos = () => {
             </div>
             <div className="buttons-container">
                 {params?.id ? null : <button className='default-button' onClick={() => navigate(-1)} >Voltar</button>}
-                <button className='default-button plans-pay-button' onClick={() => clickedPlan.id ? navigate(`/pagseguro/${membro.id}/${clickedPlan.name.toLowerCase()}`) : alert('selecione um plano')}>Pagar</button>
+                <button className='default-button plans-pay-button' onClick={() => goToPagseguro()}>Pagar</button>
             </div>
         </div>
     )
