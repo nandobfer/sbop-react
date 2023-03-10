@@ -80,6 +80,11 @@
     
         .payment-body {
             flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .texts-column {
+            gap: 0;
         }
 
         .qr-column {
