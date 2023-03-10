@@ -92,7 +92,7 @@ export const Planos = () => {
             </div>
             <div className="buttons-container">
                 {params?.id ? null : <button className='default-button' onClick={() => navigate(-1)} >Voltar</button>}
-                <button className='default-button plans-pay-button' onClick={() => goToPagseguro()}>Pagar</button>
+                <button style={{opacity: membro.pago ? 0.4 : null, pointerEvents: membro.pago ? 'none' : null}} className='default-button plans-pay-button' onClick={() => goToPagseguro()}>Pagar</button>
             </div>
         </div>
     )
