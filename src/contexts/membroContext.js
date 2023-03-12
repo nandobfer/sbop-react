@@ -13,7 +13,7 @@ export const MembroProvider = ({children}) => {
 
     useEffect(() => {
         if (!value?.id) {
-            navigate('/')
+            navigate('/home')
         } else {
             console.log(value)
         }

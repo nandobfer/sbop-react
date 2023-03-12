@@ -19,7 +19,7 @@ export const Resignup = () => {
     const [specializations, setSpecializations] = useSpecializations()
     const estados = useEstadosBrasil()
     const [currentStage, setCurrentStage] = useCurrentStage()
-    const [checkedSpecializations, setCheckedSpecializations] = useState([...membro.especialidades])
+    const [checkedSpecializations, setCheckedSpecializations] = useState(membro.nome ? [...membro.especialidades] : [])
     const [cpfError, setCpfError] = useState(false)
     const [cepError, setCepError] = useState(false)
     const [phoneError, setPhoneError] = useState(false)
@@ -27,20 +27,20 @@ export const Resignup = () => {
     const navigate = useNavigate()
 
     const initialValues = {
-        name: membro.nome,
-        cpf: membro.cpf,
-        email: membro.email,
-        crm: membro.crm?.split('-')[0],
-        crm_uf: membro.crm?.split('-')[1],
-        curriculum: membro.curriculum,
-        telefone: membro.telefone,
-        cep: membro.cep,
-        endereco: membro.endereco,
-        numero: membro.numero,
-        complemento: membro.complemento,
-        bairro: membro.bairro,
-        cidade: membro.cidade,
-        uf: membro.uf,
+        name: membro.nome || '',
+        cpf: membro.cpf || '',
+        email: membro.email || '',
+        crm: membro.crm?.split('-')[0] || '',
+        crm_uf: membro.crm?.split('-')[1] || '',
+        curriculum: membro.curriculum || '',
+        telefone: membro.telefone || '',
+        cep: membro.cep || '',
+        endereco: membro.endereco || '',
+        numero: membro.numero || '',
+        complemento: membro.complemento || '',
+        bairro: membro.bairro || '',
+        cidade: membro.cidade || '',
+        uf: membro.uf || '',
     }
 
     const onCheckboxChange = (event, specialization) => {
@@ -151,7 +151,7 @@ export const Resignup = () => {
                                 <div className="temp-skills-select">
                                     {specializations.map(specialization => {
                                         return (
-                                            <FormControlLabel key={specialization.nome} control={<Checkbox defaultChecked={membro.especialidades.includes(specialization.nome) ? true : false} onChange={(event) => onCheckboxChange(event, specialization)} />} label={specialization.nome} />
+                                            <FormControlLabel key={specialization.nome} control={<Checkbox defaultChecked={membro.especialidades?.includes(specialization.nome) ? true : false} onChange={(event) => onCheckboxChange(event, specialization)} />} label={specialization.nome} />
                                         )
                                     })}
                                 </div>

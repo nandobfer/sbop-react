@@ -32,11 +32,13 @@ function App() {
                     <SpecializationsProvider>
                         <Routes>
                                 <Route index element={<Home />} />
+                                <Route path='/home/*' element={<Home />} />
                                 <Route path='/mapa' element={<Mapa />} />
                                 <Route path='/:cpf' element={<Blank />} />
 
                                 <Route path='/temporario' element={<Temporario />} />
                                 <Route path='/temporario/:id' element={<Temporario />} />
+                                {/* <Route path='/cadastro' element={<Resignup />} /> */}
                                 <Route path='/recadastro' element={<Resignup />} />
                                 <Route path='/planos' element={<Planos />} />
                                 <Route path='/planos/:id' element={<Planos />} />

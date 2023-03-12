@@ -1,6 +1,7 @@
 @import "/src/sass/colors";
 
 .home-page {
+    width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -21,6 +22,20 @@
         height: 35.3vw;
         border-radius: 1.5vw;
         padding: 0.4vw;
+        overflow-y: scroll;
+
+        .item, .forward-enter-done {
+            overflow-y: scroll;
+            width: 100%;
+        }
+
+        .Resignup-Component {
+
+            form {
+                padding: 0;
+            }
+        }
+
 
         .main-container {
             flex: 0.7;
@@ -29,7 +44,7 @@
             background-color: white;
             // width: 100%;
             height: 100%;
-            padding: 4.5vw 4vw;
+            padding: 4.5vw 4vw 0;
             border-radius: 1.5vw;
             align-items: center;
             color: $primary-text-color;
@@ -61,49 +76,57 @@
 
             }
 
-            > p {
-                margin: 1.5vw 0;
-                font-size: 1vw;
-            }
-
-            > form {
-                display: flex;
-                flex-direction: column;
-                gap: 0.8vw;
+            
+            .login-container {
                 width: 100%;
+                flex-direction: column;
+                align-items: center;
 
-                > input {
-                    color: $primary-text-color;
+                p {
+                    margin: 1.5vw 0;
+                    font-size: 1vw;
                 }
 
-                > label {
-                    color: $primary-text-color;
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.8vw;
+                    width: 100%;
+    
+                    > input {
+                        color: $primary-text-color;
+                    }
+    
+                    > label {
+                        color: $primary-text-color;
+                        font-weight: bold;
+                    }
+    
+                    > button {
+                        margin-top: 1vw;
+                    }
+                }
+    
+                p:last-of-type {
+                    color: rgba($primary-text-color, 0.5);
+                    transition: 0.3s;
+                    cursor: pointer;
+                    margin-top: 1.2vw;
+                    font-size: 1vw;
                     font-weight: bold;
+    
                 }
-
-                > button {
-                    margin-top: 1vw;
+    
+                p:last-of-type:hover {
+                    color: $primary-text-color;
                 }
             }
 
-            p:last-of-type {
-                color: rgba($primary-text-color, 0.5);
-                transition: 0.3s;
-                cursor: pointer;
-                margin-top: 1.2vw;
-                font-size: 1vw;
-                font-weight: bold;
-
-            }
-
-            p:last-of-type:hover {
-                color: $primary-text-color;
-            }
+    
         }
 
         img {
             flex: 0.3;
-            object-fit: cover;
             padding: 0.5vw;
             width: 30%;
             height: auto;
