@@ -39,6 +39,7 @@ p {
     transition-property: width, height, opacity;
     transition-delay: 0s;
     transition-duration: 0.3s;
+    pointer-events: none;
 
 }
 .fadeIn {
