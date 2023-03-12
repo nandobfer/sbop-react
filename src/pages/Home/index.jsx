@@ -69,6 +69,7 @@ const Home = () => {
                             id='input_senha'
                             placeholder='Senha'
                             className='default-input'
+                            type='password'
                         />
                         <button className='default-button' type="submit">Entrar</button>
                     </Form>
