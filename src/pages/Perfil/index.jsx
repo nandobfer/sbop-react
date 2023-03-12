@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AcessoRestrito } from '../../components/AcessoRestrito';
 import { DadosCadastrais } from '../../components/DadosCadastrais';
-import { Planos } from '../../components/Planos';
+import { Planos } from '../../pages/Planos';
 import { Seguranca } from '../../components/Seguranca';
 import { Solicitacoes } from '../../components/Solicitacoes';
 import { Toolbar } from '../../components/Toolbar';
