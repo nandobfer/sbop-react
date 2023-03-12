@@ -6,13 +6,16 @@ import { api } from '../../api'
 import './style.scss';
 import { useNavigate } from 'react-router-dom';
 import { useMembro } from '../../hooks/useMembro';
+import { ResetPassword } from './ResetPassword';
 // import { Membro } from '../../contexts/Membro';
 
 const Home = () => {
 
     const [membro, setMembro] = useMembro()
-
     const navigate = useNavigate();
+
+    const [resetPassword, setResetPassword] = useState(false)
+
     // const [loginfeedback, setLoginfeedback] = useState('');
     const onFormSubmit = (values) => {
         const data = {
@@ -23,7 +26,7 @@ const Home = () => {
         setLoading(true);
         api.post('/login', data)
         .then((response) => {
-            if (!!response.data) {
+            if (response?.data?.nome) {
                 setMembro(response.data)
                 navigate('/perfil')
             }
@@ -45,6 +48,7 @@ const Home = () => {
 
     return (
         <section className="home-page">
+            <ResetPassword open={resetPassword} setOpen={setResetPassword} />
             <LoadingScreen loading={loading}/>
             <div className="background-container">
                 <img src="/images/logo.webp" alt="Logo" />
@@ -73,7 +77,7 @@ const Home = () => {
                         />
                         <button className='default-button' type="submit">Entrar</button>
                     </Form>
-                    <p>Esqueci minha senha</p>
+                    <p onClick={() => setResetPassword(true)}>Esqueci minha senha</p>
                 </div>
             </div>
         </section>
