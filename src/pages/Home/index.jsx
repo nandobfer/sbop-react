@@ -9,6 +9,7 @@ import { useMembro } from '../../hooks/useMembro';
 import { ResetPassword } from './ResetPassword';
 import ReactSlideRoutes from 'react-slide-routes';
 import { Resignup } from '../Temporario/Resignup';
+import COLORS from '../../sass/_colors.scss'
 // import { Membro } from '../../contexts/Membro';
 
 const Home = () => {
@@ -43,7 +44,7 @@ const Home = () => {
     const [membro, setMembro] = useMembro()
     const navigate = useNavigate();
     const location = useLocation()
-
+    const [loading, setLoading] = useState(false)
     const [resetPassword, setResetPassword] = useState(false)
 
     // const [loginfeedback, setLoginfeedback] = useState('');
@@ -74,7 +75,11 @@ const Home = () => {
         input_senha: '',
     }
 
-    const [loading, setLoading] = useState(false)
+    const title_style = {
+        color: COLORS.secondary_light, 
+        cursor: 'pointer',
+    }
+
 
     return (
         <section className="home-page">
@@ -85,9 +90,9 @@ const Home = () => {
                 <img src="/images/logo.webp" alt="Logo" />
                 <div className="main-container">
                     <div className="titles">
-                        <h1 onClick={() => navigate('/home')}>Login</h1>
+                        <h1 style={location.pathname == '/home/cadastro' ? title_style : null} onClick={() => navigate('/home')}>Login</h1>
                         <hr />
-                        <h1 onClick={() => navigate('/home/cadastro')}>Cadastro</h1>
+                        <h1 style={location.pathname == '/home' ? title_style : null} onClick={() => navigate('/home/cadastro')}>Cadastro</h1>
                     </div>
                     <ReactSlideRoutes location={location} duration={1000}>
                         <Route index element={<Login />} />
