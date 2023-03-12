@@ -1,11 +1,10 @@
-import { useContext } from 'react';
-import { Membro } from '../../contexts/membroContext';
+import { useMembro } from '../../hooks/useMembro';
 import { MembroDado } from '../MembroDado';
 import './style.scss';
 
 export const DadosCadastrais = ({page}) => {
 
-    const [membro] = useContext(Membro)
+    const [membro, setMembro] = useMembro()
     
     return (
         <div className={`dados-container ${page === 'dados' ? 'fadeIn' : 'fadeOut'}`}>

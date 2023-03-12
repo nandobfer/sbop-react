@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AcessoRestrito } from '../../components/AcessoRestrito';
 import { DadosCadastrais } from '../../components/DadosCadastrais';
@@ -6,19 +6,13 @@ import { Planos } from '../../components/Planos';
 import { Seguranca } from '../../components/Seguranca';
 import { Solicitacoes } from '../../components/Solicitacoes';
 import { Toolbar } from '../../components/Toolbar';
-import { Membro } from '../../contexts/membroContext'
+import { useMembro } from '../../hooks/useMembro';
 import './style.scss';
 
 export const Perfil = () => {
-    const location = useLocation().state;
     const [page, setPage] = useState('dados')
-    const [membro, setMembro] = useContext(Membro)
+    const [membro, setMembro] = useMembro()
 
-    useEffect(() => {
-        setMembro(location)
-        console.log(membro);
-    }, [membro, setMembro, location])
-    
     return (
         <div className="profile-page">
             <div className="main-container">

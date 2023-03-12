@@ -5,23 +5,12 @@ import { LoadingScreen } from '../../components/LoadingScreen';
 import { api } from '../../api'
 import './style.scss';
 import { useNavigate } from 'react-router-dom';
+import { useMembro } from '../../hooks/useMembro';
 // import { Membro } from '../../contexts/Membro';
 
 const Home = () => {
 
-    // const mask = [/\d/, /\d/, /\d/, ".", /\d/, /\d/];
-
-    // const mask2 = (digit) => {
-    //     let array = []
-    //     for (let char of digit) {
-    //         if (char == '@') {
-    //             array = ['$', ...digit, /\./]
-    //         } else {
-    //             array = [...digit, /\./]
-    //         }
-    //     }
-    //     return array
-    // }
+    const [membro, setMembro] = useMembro()
 
     const navigate = useNavigate();
     // const [loginfeedback, setLoginfeedback] = useState('');
@@ -36,7 +25,8 @@ const Home = () => {
         .then((response) => {
             console.log(response.data);
             if (!!response.data[0]) {
-                navigate('/perfil', {state: response.data[0]});
+                setMembro(response.data[0])
+                navigate('/perfil')
             }
         })
         .catch((error) => {

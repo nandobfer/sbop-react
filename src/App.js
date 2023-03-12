@@ -18,19 +18,20 @@ import { Planos } from './pages/Planos';
 import { useMuiTheme } from './hooks/useMuiTheme';
 import { ThemeProvider } from '@mui/material';
 import { Reload } from './components/Reload';
+import { Perfil } from './pages/Perfil';
 
 function App() {
     const muiTheme = useMuiTheme()
 
   return (
-    <ThemeProvider theme={muiTheme}>
-        <MembroProvider>
-            <CurrentStageProvider>
-                <SpecializationsProvider>
 
-                    <BrowserRouter>
+    <BrowserRouter>
+        <ThemeProvider theme={muiTheme}>
+            <MembroProvider>
+                <CurrentStageProvider>
+                    <SpecializationsProvider>
                         <Routes>
-                                <Route index element={<Blank />} />
+                                <Route index element={<Home />} />
                                 <Route path='/mapa' element={<Mapa />} />
                                 <Route path='/:cpf' element={<Blank />} />
 
@@ -44,14 +45,14 @@ function App() {
                                 <Route path='/pagseguro_homologacao' element={<PagseguroHomologation />} />
                                 <Route path='/logout' element={<Reload />} />
 
-                                {/* <Route path='/perfil' element={<Perfil />} /> */}
+                                <Route path='/perfil' element={<Perfil />} />
                         </Routes>
-                    </BrowserRouter>
 
-                </SpecializationsProvider>
-            </CurrentStageProvider>
-        </MembroProvider>
-    </ThemeProvider>
+                    </SpecializationsProvider>
+                </CurrentStageProvider>
+            </MembroProvider>
+        </ThemeProvider>
+    </BrowserRouter>
   );
 }
 
