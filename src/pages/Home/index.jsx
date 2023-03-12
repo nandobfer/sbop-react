@@ -23,9 +23,8 @@ const Home = () => {
         setLoading(true);
         api.post('/login', data)
         .then((response) => {
-            console.log(response.data);
-            if (!!response.data[0]) {
-                setMembro(response.data[0])
+            if (!!response.data) {
+                setMembro(response.data)
                 navigate('/perfil')
             }
         })
