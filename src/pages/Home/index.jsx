@@ -15,6 +15,35 @@ import COLORS from '../../sass/_colors.scss'
 const Home = () => {
 
     const Login = () => {
+
+        const onFormSubmit = (values) => {
+            const data = {
+                login: values.input_login,
+                password: values.input_senha,
+            }
+            console.log(data);
+            setLoading(true);
+            api.post('/login', data)
+            .then((response) => {
+                if (response?.data?.nome) {
+                    setMembro(response.data)
+                    navigate('/perfil')
+    
+                }
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+            .finally(() => {
+                // setLoading(false);
+            });
+        }
+    
+        const inputs = {
+            input_login: '',
+            input_senha: '',
+        }
+
         return (
             <div className='login-container'>
                 <p>Bem vindo! Por favor preencha os campos de nome de usuário e senhas para acessar sua conta.</p>
@@ -48,32 +77,7 @@ const Home = () => {
     const [resetPassword, setResetPassword] = useState(false)
 
     // const [loginfeedback, setLoginfeedback] = useState('');
-    const onFormSubmit = (values) => {
-        const data = {
-            login: values.input_login,
-            password: values.input_senha,
-        }
-        console.log(data);
-        setLoading(true);
-        api.post('/login', data)
-        .then((response) => {
-            if (response?.data?.nome) {
-                setMembro(response.data)
-                navigate('/perfil')
-            }
-        })
-        .catch((error) => {
-            console.error(error)
-        })
-        .finally(() => {
-            setLoading(false);
-        });
-    }
-
-    const inputs = {
-        input_login: '',
-        input_senha: '',
-    }
+    
 
     const title_style = {
         color: COLORS.secondary_light, 
