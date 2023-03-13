@@ -30,7 +30,7 @@ export const Perfil = () => {
       
             // Handle the message data
             console.log('Received message:', data);
-            setTimeout(() => setLoading(false), 2000)
+            setTimeout(() => setLoading(false), 4000)
         };
       
         // Add the message listener
