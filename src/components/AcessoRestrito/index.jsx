@@ -1,9 +1,9 @@
 import './style.scss';
 
-export const AcessoRestrito = ({page}) => {
+export const AcessoRestrito = ({  }) => {
     
     return (
-        <div className={`restrito-container ${page === 'restrito' ? 'fadeIn' : 'fadeOut'}`}>
+        <div className={`restrito-container`}>
             <h1>restrito</h1>
         </div>
     )

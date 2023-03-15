@@ -7,7 +7,7 @@ import COLORS from '../../sass/_colors.scss';
 import { useMediaQuery } from 'react-responsive'
 import { api } from '../../api';
 
-export const Planos = ({page}) => {
+export const Planos = ({  }) => {
 
     const isMobile = useMediaQuery({maxWidth:600})
 
@@ -73,7 +73,7 @@ export const Planos = ({page}) => {
     }, [])
     
     return (
-        <div className={`Planos-Component ${page === 'planos' ? 'fadeIn' : 'fadeOut'}`} >
+        <div className={`Planos-Component`} >
             <div className="title-wrapper">
                 <div className="title">
                     <h1>Escolha seu plano de afiliação</h1>

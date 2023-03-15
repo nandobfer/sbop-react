@@ -1,11 +1,15 @@
 @import '/src/sass/colors';
 
 .seguranca-container {
-    position: absolute;
-    left: 0;
-    top: 7vw;
     width: 100%;
-    bottom: 0;
+    gap: 5vw;
 
-    outline: 2px blue solid;
+    .form-container {
+        flex: 0.5;
+        flex-direction: column;
+
+        button {
+            width: 100%;
+        }
+    }
 }

@@ -35,7 +35,7 @@ const Home = () => {
                 console.error(error)
             })
             .finally(() => {
-                // setLoading(false);
+                setLoading(false);
             });
         }
     

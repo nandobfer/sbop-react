@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material';
 import InputMask from 'react-input-mask';
 
-export const InputMui = ({ children, id, title, handleChange, value, type, mask, autoFocus, error, errorText, multiline, select }) => {
+export const InputMui = ({ children, onBlur, id, title, handleChange, value, type, mask, autoFocus, error, errorText, multiline, select }) => {
     
     return (
         <div className='InputMui-Component' style={{flexDirection: 'column'}} >
@@ -23,6 +23,7 @@ export const InputMui = ({ children, id, title, handleChange, value, type, mask,
                     rows={10}
                     sx={{fontFamily: "Montserrats"}}
                     select={select}
+                    inputProps={{onBlur: onBlur}}
                     // InputProps={{style: {borderRadius: '4vw'}}}
                 />}
             </InputMask>
@@ -47,6 +48,7 @@ export const InputMui = ({ children, id, title, handleChange, value, type, mask,
                 rows={10}
                 sx={{fontFamily: "Montserrats"}}
                 select={select}
+                inputProps={{onBlur: onBlur}}
                 // InputProps={{style: {borderRadius: '4vw'}}}
             />
             }

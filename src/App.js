@@ -47,7 +47,7 @@ function App() {
                                 <Route path='/pagseguro_homologacao' element={<PagseguroHomologation />} />
                                 <Route path='/logout' element={<Reload />} />
 
-                                <Route path='/perfil' element={<Perfil />} />
+                                <Route path='/perfil/*' element={<Perfil />} />
                         </Routes>
 
                     </SpecializationsProvider>

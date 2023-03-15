@@ -2,12 +2,12 @@ import { useMembro } from '../../hooks/useMembro';
 import { MembroDado } from '../MembroDado';
 import './style.scss';
 
-export const DadosCadastrais = ({page}) => {
+export const DadosCadastrais = ({  }) => {
 
     const [membro, setMembro] = useMembro()
     
     return (
-        <div className={`dados-container ${page === 'dados' ? 'fadeIn' : 'fadeOut'}`}>
+        <div className={`dados-container`}>
             <div className="info-container">
                 <div className="foto-container">
                     <img src="/images/doctor_icon.svg" alt="Foto" />

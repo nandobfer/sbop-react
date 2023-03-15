@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { AcessoRestrito } from '../../components/AcessoRestrito';
 import { DadosCadastrais } from '../../components/DadosCadastrais';
 import { Planos } from '../../pages/Planos';
@@ -13,7 +13,7 @@ import { LoadingScreen } from '../../components/LoadingScreen';
 export const Perfil = () => {
     const [page, setPage] = useState('dados')
     const [membro, setMembro] = useMembro()
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     
     const tryLogin = () => {
         const iframe = document.getElementById('flask_iframe').contentWindow;
@@ -24,36 +24,40 @@ export const Perfil = () => {
     }
 
     useEffect(() => {
-        const handleMessage = (event) => {
+        // const handleMessage = (event) => {
       
-            const data = event.data;
+        //     const data = event.data;
       
-            // Handle the message data
-            console.log('Received message:', data);
-            setTimeout(() => setLoading(false), 4000)
-        };
+        //     // Handle the message data
+        //     console.log('Received message:', data);
+        //     setTimeout(() => setLoading(false), 4000)
+        // };
       
-        // Add the message listener
-        window.addEventListener('message', handleMessage);
+        // // Add the message listener
+        // window.addEventListener('message', handleMessage);
       
-        // Clean up the listener when the component unmounts
-        return () => {
-          window.removeEventListener('message', handleMessage);
-        };
+        // // Clean up the listener when the component unmounts
+        // return () => {
+        //   window.removeEventListener('message', handleMessage);
+        // };
       }, []);
 
     return (
         <div className="profile-page">
             <LoadingScreen loading={loading}/>
-            <iframe onLoad={() => tryLogin()} title='Sbop-Sistema' id='flask_iframe' src={'https://sistema.sbop.com.br:5001/home/'} width={'100%'} height={"100%"} seamless allow='clipboard-write' allow-same-origin="true" allow-cross-origin="true" />
-            {/* <div className="main-container">
-                <Toolbar page={page} setPage={setPage} />
-                <DadosCadastrais page={page} />
-                <Seguranca page={page} />
-                <Planos page={page} />
-                <AcessoRestrito page={page} />
-                <Solicitacoes page={page} />
-            </div> */}
+            {/* <iframe onLoad={() => tryLogin()} title='Sbop-Sistema' id='flask_iframe' src={'https://sistema.sbop.com.br:5001/home/'} width={'100%'} height={"100%"} seamless allow='clipboard-write' allow-same-origin="true" allow-cross-origin="true" /> */}
+            <div className="main-container">
+                <Toolbar />
+                <div className="content-container">
+                    <Routes>
+                        <Route index element={<DadosCadastrais />} />
+                        <Route path='/seguranca' element={<Seguranca />} />
+                        <Route path='/planos' element={<Planos />} />
+                        <Route path='/conteudos' element={<AcessoRestrito />} />
+                        <Route path='/solicitacoes' element={<Solicitacoes />} />
+                    </Routes>
+                </div>
+            </div>
         </div>
     )
 }

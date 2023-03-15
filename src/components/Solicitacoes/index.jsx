@@ -1,9 +1,9 @@
 import './style.scss';
 
-export const Solicitacoes = ({page}) => {
+export const Solicitacoes = ({  }) => {
     
     return (
-        <div className={`solicitacoes-container ${page === 'solicitacoes' ? 'fadeIn' : 'fadeOut'}`}>
+        <div className={`solicitacoes-container`}>
             <h1>solicitacoes</h1>
         </div>
     )
