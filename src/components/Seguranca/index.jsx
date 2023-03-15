@@ -12,20 +12,18 @@ export const Seguranca = ({  }) => {
     const [passwordError, setPasswordError] = useState(false)
     const [passwordConfirmationError, setPasswordConfirmationError] = useState(false)
 
-    const verifyPassword = (value) => {
-        setPasswordError(member.senha == value ? false : value != '' && true)
-    }
-
     const PasswordReset = () => {
         const resetPassword = values => {
             setPasswordConfirmationError(false)
-
+            setPasswordError(false)
+            
             if (values.password != member.senha) {
+                setPasswordError(true)
                 return
             }
 
             if (values.new_password == values.confirmation) {
-                api.post('/update/password', {password: values.new_password, id: member.id})
+                api.post('/member/update/password', {password: values.new_password, id: member.id})
                 .then(response => {
                     alert(response)
                 })
@@ -39,7 +37,7 @@ export const Seguranca = ({  }) => {
             <Formik initialValues={{password: '', confirmation: '', new_password: ''}} onSubmit={resetPassword} >
                 {({values, handleChange, errors}) => (
                     <Form>
-                        <InputMui title={'Senha atual'} onBlur={() => verifyPassword(values.password)} type='password' id='password' handleChange={handleChange} value={values.password} error={passwordError} errorText="Senha inválida" />
+                        <InputMui title={'Senha atual'} type='password' id='password' handleChange={handleChange} value={values.password} error={passwordError} errorText="Senha inválida" />
                         <InputMui title={'Nova senha'} type='password' id='new_password' handleChange={handleChange} value={values.new_password} />
                         <InputMui title={'Confirme nova senha'} type='password' id='confirmation' handleChange={handleChange} value={values.confirmation} error={passwordConfirmationError} errorText="Senhas não conferem" />
                         <button className='default-button' type="submit">Redefinir senha</button>
