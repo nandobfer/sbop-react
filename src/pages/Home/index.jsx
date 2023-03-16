@@ -10,6 +10,7 @@ import { ResetPassword } from './ResetPassword';
 import ReactSlideRoutes from 'react-slide-routes';
 import { Resignup } from '../Temporario/Resignup';
 import COLORS from '../../sass/_colors.scss'
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 // import { Membro } from '../../contexts/Membro';
 
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
             .then((response) => {
                 if (response?.data?.nome) {
                     setMembro(response.data)
+                    storage.set('member', response.data)
                     navigate('/perfil')
     
                 }
@@ -71,8 +73,10 @@ const Home = () => {
     }
 
     const [membro, setMembro] = useMembro()
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const location = useLocation()
+    const storage = useLocalStorage()
+
     const [loading, setLoading] = useState(false)
     const [resetPassword, setResetPassword] = useState(false)
 
