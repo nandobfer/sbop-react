@@ -18,6 +18,7 @@ export const MembroProvider = ({children}) => {
             navigate('/home')
         } else {
             console.log(value)
+            storage.set('member', value)
         }
     }, [value])
 
