@@ -8,6 +8,12 @@
         flex: 0.5;
         flex-direction: column;
 
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1vw;
+        }
+
         button {
             width: 100%;
         }
