@@ -8,39 +8,45 @@ import { api } from '../../api';
 export const Seguranca = ({  }) => {
 
     const [member, setMember] = useMembro()
-
-    const [passwordError, setPasswordError] = useState(false)
-    const [passwordConfirmationError, setPasswordConfirmationError] = useState(false)
-
+    
     const PasswordReset = () => {
+
+        const [error, setError] = useState(false)
+        const [confirmationError, setConfirmationError] = useState(false)
+        const [feedback, setFeedback] = useState('')
+
         const resetPassword = values => {
-            setPasswordConfirmationError(false)
-            setPasswordError(false)
+
+            setConfirmationError(false)
+            setError(false)
+            setFeedback('')
             
             if (values.password != member.senha) {
-                setPasswordError(true)
+                setError(true)
                 return
             }
 
             if (values.new_password == values.confirmation) {
                 api.post('/member/update/password', {password: values.new_password, id: member.id})
                 .then(response => {
-                    alert(response)
+                    setMember({...member, senha: values.new_password})
+                    setFeedback('Senha alterada com sucesso')
                 })
             } else {
-                setPasswordConfirmationError(true)
+                setConfirmationError(true)
             }
 
         }
 
         return (
-            <Formik initialValues={{password: '', confirmation: '', new_password: ''}} onSubmit={resetPassword} >
+            <Formik initialValues={{password: '', confirmation: '', new_password: ''}} onSubmit={values => resetPassword(values)} >
                 {({values, handleChange, errors}) => (
                     <Form>
-                        <InputMui title={'Senha atual'} type='password' id='password' handleChange={handleChange} value={values.password} error={passwordError} errorText="Senha inválida" />
+                        <InputMui title={'Senha atual'} type='password' id='password' handleChange={handleChange} value={values.password} error={error} errorText="Senha inválida" />
                         <InputMui title={'Nova senha'} type='password' id='new_password' handleChange={handleChange} value={values.new_password} />
-                        <InputMui title={'Confirme nova senha'} type='password' id='confirmation' handleChange={handleChange} value={values.confirmation} error={passwordConfirmationError} errorText="Senhas não conferem" />
+                        <InputMui title={'Confirme nova senha'} type='password' id='confirmation' handleChange={handleChange} value={values.confirmation} error={confirmationError} errorText="Senhas não conferem" />
                         <button className='default-button' type="submit">Redefinir senha</button>
+                        <p>{feedback}</p>
                     </Form>
                 )}
             </Formik>
@@ -48,18 +54,42 @@ export const Seguranca = ({  }) => {
     }
     
     const EmailReset = () => {
+        const [error, setError] = useState(false)
+        const [confirmationError, setConfirmationError] = useState(false)
+        const [feedback, setFeedback] = useState('')
+
         const resetEmail = values => {
-            alert()
+
+            setConfirmationError(false)
+            setError(false)
+            setFeedback('')
+            
+            if (values.email != member.email) {
+                setError(true)
+                return
+            }
+
+            if (values.new_email == values.confirmation) {
+                api.post('/member/update', {...member, email: values.new_email})
+                .then(response => {
+                    setMember({...member, email: values.new_email})
+                    setFeedback('E-mail alterado com sucesso')
+                })
+            } else {
+                setConfirmationError(true)
+            }
+
         }
         
         return (
             <Formik initialValues={{email: '', confirmation: '', new_email: ''}} onSubmit={resetEmail} >
                 {({values, handleChange, errors}) => (
                     <Form>
-                        <InputMui title={'E-mail atual'} id='email' handleChange={handleChange} value={values.email} error={Boolean(errors.email)} errorText="e-mail inválido" />
+                        <InputMui title={'E-mail atual'} id='email' handleChange={handleChange} value={values.email} error={error} errorText="e-mail inválido" />
                         <InputMui title={'Novo e-mail'} id='new_email' handleChange={handleChange} value={values.new_email} />
-                        <InputMui title={'Confirme novo e-mail'} id='confirmation' handleChange={handleChange} value={values.confirmation} error={Boolean(errors.confirmation)} errorText="E-mails não conferem" />
+                        <InputMui title={'Confirme novo e-mail'} id='confirmation' handleChange={handleChange} value={values.confirmation} error={confirmationError} errorText="E-mails não conferem" />
                         <button className='default-button' type="submit">Redefinir e-mail</button>
+                        <p>{feedback}</p>
                     </Form>
                 )}
             </Formik>

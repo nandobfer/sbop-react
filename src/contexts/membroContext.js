@@ -11,7 +11,7 @@ export const MembroProvider = ({children}) => {
     const navigate = useNavigate()
     const storage = useLocalStorage()
 
-    const [value, setValue] = useState(storage.get('member') || null)
+    const [value, setValue] = useState(storage.get('member'))
 
     useEffect(() => {
         if (!value?.id) {
