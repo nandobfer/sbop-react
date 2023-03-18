@@ -1,10 +1,22 @@
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useMembro } from '../../hooks/useMembro';
 import './style.scss';
 
 export const Toolbar = ({page, setPage}) => {
 
+    const HeaderButton = ({ path, title, description}) => {
+        return (
+            <div className={`${path.split('/perfil/')}-tooltip ${location.pathname.includes(path) ? 'active-tool' : null}`} onClick={() => navigate(path)} >
+                <h1>{title}</h1>
+                <p>{description}</p>
+            </div>
+        )
+    }
+
     const location = useLocation()
     const navigate = useNavigate()
+
+    const [member, setMember] = useMembro()
 
     return (
          <div className="toolbar-container">
@@ -13,25 +25,18 @@ export const Toolbar = ({page, setPage}) => {
                 <p>Informações para o site</p>
             </div>
             <hr />
-            <div className={`seguranca-tooltip ${location.pathname.includes('/perfil/seguranca') ? 'active-tool' : null}`} onClick={() => navigate('/perfil/seguranca')} >
-                <h1>Segurança</h1>
-                <p>Alteração de senha e e-mail</p>
-            </div>
+            <HeaderButton title='Segurança' description={'Alteração de senha e e-mail'} path='/perfil/seguranca' />
             <hr />
-            <div className={`planos-tooltip ${location.pathname.includes('/perfil/planos') ? 'active-tool' : null}`} onClick={() => navigate('/perfil/planos')} >
-                <h1>Planos</h1>
-                <p>Anuidade e pedidos do site</p>
-            </div>
+            <HeaderButton title='Planos' description={'Anuidade e pedidos do site'} path='/perfil/planos' />
             <hr />
-            <div className={`restrito-tooltip ${location.pathname.includes('/perfil/conteudos') ? 'active-tool' : null}`} onClick={() => navigate('/perfil/conteudos')} >
-                <h1>Acesso Restrito</h1>
-                <p>Conteúdos exclusivos para membros</p>
-            </div>
+            <HeaderButton title='Conteúdos' description={'Conteúdos exclusivos'} path='/perfil/conteudos' />
             <hr />
-            <div className={`solicitacoes-tooltip ${location.pathname.includes('/perfil/solicitacoes') ? 'active-tool' : null}`} onClick={() => navigate('/perfil/solicitacoes')} >
-                <h1>Solicitações</h1>
-                <p>Arigos JPOS e 2ª via de certificados</p>
-            </div>
+            <HeaderButton title='Solicitações' description={'Artigos JPOS e 2ª via de certificados'} path='/perfil/solicitacoes' />
+            { member.adm ? <hr /> : null }
+            { member.adm ? <div className={`solicitacoes-tooltip ${location.pathname.includes('/perfil/adm') ? 'active-tool' : null}`} onClick={() => navigate('/perfil/adm')} >
+                <h1>Administração</h1>
+                <p>Painel de controle administrativo</p>
+            </div> : null}
          </div>
     )
 }
