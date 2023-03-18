@@ -9,6 +9,7 @@ import { Toolbar } from '../../components/Toolbar';
 import { useMembro } from '../../hooks/useMembro';
 import './style.scss';
 import { LoadingScreen } from '../../components/LoadingScreen';
+import { AdmPanel } from '../AdmPanel';
 
 export const Perfil = () => {
     const [page, setPage] = useState('dados')
@@ -55,6 +56,7 @@ export const Perfil = () => {
                         <Route path='/planos' element={<Planos />} />
                         <Route path='/conteudos/*' element={<AcessoRestrito />} />
                         <Route path='/solicitacoes' element={<Solicitacoes />} />
+                        <Route path='/adm' element={<AdmPanel />} />
                     </Routes>
                 </div>
             </div>

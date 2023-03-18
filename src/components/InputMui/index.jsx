@@ -1,12 +1,12 @@
 import { TextField } from '@mui/material';
 import InputMask from 'react-input-mask';
 
-export const InputMui = ({ children, onBlur, id, title, handleChange, value, type, mask, autoFocus, error, errorText, multiline, select }) => {
+export const InputMui = ({ children, onBlur, id, title, handleChange, value, type, mask, autoFocus, error, errorText, multiline, select, required, InputProps, inputProps, width }) => {
     
     return (
-        <div className='InputMui-Component' style={{flexDirection: 'column'}} >
+        <div className='InputMui-Component' style={{flexDirection: 'column', width}} >
             {mask ? 
-            <InputMask mask={mask} alwaysShowMask={false} name={id} required onChange={handleChange} value={value} maskChar={null} >
+            <InputMask mask={mask} alwaysShowMask={false} name={id} required={required} onChange={handleChange} value={value} maskChar={null} >
                 {(inputProps) => <TextField
                     {...inputProps}
                     autoFocus={autoFocus}
@@ -23,7 +23,8 @@ export const InputMui = ({ children, onBlur, id, title, handleChange, value, typ
                     rows={10}
                     sx={{fontFamily: "Montserrats"}}
                     select={select}
-                    inputProps={{onBlur: onBlur}}
+                    inputProps={inputProps}
+                    InputProps={InputProps}
                     // InputProps={{style: {borderRadius: '4vw'}}}
                 />}
             </InputMask>
@@ -34,7 +35,7 @@ export const InputMui = ({ children, onBlur, id, title, handleChange, value, typ
                 name={id} 
                 onChange={handleChange}
                 value={value}
-                required
+                required={required}
                 type={type || 'text'}
                 error={error}
                 helperText={error ? errorText : ''}
@@ -48,8 +49,8 @@ export const InputMui = ({ children, onBlur, id, title, handleChange, value, typ
                 rows={10}
                 sx={{fontFamily: "Montserrats"}}
                 select={select}
-                inputProps={{onBlur: onBlur}}
-                // InputProps={{style: {borderRadius: '4vw'}}}
+                inputProps={inputProps}
+                InputProps={InputProps}
             />
             }
         </div>

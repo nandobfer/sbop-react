@@ -1,0 +1,51 @@
+@import '/src/sass/colors';
+
+.AdmPanel-Page {
+    width: 100%;
+    flex-direction: column;
+
+    .top-container {
+        width: 100%;
+
+        .search-container {
+            width: 100%;
+            position: relative;
+
+            form {
+                width: 100%;
+            }
+        }
+
+    }
+
+    .panel-container {
+        width: 100%;
+        height: 28vw;
+        flex-direction: row;
+
+        .results-container {
+            flex: 0.55;
+            height: 100%;
+            overflow-y: scroll;
+            flex-direction: column;
+            gap: 2vw;
+
+            .member-container {
+                border-radius: 5vw;
+                border: 0.25vw solid $background-color;
+                padding: 1vw;
+                cursor: pointer;
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            flex: 0.45;
+        }
+    }
+}
+
+.skeleton {
+    gap: 1vw;
+}

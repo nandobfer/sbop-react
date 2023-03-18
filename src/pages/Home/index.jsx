@@ -27,9 +27,10 @@ const Home = () => {
             api.post('/login', data)
             .then((response) => {
                 if (response?.data?.nome) {
-                    setMembro(response.data)
-                    storage.set('member', response.data)
-                    navigate('/perfil')
+                    const member = response.data
+                    setMembro(member)
+                    storage.set('member', member)
+                    navigate(member.adm ? '/perfil/adm' : '/perfil')
     
                 }
             })

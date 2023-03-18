@@ -21,6 +21,7 @@ import { Reload } from './components/Reload';
 import { Perfil } from './pages/Perfil';
 import { CategoriesProvider } from './contexts/categoriesContext';
 import { ContentsProvider } from './contexts/contentsContext';
+import { AdmPanel } from './pages/AdmPanel';
 
 function App() {
     const muiTheme = useMuiTheme()
@@ -53,6 +54,7 @@ function App() {
                                         <Route path='/logout' element={<Reload />} />
 
                                         <Route path='/perfil/*' element={<Perfil />} />
+                                        <Route path='/adm/*' element={<AdmPanel />} />
                                 </Routes>
 
                             </ContentsProvider>
