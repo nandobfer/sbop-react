@@ -1,11 +1,26 @@
 @import '/src/sass/colors';
 
 .solicitacoes-container {
-    position: absolute;
-    left: 0;
-    top: 7vw;
     width: 100%;
-    bottom: 0;
+    flex-direction: column;
+    gap: 2vw;
 
-    outline: 2px purple solid;
+    form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1vw;
+
+        button {
+            width: 15vw;
+        }
+
+    }
+
+    .requests-history {
+        width: 100%;
+        flex-direction: column;
+        overflow-y: scroll;
+        height: 22.5vw;
+    }
 }
