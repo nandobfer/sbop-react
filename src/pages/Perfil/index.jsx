@@ -53,7 +53,7 @@ export const Perfil = () => {
                         <Route index element={<DadosCadastrais />} />
                         <Route path='/seguranca' element={<Seguranca />} />
                         <Route path='/planos' element={<Planos />} />
-                        <Route path='/conteudos' element={<AcessoRestrito />} />
+                        <Route path='/conteudos/*' element={<AcessoRestrito />} />
                         <Route path='/solicitacoes' element={<Solicitacoes />} />
                     </Routes>
                 </div>

@@ -19,6 +19,8 @@ import { useMuiTheme } from './hooks/useMuiTheme';
 import { ThemeProvider } from '@mui/material';
 import { Reload } from './components/Reload';
 import { Perfil } from './pages/Perfil';
+import { CategoriesProvider } from './contexts/categoriesContext';
+import { ContentsProvider } from './contexts/contentsContext';
 
 function App() {
     const muiTheme = useMuiTheme()
@@ -30,26 +32,31 @@ function App() {
             <MembroProvider>
                 <CurrentStageProvider>
                     <SpecializationsProvider>
-                        <Routes>
-                                <Route index element={<Home />} />
-                                <Route path='/home/*' element={<Home />} />
-                                <Route path='/mapa' element={<Mapa />} />
-                                <Route path='/:cpf' element={<Blank />} />
+                        <CategoriesProvider>
+                            <ContentsProvider>
 
-                                <Route path='/temporario' element={<Temporario />} />
-                                <Route path='/temporario/:id' element={<Temporario />} />
-                                {/* <Route path='/cadastro' element={<Resignup />} /> */}
-                                <Route path='/recadastro' element={<Resignup />} />
-                                <Route path='/planos' element={<Planos />} />
-                                <Route path='/planos/:id' element={<Planos />} />
-                                <Route path='/cadastrar' element={<Cadastro />} />
-                                <Route path='/pagseguro/:id/:plan' element={<Pagseguro />} />
-                                <Route path='/pagseguro_homologacao' element={<PagseguroHomologation />} />
-                                <Route path='/logout' element={<Reload />} />
+                                <Routes>
+                                        <Route index element={<Home />} />
+                                        <Route path='/home/*' element={<Home />} />
+                                        <Route path='/mapa' element={<Mapa />} />
+                                        <Route path='/:cpf' element={<Blank />} />
 
-                                <Route path='/perfil/*' element={<Perfil />} />
-                        </Routes>
+                                        <Route path='/temporario' element={<Temporario />} />
+                                        <Route path='/temporario/:id' element={<Temporario />} />
+                                        {/* <Route path='/cadastro' element={<Resignup />} /> */}
+                                        <Route path='/recadastro' element={<Resignup />} />
+                                        <Route path='/planos' element={<Planos />} />
+                                        <Route path='/planos/:id' element={<Planos />} />
+                                        <Route path='/cadastrar' element={<Cadastro />} />
+                                        <Route path='/pagseguro/:id/:plan' element={<Pagseguro />} />
+                                        <Route path='/pagseguro_homologacao' element={<PagseguroHomologation />} />
+                                        <Route path='/logout' element={<Reload />} />
 
+                                        <Route path='/perfil/*' element={<Perfil />} />
+                                </Routes>
+
+                            </ContentsProvider>
+                        </CategoriesProvider>
                     </SpecializationsProvider>
                 </CurrentStageProvider>
             </MembroProvider>

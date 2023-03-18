@@ -1,11 +1,38 @@
 @import '/src/sass/colors';
 
 .restrito-container {
-    position: absolute;
-    left: 0;
-    top: 7vw;
     width: 100%;
-    bottom: 0;
+    flex-direction: column;
+    align-items: center;
 
-    outline: 2px yellow solid;
+    .menu-container {
+        width: 100%;
+        justify-content: center;
+        gap: 3vw;
+
+        h1 {
+            cursor: pointer;
+        }
+    }
+
+    .contents-container {
+        width: 100%;
+        gap: 2vw;
+        height: 30vw;
+        overflow-y: scroll;
+
+        .categories-container {
+            flex-direction: column;
+            gap: 0.5vw;
+
+            p {
+                cursor: pointer;
+            }
+        }
+
+        .posts-container {
+            flex-direction: column;
+            overflow-y: scroll;
+        }
+    }
 }
