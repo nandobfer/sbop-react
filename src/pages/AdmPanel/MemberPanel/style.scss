@@ -2,5 +2,29 @@
 
 .MemberPanel-Component {
     height: 28vw;
-    overflow-y: scroll;
+
+    .inputs-container {
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        flex-direction: column;
+
+        .two-inputs-container {
+            width: 100%;
+            gap: 1vw;
+
+            .InputMui-Component {
+                flex: 0.5;
+            }
+        }
+    }
+
+    .buttons-container {
+        width: 100%;
+        gap: 1vw;
+
+        button {
+            flex: 1;
+        }
+    }
 }

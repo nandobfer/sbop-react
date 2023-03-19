@@ -1,10 +1,18 @@
 import { TextField } from '@mui/material';
 import InputMask from 'react-input-mask';
 
-export const InputMui = ({ children, onBlur, id, title, handleChange, value, type, mask, autoFocus, error, errorText, multiline, select, required, InputProps, inputProps, width }) => {
+export const InputMui = ({ children, disabled, id, title, handleChange, value, type, mask, autoFocus, error, errorText, multiline, select, required, InputProps, inputProps, width }) => {
+
+    const custom_style = {
+        flexDirection: 'column', 
+        width,
+        
+        opacity: disabled && 0.5,
+        pointerEvents: disabled && 'none'
+    }
     
     return (
-        <div className='InputMui-Component' style={{flexDirection: 'column', width}} >
+        <div className='InputMui-Component' style={custom_style} >
             {mask ? 
             <InputMask mask={mask} alwaysShowMask={false} name={id} required={required} onChange={handleChange} value={value} maskChar={null} >
                 {(inputProps) => <TextField
