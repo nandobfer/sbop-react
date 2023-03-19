@@ -117,9 +117,9 @@ export const MemberPanel = ({ member }) => {
                         </div>
 
                         <FormLabel id="system-info">Informações do sistema</FormLabel>
-                        <FormControlLabel control={<Checkbox name='temporario' value={values.temporario} onChange={handleChange} />} label={'Temporário'} />
-                        <FormControlLabel control={<Checkbox name='primeiro_acesso' value={values.primeiro_acesso} onChange={handleChange} />} label={'Primeiro acesso'} />
-                        <FormControlLabel control={<Checkbox name='pago' value={values.pago} onChange={handleChange} />} label={'Pago'} />
+                        <FormControlLabel control={<Checkbox name='temporario' checked={!!values.temporario} onChange={handleChange} />} label={'Temporário'} />
+                        <FormControlLabel control={<Checkbox name='primeiro_acesso' checked={!!values.primeiro_acesso} onChange={handleChange} />} label={'Primeiro acesso'} />
+                        <FormControlLabel control={<Checkbox name='pago' checked={!!values.pago} onChange={handleChange} />} label={'Pago'} />
 
                     </div>
 
