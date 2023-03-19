@@ -1,26 +1,57 @@
-import { MenuItem } from '@mui/material';
+import { Checkbox, FormControlLabel, FormLabel, MenuItem, Radio, RadioGroup } from '@mui/material';
 import { Formik, Form } from 'formik'
 import { useRef } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { InputMui } from '../../../components/InputMui';
 import { useEstadosBrasil } from '../../../hooks/useEstadosBrasil';
+import { useSpecializations } from '../../../hooks/useSpecializations';
+import { useStripAll } from '../../../hooks/useStripAll';
 import './style.scss';
 
 export const MemberPanel = ({ member }) => {
 
     const estados = useEstadosBrasil()
+    const [specializations, setSpecializations] = useSpecializations()
+    const stripAll = useStripAll()
 
     const [initialValues, setInitialValues] = useState({})
+    const [checkedSpecializations, setCheckedSpecializations] = useState([])
+
+    const onCheckboxChange = (event, specialization) => {
+        if (checkedSpecializations.includes(specialization.nome)) {
+            setCheckedSpecializations(checkedSpecializations.filter(item => item != specialization.nome))
+        } else {
+            setCheckedSpecializations([...checkedSpecializations, specialization.nome])
+        }
+    }
 
     const onSubmit = values => {
-        alert(JSON.stringify(values, null, 4))
+        // REMOVE UNREGISTERED SPECIALIZATIONS ===============
+        const stringfiedSpecializations = specializations.map(specialization => specialization.nome)
+
+        checkedSpecializations.map(item => {
+            if (!stringfiedSpecializations.includes(item)) {
+                setCheckedSpecializations(checkedSpecializations.filter(_item => _item != item))
+            }
+        })
+        // ===================================================
+
+        values.id = member.id
+        values.especialidades = checkedSpecializations
+        values.crm = values.crm+'-'+values.crm_uf
+        values.cpf = stripAll(values.cpf)
+        values.telefone = stripAll(values.telefone)
+        values.cep = stripAll(values.cep)
+
+        console.log({values})
     }
 
     useEffect(() => {
        console.log(member)
         if (member) {
             setInitialValues({...member, crm_uf: member?.crm?.split('-')[1]})
+            setCheckedSpecializations(member.especialidades)
         }
     }, [member])
 
@@ -63,6 +94,32 @@ export const MemberPanel = ({ member }) => {
                         </div>
                         
                         <InputMui multiline id='curriculum' title='Curriculum' handleChange={handleChange} value={values.curriculum} />
+
+                        <FormLabel id="pessoa">Pessoa</FormLabel>
+                        <RadioGroup
+                            aria-labelledby="pessoa"
+                            name="pessoa"
+                            value={values.pessoa || ''}
+                            onChange={handleChange}
+                            row
+                        >
+                            <FormControlLabel value="Física" control={<Radio />} label="Física" />
+                            <FormControlLabel value="Jurídica" control={<Radio />} label="Jurídica" />
+                        </RadioGroup>
+
+                        <FormLabel id="especialidades">Especialidades</FormLabel>
+                        <div className="specializations-container">
+                            {specializations.map(specialization => {
+                                return (
+                                    <FormControlLabel key={specialization.nome} control={<Checkbox checked={checkedSpecializations?.includes(specialization.nome) ? true : false} onChange={(event) => onCheckboxChange(event, specialization)} />} label={specialization.nome} />
+                                )
+                            })}
+                        </div>
+
+                        <FormLabel id="system-info">Informações do sistema</FormLabel>
+                        <FormControlLabel control={<Checkbox name='temporario' value={values.temporario} onChange={handleChange} />} label={'Temporário'} />
+                        <FormControlLabel control={<Checkbox name='primeiro_acesso' value={values.primeiro_acesso} onChange={handleChange} />} label={'Primeiro acesso'} />
+                        <FormControlLabel control={<Checkbox name='pago' value={values.pago} onChange={handleChange} />} label={'Pago'} />
 
                     </div>
 
