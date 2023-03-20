@@ -6,6 +6,7 @@ import './style.scss';
 import { api } from '../../api';
 import { CircularProgress, Skeleton } from '@mui/material';
 import { useEffect } from 'react';
+import { Snackbar } from '../../components/Snackbar';
 
 export const AdmPanel = () => {
 
@@ -54,20 +55,31 @@ export const AdmPanel = () => {
     const [members, setMembers] = useState([])
     const [loading, setLoading] = useState(true)
     const [currentMember, setCurrentMember] = useState(null)
+    const [reload, setReload] = useState(true)
+
+    const [snackbar, setSnackbar] = useState('')
+    const [snackbarText, setSnackbarText] = useState('')
 
     const skeletons = [1, 2, 3, 4]
 
     useEffect(() => {
-        setCurrentMember(null)
+        if (reload) {
+            setReload(false)
+            setLoading(true)
+            setCurrentMember(null)
 
-        api.post('/member/search', {name: ''})
-        .then(response => {
-            setMembers(response.data)
-        })
-        .catch(error => console.error(error))
-        .finally(() => {
-            setLoading(false)
-        })
+            api.post('/member/search', {name: ''})
+            .then(response => {
+                setMembers(response.data)
+            })
+            .catch(error => console.error(error))
+            .finally(() => {
+                setLoading(false)
+            })
+        }
+    }, [reload])
+
+    useEffect(() => {
 
     }, [])
     
@@ -90,8 +102,9 @@ export const AdmPanel = () => {
                         {members.map(member => <MemberContainer key={member.id} member={member} />)}
                     </div>
                 }
-                {currentMember && <MemberPanel member={currentMember} loading={loading} />}
+                <MemberPanel member={currentMember} setReload={setReload} setSnackbar={setSnackbar} setSnackbarText={setSnackbarText} />
             </div>
+            <Snackbar text={snackbarText} severity={snackbar} open={Boolean(snackbar)} setOpen={setSnackbar} />
         </div>
     )
 }

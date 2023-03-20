@@ -1,15 +1,16 @@
-import { Checkbox, FormControlLabel, FormLabel, MenuItem, Radio, RadioGroup } from '@mui/material';
+import { Checkbox, CircularProgress, FormControlLabel, FormLabel, MenuItem, Radio, RadioGroup } from '@mui/material';
 import { Formik, Form } from 'formik'
 import { useRef } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { api } from '../../../api';
 import { InputMui } from '../../../components/InputMui';
 import { useEstadosBrasil } from '../../../hooks/useEstadosBrasil';
 import { useSpecializations } from '../../../hooks/useSpecializations';
 import { useStripAll } from '../../../hooks/useStripAll';
 import './style.scss';
 
-export const MemberPanel = ({ member, loading }) => {
+export const MemberPanel = ({ member, setReload, setSnackbar, setSnackbarText }) => {
 
     const estados = useEstadosBrasil()
     const [specializations, setSpecializations] = useSpecializations()
@@ -17,6 +18,7 @@ export const MemberPanel = ({ member, loading }) => {
 
     const [initialValues, setInitialValues] = useState({})
     const [checkedSpecializations, setCheckedSpecializations] = useState([])
+    const [updatingButtonLoading, setUpdatingButtonLoading] = useState(false)
 
     const onCheckboxChange = (event, specialization) => {
         if (checkedSpecializations.includes(specialization.nome)) {
@@ -27,6 +29,12 @@ export const MemberPanel = ({ member, loading }) => {
     }
 
     const onSubmit = values => {
+        if (!member) {
+            setSnackbarText('Nenhum usuário selecionado')
+            setSnackbar('error')
+            return
+        }
+
         // REMOVE UNREGISTERED SPECIALIZATIONS ===============
         const stringfiedSpecializations = specializations.map(specialization => specialization.nome)
 
@@ -44,7 +52,18 @@ export const MemberPanel = ({ member, loading }) => {
         values.telefone = stripAll(values.telefone)
         values.cep = stripAll(values.cep)
 
-        console.log({values})
+        console.log(values)
+
+        setUpdatingButtonLoading(true)
+        api.post('/member/update', values)
+        .then(response => {
+            setReload(true)
+            setSnackbarText('Membro atualizado com sucesso!')
+            setSnackbar('success')
+        })
+        .catch(error => console.error(error))
+        .finally(() => setUpdatingButtonLoading(false))
+
     }
 
     useEffect(() => {
@@ -52,6 +71,9 @@ export const MemberPanel = ({ member, loading }) => {
         if (member) {
             setInitialValues({...member, crm_uf: member?.crm?.split('-')[1]})
             setCheckedSpecializations(member.especialidades)
+        } else {
+            setInitialValues({})
+            setCheckedSpecializations([])
         }
     }, [member])
 
@@ -126,7 +148,7 @@ export const MemberPanel = ({ member, loading }) => {
                     <div className="buttons-container">
                         <button className='default-button' type="submit">Deletar</button>
                         <button className='default-button' type="submit">Cancelar</button>
-                        <button className='default-button' type="submit">Enviar</button>
+                        <button className='default-button' type="submit">{updatingButtonLoading ? <CircularProgress size={'2vw'} color='secondary' /> : 'Enviar'}</button>
                     </div>
                 </Form>
             )}
