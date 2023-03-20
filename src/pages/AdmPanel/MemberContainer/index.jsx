@@ -4,6 +4,8 @@ import { useState } from "react"
 import { SwitchMultiButton } from "switch-multi-button";
 import { api } from "../../../api";
 import COLORS from '../../../sass/_colors.scss'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 import './style.scss';
 
 export const MemberContainer = ({ member, currentMember, setCurrentMember }) => {
@@ -73,6 +75,7 @@ export const MemberContainer = ({ member, currentMember, setCurrentMember }) => 
                     ]}
                 />
             </div>
+            {member.pago ? <CheckCircleIcon sx={{width: '2.5vw', height: 'auto', color: COLORS.check_green}} /> : <CancelIcon sx={{width: '2.5vw', height: 'auto', color: COLORS.red}} />}
         </div>
     )
 }
