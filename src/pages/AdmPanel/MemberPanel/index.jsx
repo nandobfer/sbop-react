@@ -40,6 +40,12 @@ export const MemberPanel = ({ member, setMember, setReload, setSnackbar, setSnac
     const onDelete = (event) => {
         event.preventDefault()
 
+        if (!member) {
+            setSnackbarText('Nenhum usuário selecionado')
+            setSnackbar('error')
+            return
+        }
+
         setDeletingButtonLoading(true)
         api.post('/delete_member', {id: member.id, adm_id: adm.id})
         .then(response => {
