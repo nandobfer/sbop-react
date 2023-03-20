@@ -7,7 +7,7 @@ import { api } from '../../api';
 import { CircularProgress, Skeleton } from '@mui/material';
 import { useEffect } from 'react';
 import { Snackbar } from '../../components/Snackbar';
-import COLORS from '../../sass/_colors.scss'
+import { MemberContainer } from './MemberContainer';
 
 export const AdmPanel = () => {
 
@@ -33,27 +33,6 @@ export const AdmPanel = () => {
                     </Form>
                 )}
             </Formik>
-        )
-    }
-
-    const MemberContainer = ({ member }) => {
-        const [current, setCurrent] = useState(false)
-
-        const style = {
-            border: `0.25vw solid ${current ? COLORS.primary : COLORS.background}`
-        }
-
-        useEffect(() => {
-            if (currentMember?.id == member.id) {
-                setCurrent(true)
-            }
-
-        }, [currentMember])
-
-        return (
-            <div className="member-container" onClick={() => setCurrentMember(member)} style={style}>
-                {member.nome}
-            </div>
         )
     }
 
@@ -113,7 +92,7 @@ export const AdmPanel = () => {
                     </div>
                     :
                     <div className="results-container">
-                        {members.map(member => <MemberContainer key={member.id} member={member} />)}
+                        {members.map(member => <MemberContainer key={member.id} member={member} currentMember={currentMember} setCurrentMember={setCurrentMember} />)}
                     </div>
                 }
                 <MemberPanel member={currentMember} setReload={setReload} setSnackbar={setSnackbar} setSnackbarText={setSnackbarText} />
