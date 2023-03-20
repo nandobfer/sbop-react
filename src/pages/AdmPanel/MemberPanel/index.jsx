@@ -6,19 +6,22 @@ import { useEffect } from 'react';
 import { api } from '../../../api';
 import { InputMui } from '../../../components/InputMui';
 import { useEstadosBrasil } from '../../../hooks/useEstadosBrasil';
+import { useMembro } from '../../../hooks/useMembro';
 import { useSpecializations } from '../../../hooks/useSpecializations';
 import { useStripAll } from '../../../hooks/useStripAll';
 import './style.scss';
 
-export const MemberPanel = ({ member, setReload, setSnackbar, setSnackbarText }) => {
+export const MemberPanel = ({ member, setMember, setReload, setSnackbar, setSnackbarText }) => {
 
     const estados = useEstadosBrasil()
     const [specializations, setSpecializations] = useSpecializations()
     const stripAll = useStripAll()
+    const [adm, setAdm] = useMembro()
 
     const [initialValues, setInitialValues] = useState({})
     const [checkedSpecializations, setCheckedSpecializations] = useState([])
     const [updatingButtonLoading, setUpdatingButtonLoading] = useState(false)
+    const [deletingButtonLoading, setDeletingButtonLoading] = useState(false)
 
     const onCheckboxChange = (event, specialization) => {
         if (checkedSpecializations.includes(specialization.nome)) {
@@ -26,6 +29,25 @@ export const MemberPanel = ({ member, setReload, setSnackbar, setSnackbarText })
         } else {
             setCheckedSpecializations([...checkedSpecializations, specialization.nome])
         }
+    }
+
+    const onCancel = event => {
+        event.preventDefault()
+        setMember(null)
+    }
+
+    const onDelete = (event) => {
+        event.preventDefault()
+
+        setDeletingButtonLoading(true)
+        api.post('/delete_member', {id: member.id, adm_id: adm.id})
+        .then(response => {
+            setSnackbarText('Usuário deletado com sucesso')
+            setSnackbar('warning')
+            setReload(true)
+        })
+        .catch(error => console.error(error))
+        .finally(() => setDeletingButtonLoading(false))
     }
 
     const onSubmit = values => {
@@ -146,9 +168,9 @@ export const MemberPanel = ({ member, setReload, setSnackbar, setSnackbarText })
                     </div>
 
                     <div className="buttons-container">
-                        <button className='default-button' type="submit">Deletar</button>
-                        <button className='default-button' type="submit">Cancelar</button>
                         <button className='default-button' type="submit">{updatingButtonLoading ? <CircularProgress size={'2vw'} color='secondary' /> : 'Enviar'}</button>
+                        <button className='default-button' onClick={onCancel} >Cancelar</button>
+                        <button className='default-button' onClick={onDelete} >{deletingButtonLoading ? <CircularProgress size={'2vw'} color='secondary' /> : 'Deletar'}</button>
                     </div>
                 </Form>
             )}

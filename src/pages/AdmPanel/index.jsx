@@ -103,7 +103,7 @@ export const AdmPanel = () => {
                         {members.map(member => <MemberContainer key={member.id} member={member} currentMember={currentMember} setCurrentMember={setCurrentMember} />)}
                     </div>
                 }
-                <MemberPanel member={currentMember} setReload={setReload} setSnackbar={setSnackbar} setSnackbarText={setSnackbarText} />
+                <MemberPanel member={currentMember} setMember={setCurrentMember} setReload={setReload} setSnackbar={setSnackbar} setSnackbarText={setSnackbarText} />
             </div>
             <Snackbar text={snackbarText} severity={snackbar} open={Boolean(snackbar)} setOpen={setSnackbar} />
         </div>
