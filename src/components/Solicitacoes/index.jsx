@@ -1,12 +1,13 @@
 import { InputMui } from '../InputMui';
 import { Formik, Form } from 'formik'
 import './style.scss';
-import { MenuItem, Skeleton } from '@mui/material';
+import { CircularProgress, MenuItem, Skeleton } from '@mui/material';
 import DataTable from 'react-data-table-component';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { api } from '../../api';
 import { useMembro } from '../../hooks/useMembro';
+import { useCallback } from 'react';
 
 export const Solicitacoes = ({  }) => {
 
@@ -22,9 +23,25 @@ export const Solicitacoes = ({  }) => {
 
     const [requests, setRequests] = useState([])
     const [loading, setLoading] = useState(false)
+    const [generatingNewRequest, setGeneratingNewRequest] = useState(false)
+
+    const getRequests = useCallback(() => {
+        api.post('/member/requests', {id: member.id})
+        .then(response => setRequests(response.data.reverse()))
+        .catch(error => console.error(error))
+        .finally(() => setLoading(false))
+    }, [member])
     
     const onSubmit = (values) => {
-        alert(JSON.stringify(values, null, 4))
+        setGeneratingNewRequest(true)
+        api.post('/member/requests/new', {member, request_id: values.new_request})
+        .then(response => {
+            setLoading(true)
+            getRequests()
+        })
+        .catch(error => console.error(error))
+        .finally(() => setGeneratingNewRequest(false))
+
     }
 
     const tableOptions = {
@@ -75,25 +92,22 @@ export const Solicitacoes = ({  }) => {
 
     useEffect(() => {
         setLoading(true)
-        api.post('/member/requests', {id: member.id})
-        .then(response => setRequests(response.data))
-        .catch(error => console.error(error))
-        .finally(() => setLoading(false))
+        getRequests()
 
     }, [])
 
     return (
         <div className={`solicitacoes-container`}>
-            <Formik initialValues={{new_request: 1}} onSubmit={onSubmit} >
+            <Formik initialValues={{new_request: 0}} onSubmit={onSubmit} >
                 {({values, handleChange}) => (
                     <Form>
                         <InputMui select id='new_request' title='Selecione a solicitação' handleChange={handleChange} value={values.new_request} >
                             <MenuItem
-                                value={1}
+                                value={0}
                                 style={{width: '100%'}}
                             >Certificado de Membro</MenuItem>
                         </InputMui>
-                        <button className="default-button">Incluir Solicitação</button>
+                        <button type='submit' className="default-button">{generatingNewRequest ? <CircularProgress size={'2vw'} color='secondary' /> : 'Incluir Solicitação' }</button>
                     </Form>
                 )}
             </Formik>
