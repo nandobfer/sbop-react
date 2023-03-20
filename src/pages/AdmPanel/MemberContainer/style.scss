@@ -6,6 +6,10 @@
     cursor: pointer;
     gap: 1vw;
     align-items: center;
+    
+    hr {
+        height: 90%;
+    }
 
     .photo-container {
         border: 2px solid $primary-color;
@@ -21,6 +25,13 @@
         font-size: 0.9vw;
         color: $primary-text-color;
         font-weight: bold;
+        width: 30%;
+
+        p {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
         
         .documents-container {
             gap: 1vw;
@@ -28,12 +39,18 @@
     }
 
     .plans-container {
+        width: 30%;
+        font-size: 0.8vw;
 
         .sweep-button-item {
-            color: $primary-text-color;    
+            padding: 0.5vw 1.5vw;
+            color: $primary-text-color;  
+            flex: 1;  
         }
         
         .sweep-button-item-active {
+            flex: 1;  
+            padding: 0.5vw 1.5vw;
             border-radius: 5vw;
             background-color: $primary-color;
             color: white;
