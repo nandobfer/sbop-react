@@ -8,8 +8,51 @@ import { useState } from 'react';
 import { api } from '../../api';
 import { useMembro } from '../../hooks/useMembro';
 import { useCallback } from 'react';
+import DownloadIcon from '@mui/icons-material/Download';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import DoDisturbIcon from '@mui/icons-material/DoDisturb';
+import COLORS from '../../sass/_colors.scss'
+import { MuiLoading } from '../MuiLoading';
 
 export const Solicitacoes = ({  }) => {
+
+    const DownloadComponent = ({ solicitacao }) => {
+        const onClick = () => {
+            console.log(solicitacao)
+        }
+
+        return (
+            <DownloadIcon onClick={onClick} sx={{width: '2.5vw', height: 'auto', color: COLORS.line, cursor: 'pointer'}} />
+        )
+    }
+
+    const CanceledComponent = ({ solicitacao }) => {
+        const onClick = () => {
+            console.log(solicitacao)
+        }
+
+        return (
+            <DoDisturbIcon onClick={onClick} sx={{width: '2vw', height: 'auto', color: COLORS.line, cursor: 'not-allowed'}} />
+        )
+    }
+
+    const CancelComponent = ({ solicitacao }) => {
+        const [canceling, setCanceling] = useState(false)
+
+        const onClick = () => {
+            setCanceling(true)
+            api.post('/member/requests/cancel', {id: solicitacao.ID})
+            .then(response => getRequests())
+            .catch(error => console.error(error))
+            .finally(() => setCanceling(false))
+        }
+
+        return (
+            <div className="action-container">
+                {canceling ? <MuiLoading color={'primary'} /> : <DeleteForeverIcon onClick={onClick} sx={{width: '2.5vw', height: 'auto', color: COLORS.red, cursor: 'pointer'}} />}
+            </div>
+        )
+    }
 
     const RowSkeleton = () => {
         return (
@@ -26,6 +69,8 @@ export const Solicitacoes = ({  }) => {
     const [generatingNewRequest, setGeneratingNewRequest] = useState(false)
 
     const getRequests = useCallback(() => {
+        setLoading(true)
+
         api.post('/member/requests', {id: member.id})
         .then(response => setRequests(response.data))
         .catch(error => console.error(error))
@@ -35,10 +80,7 @@ export const Solicitacoes = ({  }) => {
     const onSubmit = (values) => {
         setGeneratingNewRequest(true)
         api.post('/member/requests/new', {member, request_id: values.new_request})
-        .then(response => {
-            setLoading(true)
-            getRequests()
-        })
+        .then(response => getRequests())
         .catch(error => console.error(error))
         .finally(() => setGeneratingNewRequest(false))
 
@@ -78,7 +120,7 @@ export const Solicitacoes = ({  }) => {
         },
 		{
             name: 'Ação',
-            selector: row => row.status,
+            selector: row => row.SITUACAO == 'Concluído' ? <DownloadComponent solicitacao={row} /> : row.SITUACAO == 'Cancelado' ? <CanceledComponent solicitacao={row} /> : <CancelComponent solicitacao={row} />,
             sortable: true,
 			width:'6.4vw',
 			// cell: row => StatusIcon(row.status),
@@ -91,7 +133,6 @@ export const Solicitacoes = ({  }) => {
     }, [requests])
 
     useEffect(() => {
-        setLoading(true)
         getRequests()
 
     }, [])
@@ -107,7 +148,7 @@ export const Solicitacoes = ({  }) => {
                                 style={{width: '100%'}}
                             >Certificado de Membro</MenuItem>
                         </InputMui>
-                        <button type='submit' className="default-button">{generatingNewRequest ? <CircularProgress size={'2vw'} color='secondary' /> : 'Incluir Solicitação' }</button>
+                        <button type='submit' className="default-button">{generatingNewRequest ? <MuiLoading /> : 'Incluir Solicitação' }</button>
                     </Form>
                 )}
             </Formik>
