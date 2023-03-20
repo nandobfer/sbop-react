@@ -115,7 +115,7 @@ export const MemberPanel = ({ member, setReload, setSnackbar, setSnackbarText })
                             </InputMui>
                         </div>
                         
-                        <InputMui multiline id='curriculum' title='Curriculum' handleChange={handleChange} value={values.curriculum} />
+                        <InputMui multiline id='curriculum' title='Curriculum' handleChange={handleChange} value={values.curriculum || ''} />
 
                         <FormLabel id="pessoa">Pessoa</FormLabel>
                         <RadioGroup

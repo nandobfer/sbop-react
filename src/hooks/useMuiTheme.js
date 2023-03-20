@@ -11,12 +11,19 @@ export const useMuiTheme = () => {
         //  "fontWeightMedium": 500
         },
         palette: {
+            // mode: 'dark',
+
             primary: {
-                main: COLORS.primary
+                main: COLORS.primary,
+
             },
             secondary: {
-                main: '#ffffff'
-            }
+                main: '#ffffff',
+
+            }, 
+            // success: {
+
+            // }
         }
     })
     
