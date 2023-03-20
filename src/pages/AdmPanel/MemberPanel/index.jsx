@@ -9,7 +9,7 @@ import { useSpecializations } from '../../../hooks/useSpecializations';
 import { useStripAll } from '../../../hooks/useStripAll';
 import './style.scss';
 
-export const MemberPanel = ({ member }) => {
+export const MemberPanel = ({ member, loading }) => {
 
     const estados = useEstadosBrasil()
     const [specializations, setSpecializations] = useSpecializations()

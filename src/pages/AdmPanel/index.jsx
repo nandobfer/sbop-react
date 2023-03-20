@@ -4,7 +4,7 @@ import { MemberPanel } from './MemberPanel';
 import { Formik, Form } from 'formik'
 import './style.scss';
 import { api } from '../../api';
-import { Skeleton } from '@mui/material';
+import { CircularProgress, Skeleton } from '@mui/material';
 import { useEffect } from 'react';
 
 export const AdmPanel = () => {
@@ -13,6 +13,7 @@ export const AdmPanel = () => {
 
         const onSubmit = values => {
             setLoading(true)
+            setCurrentMember(null)
             
             api.post('/member/search', values)
             .then(response => {
@@ -52,17 +53,21 @@ export const AdmPanel = () => {
 
     const [members, setMembers] = useState([])
     const [loading, setLoading] = useState(true)
-    const [currentMember, setCurrentMember] = useState({})
+    const [currentMember, setCurrentMember] = useState(null)
 
     const skeletons = [1, 2, 3, 4]
 
     useEffect(() => {
+        setCurrentMember(null)
+
         api.post('/member/search', {name: ''})
         .then(response => {
             setMembers(response.data)
         })
         .catch(error => console.error(error))
-        .finally(() => setLoading(false))
+        .finally(() => {
+            setLoading(false)
+        })
 
     }, [])
     
@@ -85,7 +90,7 @@ export const AdmPanel = () => {
                         {members.map(member => <MemberContainer key={member.id} member={member} />)}
                     </div>
                 }
-                <MemberPanel member={currentMember} />
+                {currentMember && <MemberPanel member={currentMember} loading={loading} />}
             </div>
         </div>
     )
