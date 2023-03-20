@@ -10,6 +10,7 @@ import { useMembro } from '../../../hooks/useMembro';
 import { useSpecializations } from '../../../hooks/useSpecializations';
 import { useStripAll } from '../../../hooks/useStripAll';
 import './style.scss';
+import COLORS from '../../../sass/_colors.scss'
 
 export const MemberPanel = ({ member, setMember, setReload, setSnackbar, setSnackbarText }) => {
 
@@ -169,8 +170,8 @@ export const MemberPanel = ({ member, setMember, setReload, setSnackbar, setSnac
 
                     <div className="buttons-container">
                         <button className='default-button' type="submit">{updatingButtonLoading ? <CircularProgress size={'2vw'} color='secondary' /> : 'Enviar'}</button>
-                        <button className='default-button' onClick={onCancel} >Cancelar</button>
-                        <button className='default-button' onClick={onDelete} >{deletingButtonLoading ? <CircularProgress size={'2vw'} color='secondary' /> : 'Deletar'}</button>
+                        <button className='default-button' onClick={onCancel} style={{backgroundColor: 'grey'}} >Cancelar</button>
+                        <button className='default-button' onClick={onDelete} style={{backgroundColor: COLORS.red}} >{deletingButtonLoading ? <CircularProgress size={'2vw'} color='secondary' /> : 'Deletar'}</button>
                     </div>
                 </Form>
             )}
