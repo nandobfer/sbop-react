@@ -9677,6 +9677,11 @@ svgo@^2.7.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
+switch-multi-button@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/switch-multi-button/-/switch-multi-button-1.2.0.tgz#9bfe4da4d299e6bc958a9605f81d6f51783bb4f3"
+  integrity sha512-3dLB/XMiz771CFwg3/kkp/+fSfU32hodYqz3C7j5hqL6FdqxucyMHxcPL3YgeCYsr4bZIGKnAjDc+UyZYD7Jtg==
+
 symbol-tree@^3.2.4:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"

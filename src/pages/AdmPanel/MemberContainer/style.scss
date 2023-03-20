@@ -1,0 +1,42 @@
+@import '/src/sass/colors';
+
+.member-container {
+    border-radius: 5vw;
+    padding: 1vw;
+    cursor: pointer;
+    gap: 1vw;
+    align-items: center;
+
+    .photo-container {
+        border: 2px solid $primary-color;
+        border-radius: 100%;
+        width: 3vw;
+        height: 3vw;
+    }
+
+    .info-container {
+        flex-direction: column;
+        justify-content: center;
+        gap: 1vw;
+        font-size: 0.9vw;
+        color: $primary-text-color;
+        font-weight: bold;
+        
+        .documents-container {
+            gap: 1vw;
+        }
+    }
+
+    .plans-container {
+
+        .sweep-button-item {
+            color: $primary-text-color;    
+        }
+        
+        .sweep-button-item-active {
+            border-radius: 5vw;
+            background-color: $primary-color;
+            color: white;
+        }
+    }
+}
