@@ -13,6 +13,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import DoDisturbIcon from '@mui/icons-material/DoDisturb';
 import COLORS from '../../sass/_colors.scss'
 import { MuiLoading } from '../MuiLoading';
+import { Link } from 'react-router-dom';
 
 export const Solicitacoes = ({  }) => {
 
@@ -22,7 +23,10 @@ export const Solicitacoes = ({  }) => {
         }
 
         return (
-            <DownloadIcon onClick={onClick} sx={{width: '2.5vw', height: 'auto', color: COLORS.line, cursor: 'pointer'}} />
+            <Link to={`/documents/${member.id}/${solicitacao.URL}`} target="_blank" download>
+                <DownloadIcon onClick={onClick} sx={{width: '2.5vw', height: 'auto', color: COLORS.line, cursor: 'pointer'}} />
+            </Link>
+            
         )
     }
 
