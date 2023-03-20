@@ -21,7 +21,11 @@ export const AdmPanel = () => {
             .then(response => {
                 setMembers(response.data)
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error)
+                setSnackbar('error')
+                setSnackbarText(error.message)
+            })
             .finally(() => setLoading(false))
         }
 
@@ -65,7 +69,11 @@ export const AdmPanel = () => {
             .then(response => {
                 setMembers(response.data)
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error)
+                setSnackbar('error')
+                setSnackbarText(error.message)
+            })
             .finally(() => {
                 setLoading(false)
             })
