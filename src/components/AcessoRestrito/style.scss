@@ -33,6 +33,8 @@
         .posts-container {
             flex-direction: column;
             overflow-y: scroll;
+            width: 100%;
+            gap: 1vw;
         }
     }
 }

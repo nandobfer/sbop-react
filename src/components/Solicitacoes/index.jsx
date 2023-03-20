@@ -1,7 +1,7 @@
 import { InputMui } from '../InputMui';
 import { Formik, Form } from 'formik'
 import './style.scss';
-import { MenuItem } from '@mui/material';
+import { MenuItem, Skeleton } from '@mui/material';
 import DataTable from 'react-data-table-component';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -9,9 +9,19 @@ import { api } from '../../api';
 import { useMembro } from '../../hooks/useMembro';
 
 export const Solicitacoes = ({  }) => {
+
+    const RowSkeleton = () => {
+        return (
+            <div className="skeleton" >
+                <Skeleton animation="wave" variant="rounded" width={'100%'} height={'3vw'} />
+            </div>
+        )
+    }
+
     const [member, setMember] = useMembro()
 
     const [requests, setRequests] = useState([])
+    const [loading, setLoading] = useState(false)
     
     const onSubmit = (values) => {
         alert(JSON.stringify(values, null, 4))
@@ -64,9 +74,11 @@ export const Solicitacoes = ({  }) => {
     }, [requests])
 
     useEffect(() => {
+        setLoading(true)
         api.post('/member/requests', {id: member.id})
         .then(response => setRequests(response.data))
         .catch(error => console.error(error))
+        .finally(() => setLoading(false))
 
     }, [])
 
@@ -88,14 +100,15 @@ export const Solicitacoes = ({  }) => {
 
             <div className="requests-history">
                 <h1>Histórico de solicitações</h1>
-                <DataTable 
+                {loading ? [1, 2, 3, 4, 5].map(skeleton => <RowSkeleton key={skeleton} />)
+                : <DataTable 
                     pagination
                     paginationComponentOptions={tableOptions}
                     highlightOnHover
 			        fixedHeader
                     columns={columns}
                     data={requests}
-                />
+                />}
             </div>
         </div>
     )

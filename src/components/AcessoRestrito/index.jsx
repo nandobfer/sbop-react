@@ -1,3 +1,4 @@
+import { Skeleton } from '@mui/material';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
@@ -11,15 +12,36 @@ import './style.scss';
 
 export const AcessoRestrito = ({  }) => {
 
+    const PostSkeleton = () => {
+        return (
+            <div className="skeleton" style={{alignItems: 'center'}} >
+                <Skeleton animation="wave" variant="rounded" width={'13vw'} height={'10vw'} />
+                <Skeleton animation="wave" variant="rounded" width={'100%'} height={'10vw'} />
+            </div>
+        )
+    }
+
+    const VideoSkeleton = () => {
+        return (
+            <div className="skeleton" style={{alignItems: 'center'}} >
+                <Skeleton animation="wave" variant="rounded" width={'60vw'} height={'30vw'} />
+            </div>
+        )
+    }
+
     const Conteudos = () => {
 
         useEffect(() => {
 
             if(currentCategory) {
+                setLoading(true)
                 api.post('/get_content', {assinatura: member.assinatura, categoria: currentCategory})
                 .then(response => setContents(response.data.filter(content => !content.video)))
                 .catch(error => console.error(error))
-                .finally(() => setCurrentCategory(false))
+                .finally(() => {
+                    setCurrentCategory(false)
+                    setLoading(false)
+                })
             }
 
         }, [currentCategory])
@@ -32,7 +54,8 @@ export const AcessoRestrito = ({  }) => {
                 </div>
                 <hr />
                 <div className="posts-container">
-                    {contents.map(content => <Content key={content.id} content={content} />)}
+                    {loading && [1, 2, 3].map(skeleton => <PostSkeleton key={skeleton} />)}
+                    {!loading && contents.map(content => <Content key={content.id} content={content} />)}
                 </div>
             </div>
         )
@@ -42,7 +65,8 @@ export const AcessoRestrito = ({  }) => {
 
         return (
             <div className="videos-container">
-                {videos.map(video => <Video key={video.id} video={video} />)}
+                {loading && <VideoSkeleton video />}
+                {!loading && videos.map(video => <Video key={video.id} video={video} />)}
             </div>
         )
     }
@@ -55,11 +79,14 @@ export const AcessoRestrito = ({  }) => {
 
     const [currentCategory, setCurrentCategory] = useState('Diretrizes')
     const [videos, setVideos] = useState([])
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        setLoading(true)
         api.post('/get_content/videos', {assinatura: member.assinatura})
         .then(response => setVideos(response.data))
         .catch(error => console.error(error))
+        .finally(() => setLoading(false))
         
     }, [])
 
