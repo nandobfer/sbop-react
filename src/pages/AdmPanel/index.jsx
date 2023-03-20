@@ -7,6 +7,7 @@ import { api } from '../../api';
 import { CircularProgress, Skeleton } from '@mui/material';
 import { useEffect } from 'react';
 import { Snackbar } from '../../components/Snackbar';
+import COLORS from '../../sass/_colors.scss'
 
 export const AdmPanel = () => {
 
@@ -36,8 +37,21 @@ export const AdmPanel = () => {
     }
 
     const MemberContainer = ({ member }) => {
+        const [current, setCurrent] = useState(false)
+
+        const style = {
+            border: `0.25vw solid ${current ? COLORS.primary : COLORS.background}`
+        }
+
+        useEffect(() => {
+            if (currentMember?.id == member.id) {
+                setCurrent(true)
+            }
+
+        }, [currentMember])
+
         return (
-            <div className="member-container" onClick={() => setCurrentMember(member)}>
+            <div className="member-container" onClick={() => setCurrentMember(member)} style={style}>
                 {member.nome}
             </div>
         )
