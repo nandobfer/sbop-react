@@ -27,7 +27,7 @@ export const Solicitacoes = ({  }) => {
 
     const getRequests = useCallback(() => {
         api.post('/member/requests', {id: member.id})
-        .then(response => setRequests(response.data.reverse()))
+        .then(response => setRequests(response.data))
         .catch(error => console.error(error))
         .finally(() => setLoading(false))
     }, [member])
@@ -101,7 +101,7 @@ export const Solicitacoes = ({  }) => {
             <Formik initialValues={{new_request: 0}} onSubmit={onSubmit} >
                 {({values, handleChange}) => (
                     <Form>
-                        <InputMui select id='new_request' title='Selecione a solicitação' handleChange={handleChange} value={values.new_request} >
+                        <InputMui select id='new_request' title='Nova solicitação' handleChange={handleChange} value={values.new_request} >
                             <MenuItem
                                 value={0}
                                 style={{width: '100%'}}

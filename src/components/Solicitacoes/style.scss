@@ -8,11 +8,15 @@
     form {
         width: 100%;
         display: flex;
-        flex-direction: column;
         gap: 1vw;
+        align-items: center;
 
         button {
             width: 15vw;
+        }
+
+        .InputMui-Component {
+            width: 100%;
         }
 
     }
@@ -21,7 +25,7 @@
         width: 100%;
         flex-direction: column;
         overflow-y: scroll;
-        height: 22.5vw;
+        height: 26vw;
         gap: 0.5vw;
     }
 }
