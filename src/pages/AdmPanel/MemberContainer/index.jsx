@@ -2,6 +2,7 @@ import { borderRadius } from "@mui/system";
 import { useEffect } from "react"
 import { useState } from "react"
 import { SwitchMultiButton } from "switch-multi-button";
+import { api } from "../../../api";
 import COLORS from '../../../sass/_colors.scss'
 import './style.scss';
 
@@ -24,9 +25,13 @@ export const MemberContainer = ({ member, currentMember, setCurrentMember }) => 
 
     }, [currentMember])
 
-    // useEffect(() => {
-    //     setPlan(member.assinatura || 'Aspirante')
-    // }, [])
+    useEffect(() => {
+        if (plan != member.assinatura) {
+            api.post('/member/update/plan', {id: member.id, plan})
+            .then(response => member.assinatura = plan)
+            .catch(error => console.error(error))
+        }
+    }, [plan])
 
     return (
         <div className="member-container" onClick={() => setCurrentMember(member)} style={style}>
@@ -43,30 +48,30 @@ export const MemberContainer = ({ member, currentMember, setCurrentMember }) => 
             </div>
             <hr />
             <div className="plans-container">
-            <SwitchMultiButton
-                style={plans_style}
-                value={plan} // set as default button
-                setValue={setPlan}
-                buttons={[
-                {
-                    text: '',
-                    value: '',
-                    props: {style: {display: 'none'}}
-                },
-                {
-                    text: 'Aspirante',
-                    value: 'Aspirante',
-                },
-                {
-                    text: 'Associado',
-                    value: 'Associado',
-                },
-                {
-                    text: 'Titular',
-                    value: 'Titular',
-                },
-                ]}
-            />
+                <SwitchMultiButton
+                    style={plans_style}
+                    value={plan} // set as default button
+                    setValue={setPlan}
+                    buttons={[
+                    {
+                        text: '',
+                        value: '',
+                        props: {style: {display: 'none'}}
+                    },
+                    {
+                        text: 'Aspirante',
+                        value: 'Aspirante',
+                    },
+                    {
+                        text: 'Associado',
+                        value: 'Associado',
+                    },
+                    {
+                        text: 'Titular',
+                        value: 'Titular',
+                    },
+                    ]}
+                />
             </div>
         </div>
     )
