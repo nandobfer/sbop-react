@@ -70,7 +70,7 @@ export const Seguranca = ({  }) => {
             }
 
             if (values.new_email == values.confirmation) {
-                api.post('/member/update', {...member, email: values.new_email})
+                api.post('/member/update/email', {id: member.id, email: values.new_email})
                 .then(response => {
                     setMember({...member, email: values.new_email})
                     setFeedback('E-mail alterado com sucesso')
