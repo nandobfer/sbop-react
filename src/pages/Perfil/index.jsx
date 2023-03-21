@@ -56,7 +56,7 @@ export const Perfil = () => {
                         <Route path='/planos' element={<Planos />} />
                         <Route path='/conteudos/*' element={<AcessoRestrito />} />
                         <Route path='/solicitacoes' element={<Solicitacoes />} />
-                        <Route path='/adm' element={<AdmPanel />} />
+                        <Route path='/adm/*' element={<AdmPanel />} />
                     </Routes>
                 </div>
             </div>
