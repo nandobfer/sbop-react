@@ -83,7 +83,7 @@ export const Planos = () => {
                     { membro.pago ?
                     <p>Vigente até dia 31/12/2023</p>
                     :
-                    <p>Pagamento do dia 31/12/2022 pendente!</p>
+                    <p>Pagamento do dia 01/01/2023 pendente!</p>
                     }
                 </div>
             </div>
