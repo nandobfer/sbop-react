@@ -54,7 +54,6 @@ function App() {
                                         <Route path='/logout' element={<Reload />} />
 
                                         <Route path='/perfil/*' element={<Perfil />} />
-                                        <Route path='/adm/*' element={<AdmPanel />} />
                                 </Routes>
 
                             </ContentsProvider>

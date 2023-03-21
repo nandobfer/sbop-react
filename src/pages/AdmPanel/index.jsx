@@ -8,6 +8,10 @@ import { CircularProgress, Skeleton } from '@mui/material';
 import { useEffect } from 'react';
 import { Snackbar } from '../../components/Snackbar';
 import { MemberContainer } from './MemberContainer';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import { AdmPosts } from '../AdmPosts';
+import ForwardIcon from '@mui/icons-material/Forward';
+import COLORS from '../../sass/_colors.scss'
 
 export const AdmPanel = () => {
 
@@ -49,6 +53,35 @@ export const AdmPanel = () => {
         )
     }
 
+    const AdmTable = () => {
+        return (
+            <section className="adm-table">
+                <div className="top-container">
+                    <h2>Icone</h2>
+                    <div className="search-container">
+                        <Search />
+                    </div>
+                    <ForwardIcon sx={{width: '5vw', height: 'auto', color: COLORS.line, cursor: 'pointer'}} onClick={() => navigate('/perfil/adm/posts')} />
+                </div>
+                <div className="panel-container">
+                    {
+                        loading ?
+                        <div className="results-container">
+                            {skeletons.map((key) => <SkeletonMember key={key} />)}
+                        </div>
+                        :
+                        <div className="results-container">
+                            {members.map(member => <MemberContainer key={member.id} member={member} currentMember={currentMember} setCurrentMember={setCurrentMember} />)}
+                        </div>
+                    }
+                    <MemberPanel member={currentMember} setMember={setCurrentMember} setReload={setReload} setSnackbar={setSnackbar} setSnackbarText={setSnackbarText} />
+                </div>
+            </section>
+        )
+    }
+
+    const navigate = useNavigate()
+
     const [members, setMembers] = useState([])
     const [loading, setLoading] = useState(true)
     const [currentMember, setCurrentMember] = useState(null)
@@ -86,26 +119,12 @@ export const AdmPanel = () => {
     
     return (
         <div className='AdmPanel-Page' >
-            <div className="top-container">
-                <h2>Icone</h2>
-                <div className="search-container">
-                    <Search />
-                </div>
-            </div>
-            <div className="panel-container">
-                {
-                    loading ?
-                    <div className="results-container">
-                        {skeletons.map((key) => <SkeletonMember key={key} />)}
-                    </div>
-                    :
-                    <div className="results-container">
-                        {members.map(member => <MemberContainer key={member.id} member={member} currentMember={currentMember} setCurrentMember={setCurrentMember} />)}
-                    </div>
-                }
-                <MemberPanel member={currentMember} setMember={setCurrentMember} setReload={setReload} setSnackbar={setSnackbar} setSnackbarText={setSnackbarText} />
-            </div>
+            
             <Snackbar text={snackbarText} severity={snackbar} open={Boolean(snackbar)} setOpen={setSnackbar} />
+            <Routes>
+                <Route index element={<AdmTable />} />
+                <Route path='/posts' element={<AdmPosts />} />
+            </Routes>
         </div>
     )
 }

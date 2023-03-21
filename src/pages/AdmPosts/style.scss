@@ -1,0 +1,11 @@
+@import '/src/sass/colors';
+
+.AdmPosts-Component {
+    width: 100%;
+    flex-direction: column;
+
+    .posts-container {
+        width: 100%;
+        flex-direction: column;
+    }
+}
