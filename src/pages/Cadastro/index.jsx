@@ -96,7 +96,7 @@ export const Cadastro = () => {
                     <div className="crm-uf-container">
                         <div className="input-container">
                             <label htmlFor="crm">CRM</label>
-                            <Input type="number" id='crm' className='default-input' placeholder='CRM' required />
+                            <Input id='crm' className='default-input' placeholder='CRM' required />
                         </div>
 
                         <DropdownUFS />
