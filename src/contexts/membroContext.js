@@ -13,14 +13,14 @@ export const MembroProvider = ({children}) => {
 
     const [value, setValue] = useState(storage.get('member'))
 
-    // useEffect(() => {
-    //     if (!value?.id) {
-    //         navigate('/home')
-    //     } else {
-    //         console.log(value)
-    //         storage.set('member', value)
-    //     }
-    // }, [value])
+    useEffect(() => {
+        if (!value?.id) {
+            navigate('/home')
+        } else {
+            console.log(value)
+            storage.set('member', value)
+        }
+    }, [value])
 
 
     return (
