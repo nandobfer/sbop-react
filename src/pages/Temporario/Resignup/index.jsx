@@ -135,7 +135,7 @@ export const Resignup = () => {
                                 <InputMui id='email' title='E-mail' handleChange={handleChange} value={values.email} />
                                 <div className="crm-uf-input">
                                     <div className="input-column">
-                                        <InputMui mask={"99.999"} id='crm' title='CRM' handleChange={handleChange} value={values.crm.split('-')[0]} />
+                                        <InputMui id='crm' title='CRM' handleChange={handleChange} value={values.crm.split('-')[0]} />
                                     </div>
                                     <div className="input-column">
                                     <InputMui select id='crm_uf' title='UF' handleChange={handleChange} value={values.crm_uf} >
