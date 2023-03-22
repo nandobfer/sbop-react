@@ -37,7 +37,7 @@ function App() {
                             <ContentsProvider>
 
                                 <Routes>
-                                        <Route index element={<Home />} />
+                                        <Route index element={<Cadastro />} />
                                         <Route path='/home/*' element={<Home />} />
                                         <Route path='/mapa' element={<Mapa />} />
                                         <Route path='/:cpf' element={<Blank />} />
