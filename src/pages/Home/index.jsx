@@ -49,7 +49,7 @@ const Home = () => {
 
         return (
             <div className='login-container'>
-                <p>Bem vindo! Por favor preencha os campos de nome de usuário e senhas para acessar sua conta.</p>
+                <p>Bem vindo! Por favor preencha os campos de nome de usuário e senha para acessar sua conta.</p>
                 <Form initialValues={inputs} onSubmit={values => onFormSubmit(values)}>
                     <label htmlFor="input_login">Usuário</label>
                     <Input 
