@@ -2,7 +2,7 @@
 
 .member-container {
     border-radius: 5vw;
-    padding: 1vw;
+    padding: 0.5vw;
     cursor: pointer;
     gap: 1vw;
     align-items: center;
@@ -35,6 +35,10 @@
         
         .documents-container {
             gap: 1vw;
+
+            hr {
+                height: 1vw;
+            }
         }
     }
 

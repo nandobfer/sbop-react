@@ -19,7 +19,8 @@ export const MemberContainer = ({ member, currentMember, setCurrentMember }) => 
     const plans_style = {
         backgroundColor: 'white',
         outline: `0.25vw solid ${COLORS.background}`,
-        borderRadius: '5vw'
+        borderRadius: '5vw',
+        // height: '3vw'
     }
 
     useEffect(() => {
