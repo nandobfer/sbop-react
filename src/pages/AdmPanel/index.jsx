@@ -57,21 +57,27 @@ export const AdmPanel = () => {
         return (
             <section className="adm-table">
                 <div className="top-container">
-                    <h2>Icone</h2>
+                    <img className='adm-icon' src="/images/adm_icon.svg" alt="" />
                     <div className="search-container">
                         <Search />
                     </div>
-                    <ForwardIcon sx={{width: '5vw', height: 'auto', color: COLORS.line, cursor: 'pointer'}} onClick={() => navigate('/perfil/adm/posts')} />
+                    <ForwardIcon sx={{width: '3vw', height: 'auto', color: COLORS.line, cursor: 'pointer'}} onClick={() => navigate('/perfil/adm/posts')} />
                 </div>
                 <div className="panel-container">
                     {
                         loading ?
-                        <div className="results-container">
-                            {skeletons.map((key) => <SkeletonMember key={key} />)}
+                        <div className='title-above-results'>
+                            <h1 id="search-title">Resultados para: <span id="searched-text">Todos</span></h1>
+                            <div className="results-container">
+                                {skeletons.map((key) => <SkeletonMember key={key} />)}
+                            </div>
                         </div>
                         :
-                        <div className="results-container">
-                            {members.map(member => <MemberContainer key={member.id} member={member} currentMember={currentMember} setCurrentMember={setCurrentMember} />)}
+                        <div className='title-above-results'>
+                            <h1 id="search-title">Resultados para: <span id="searched-text">Todos</span></h1>
+                            <div className="results-container">
+                                {members.map(member => <MemberContainer key={member.id} member={member} currentMember={currentMember} setCurrentMember={setCurrentMember} />)}
+                            </div>
                         </div>
                     }
                     <MemberPanel member={currentMember} setMember={setCurrentMember} setReload={setReload} setSnackbar={setSnackbar} setSnackbarText={setSnackbarText} />

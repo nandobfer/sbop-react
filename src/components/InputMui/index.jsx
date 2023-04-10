@@ -5,7 +5,6 @@ export const InputMui = ({ children, disabled, id, title, handleChange, value, t
 
     const custom_style = {
         flexDirection: 'column', 
-        width,
         
         opacity: disabled && 0.5,
         pointerEvents: disabled && 'none'

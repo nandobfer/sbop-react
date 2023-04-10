@@ -175,9 +175,9 @@ export const MemberPanel = ({ member, setMember, setReload, setSnackbar, setSnac
                     </div>
 
                     <div className="buttons-container">
-                        <button className='default-button' type="submit">{updatingButtonLoading ? <CircularProgress size={'2vw'} color='secondary' /> : 'Enviar'}</button>
-                        <button className='default-button' onClick={onCancel} style={{backgroundColor: 'grey'}} >Cancelar</button>
                         <button className='default-button' onClick={onDelete} style={{backgroundColor: COLORS.red}} >{deletingButtonLoading ? <CircularProgress size={'2vw'} color='secondary' /> : 'Deletar'}</button>
+                        <button className='default-button' onClick={onCancel} style={{backgroundColor: 'grey'}} >Cancelar</button>
+                        <button className='default-button' type="submit">{updatingButtonLoading ? <CircularProgress size={'2vw'} color='secondary' /> : 'Enviar'}</button>
                     </div>
                 </Form>
             )}

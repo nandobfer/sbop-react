@@ -7,6 +7,13 @@
     .top-container {
         width: 100%;
         align-items: center;
+        margin-bottom: 1vw;
+
+        .adm-icon {
+            height: 4vw;
+            width: auto;
+            margin-right: 1vw;
+        }
 
         .search-container {
             width: 100%;
@@ -24,19 +31,38 @@
         height: 28vw;
         flex-direction: row;
 
-        .results-container {
+        .title-above-results {
             flex: 0.55;
-            height: 100%;
-            overflow-y: scroll;
+            display: flex;
             flex-direction: column;
-            gap: 1.5vw;
 
+            #search-title {
+                color: $adm-title;
+                margin-bottom: 1vw;
+                font-size: 2vw;
+
+                #searched-text {
+                    color: $title-color;
+                    font-weight: 500;
+                }
+            }
+        }
+        
+        .results-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 50vw;
+            overflow-y: scroll;
+            gap: 1vw;
+            padding-right: 0.5vw;
+            margin-right: 1vw;
         }
 
         form {
+            flex: 0.45;
             display: flex;
             flex-direction: column;
-            flex: 0.45;
         }
     }
 }
